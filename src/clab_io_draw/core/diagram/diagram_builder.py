@@ -189,6 +189,22 @@ class DiagramBuilder:
                                 )
                                 link.port_pos = (port_x, port_y)
 
+        # stolen from below
+        def format_interface_name_port(intf_name):
+            # This only affects visual display, not the underlying data used by Grafana
+            if styles.get("compact_interface_names", True):
+                # Common interface name formats
+                if intf_name.lower().startswith("ethernet-"):
+                    return "e" + intf_name[9:]
+                if intf_name.lower().startswith("ethernet"):
+                    return "e" + intf_name[8:]
+                # Keep capitalization for capitalized interfaces
+                if intf_name.startswith("Ethernet"):
+                    return "E" + intf_name[8:]
+                # Add more format rules as needed
+            return intf_name
+
+
         # Create connectors and midpoint connectors
         connector_dict = {}
         processed_connections = set()
@@ -207,7 +223,8 @@ class DiagramBuilder:
                 if connection_id not in processed_connections:
                     processed_connections.add(connection_id)
                     source_cID = f"{link.source.name}:{link.source_intf}:{link.target.name}:{link.target_intf}"
-                    source_label = re.findall(r"\d+", link.source_intf)[-1]
+                    #source_label = re.findall(r"\d+", link.source_intf)[-1]
+                    source_label = format_interface_name_port(link.source_intf)
                     source_connector_pos = link.port_pos
                     port_width = styles["port_width"]
                     port_height = styles["port_height"]
@@ -219,7 +236,8 @@ class DiagramBuilder:
                     target_cID = f"{link.target.name}:{link.target_intf}:{link.source.name}:{link.source_intf}"
                     target_link = diagram.get_target_link(link)
                     target_connector_pos = target_link.port_pos
-                    target_label = re.findall(r"\d+", target_link.source_intf)[-1]
+                    #target_label = re.findall(r"\d+", target_link.source_intf)[-1]
+                    target_label = format_interface_name_port(target_link.source_intf)
 
                     if link.target.name not in connector_dict:
                         connector_dict[link.target.name] = []
@@ -320,14 +338,14 @@ class DiagramBuilder:
                         source=source_cID,
                         target=midpoint_id,
                         style=styles["link_style"],
-                        label="rate",
+                        label="rate_s",
                         link_id=f"{source_cID}",
                     )
                     diagram.add_link(
                         source=target_cID,
                         target=midpoint_id,
                         style=styles["link_style"],
-                        label="rate",
+                        label="rate_t",
                         link_id=f"{target_cID}",
                     )
 
@@ -416,6 +434,7 @@ class DiagramBuilder:
                 port_y = node.pos_y + (i + 1) * spacing - port_height / 2
                 link.port_pos = (port_x, port_y)
 
+    # not really used for grafana diagram generation -- "add_port" creates all the links, see above
     def add_links(self, diagram, styles):
         """
         Add links between nodes, with labels if needed.

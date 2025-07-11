@@ -5,10 +5,11 @@ grid: "0"
 pagew: "auto"
 pageh: "auto"
 
-node_width: 120
+node_width: 200
 node_height: 75
 
-padding_x: 200
+# not taking node_width into account: adjust for wider node
+padding_x: 350
 padding_y: 200
 
 # Base style for nodes; defines the general appearance for all nodes.
@@ -21,7 +22,8 @@ ports: true
 port_style: "rounded=1;whiteSpace=wrap;html=1;fontColor=#FFFFFF;fontSize=8;strokeColor=#98A2AE;fillColor=#BEC8D2;textShadow=1;connectable=1;resizable=1;"
 connector_style: "ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;"
 
-port_width:  12
+# just fine for Te2/1/16; way too wide for e7/3 :)
+port_width:  32
 port_height: 12
 
 connector_width:  4
