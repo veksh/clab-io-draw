@@ -164,26 +164,26 @@ class HorizontalLayout(LayoutManager):
             level_nodes = nodes_by_level[level]
             if not level_nodes:
                 continue
-
-            min_y = min(nd.pos_y for nd in level_nodes)
-            max_y = max(nd.pos_y for nd in level_nodes)
-            col_center = (min_y + max_y) / 2.0
+            # Center by node visual centers
+            min_center = min(nd.pos_y + (float(nd.height) / 2.0 if nd.height else 0) for nd in level_nodes)
+            max_center = max(nd.pos_y + (float(nd.height) / 2.0 if nd.height else 0) for nd in level_nodes)
+            col_center = (min_center + max_center) / 2.0
 
             if prev_center is None:
                 offset = global_center - col_center
                 for nd in level_nodes:
                     nd.pos_y += offset
-                min_y = min(nd.pos_y for nd in level_nodes)
-                max_y = max(nd.pos_y for nd in level_nodes)
-                col_center = (min_y + max_y) / 2.0
+                min_center = min(nd.pos_y + (float(nd.height) / 2.0 if nd.height else 0) for nd in level_nodes)
+                max_center = max(nd.pos_y + (float(nd.height) / 2.0 if nd.height else 0) for nd in level_nodes)
+                col_center = (min_center + max_center) / 2.0
                 prev_center = col_center
             else:
                 offset = prev_center - col_center
                 for nd in level_nodes:
                     nd.pos_y += offset
-                min_y = min(nd.pos_y for nd in level_nodes)
-                max_y = max(nd.pos_y for nd in level_nodes)
-                col_center = (min_y + max_y) / 2.0
+                min_center = min(nd.pos_y + (float(nd.height) / 2.0 if nd.height else 0) for nd in level_nodes)
+                max_center = max(nd.pos_y + (float(nd.height) / 2.0 if nd.height else 0) for nd in level_nodes)
+                col_center = (min_center + max_center) / 2.0
                 prev_center = col_center
 
     def _adjust_intermediary_nodes(self, diagram, offset=100.0):

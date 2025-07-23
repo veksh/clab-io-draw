@@ -1,6 +1,6 @@
 import logging
 import math
-import re
+# import re
 from random import SystemRandom
 
 logger = logging.getLogger(__name__)

@@ -178,25 +178,26 @@ class VerticalLayout(LayoutManager):
             level_nodes = nodes_by_level[level]
             if not level_nodes:
                 continue
-            min_x = min(nd.pos_x for nd in level_nodes)
-            max_x = max(nd.pos_x for nd in level_nodes)
-            row_center = (min_x + max_x) / 2.0
+            # Center by node visual centers
+            min_center = min(nd.pos_x + (float(nd.width) / 2.0 if nd.width else 0) for nd in level_nodes)
+            max_center = max(nd.pos_x + (float(nd.width) / 2.0 if nd.width else 0) for nd in level_nodes)
+            row_center = (min_center + max_center) / 2.0
 
             if prev_center is None:
                 offset = global_center - row_center
                 for nd in level_nodes:
                     nd.pos_x += offset
-                min_x = min(nd.pos_x for nd in level_nodes)
-                max_x = max(nd.pos_x for nd in level_nodes)
-                row_center = (min_x + max_x) / 2.0
+                min_center = min(nd.pos_x + (float(nd.width) / 2.0 if nd.width else 0) for nd in level_nodes)
+                max_center = max(nd.pos_x + (float(nd.width) / 2.0 if nd.width else 0) for nd in level_nodes)
+                row_center = (min_center + max_center) / 2.0
                 prev_center = row_center
             else:
                 offset = prev_center - row_center
                 for nd in level_nodes:
                     nd.pos_x += offset
-                min_x = min(nd.pos_x for nd in level_nodes)
-                max_x = max(nd.pos_x for nd in level_nodes)
-                row_center = (min_x + max_x) / 2.0
+                min_center = min(nd.pos_x + (float(nd.width) / 2.0 if nd.width else 0) for nd in level_nodes)
+                max_center = max(nd.pos_x + (float(nd.width) / 2.0 if nd.width else 0) for nd in level_nodes)
+                row_center = (min_center + max_center) / 2.0
                 prev_center = row_center
 
     def _adjust_intermediary_nodes(self, diagram, offset=100.0):
