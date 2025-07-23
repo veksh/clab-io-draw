@@ -77,19 +77,33 @@ class NodeLinkBuilder:
             if "graph-posY" in labels:
                 pos_y = labels["graph-posY"]
 
+            # Allow per-node width/height override via labels
+            width = node_width
+            height = node_height
+            if "graph-width" in labels:
+                try:
+                    width = int(labels["graph-width"])
+                except (ValueError, TypeError):
+                    pass
+            if "graph-height" in labels:
+                try:
+                    height = int(labels["graph-height"])
+                except (ValueError, TypeError):
+                    pass
+
             node = Node(
                 name=formatted_node_name,
                 label=node_name,
                 kind=node_data.get("kind", ""),
                 mgmt_ipv4=node_data.get("mgmt_ipv4", ""),
-                graph_level=node_data.get("labels", {}).get("graph-level", None),
-                graph_icon=node_data.get("labels", {}).get("graph-icon", None),
+                graph_level=labels.get("graph-level", None),
+                graph_icon=labels.get("graph-icon", None),
                 base_style=base_style,
                 custom_style=self.styles.get(node_data.get("kind", ""), ""),
                 pos_x=pos_x,
                 pos_y=pos_y,
-                width=node_width,
-                height=node_height,
+                width=width,
+                height=height,
                 group=node_data.get("group", ""),
             )
             nodes[formatted_node_name] = node

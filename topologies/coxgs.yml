@@ -62,12 +62,22 @@ topology:
       kind: arista
       labels:
         graph-level: 3
-        graph-icon: switch
+        # graph-icon: switch
+        graph-icon: empty        
+        # graph-width: 250
+        # ok for horizontal
+        graph-height: 100
+        graph-width: 150
     spine-coxgs-2:
       kind: arista
       labels:
         graph-level: 3
-        graph-icon: switch
+        # graph-icon: switch
+        graph-icon: empty
+        # graph-width: 250
+        # ok for horizontal
+        graph-height: 100
+        graph-width: 150
 
     csr-coxgs-0a:
       kind: cisco-nexus
