@@ -1,0 +1,1000 @@
+---
+anchors:
+  thresholds-operstate: &thresholds-operstate
+  - color: red
+    level: 0
+  - color: green
+    level: 1
+  thresholds-traffic: &thresholds-traffic
+  - color: gray
+    level: 0
+  - color: green
+    level: 199999
+  - color: yellow
+    level: 500000
+  - color: orange
+    level: 1000000
+  - color: red
+    level: 5000000
+  label-config: &label-config
+    separator: replace
+    units: bps
+    decimalPoints: 1
+    valueMappings:
+    - valueMax: 199999
+      text: ​
+    - valueMin: 200000
+cellIdPreamble: cell-
+cells:
+  clab-coxgs-vpnr-coxgs-1:internal2:clab-coxgs-agsr-coxgs-0.1:Te1/1/7:
+    dataRef: oper-state:clab-coxgs-vpnr-coxgs-1:internal2
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-vpnr-coxgs-1:internal2:clab-coxgs-agsr-coxgs-0.1:Te1/1/7:
+    dataRef: clab-coxgs-vpnr-coxgs-1:internal2:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-fw-coxgs-0:ethernet1/1:clab-coxgs-agsr-coxgs-0.1:Te1/1/3:
+    dataRef: oper-state:clab-coxgs-fw-coxgs-0:ethernet1/1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-fw-coxgs-0:ethernet1/1:clab-coxgs-agsr-coxgs-0.1:Te1/1/3:
+    dataRef: clab-coxgs-fw-coxgs-0:ethernet1/1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-fw-coxgs-0:ha1:clab-coxgs-agsr-coxgs-0.1:Te1/1/9:
+    dataRef: oper-state:clab-coxgs-fw-coxgs-0:ha1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-fw-coxgs-0:ha1:clab-coxgs-agsr-coxgs-0.1:Te1/1/9:
+    dataRef: clab-coxgs-fw-coxgs-0:ha1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-fw-coxgs-0:ha2:clab-coxgs-agsr-coxgs-0.1:Te1/1/10:
+    dataRef: oper-state:clab-coxgs-fw-coxgs-0:ha2
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-fw-coxgs-0:ha2:clab-coxgs-agsr-coxgs-0.1:Te1/1/10:
+    dataRef: clab-coxgs-fw-coxgs-0:ha2:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-fw-coxgs-0:ethernet1/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/3:
+    dataRef: oper-state:clab-coxgs-fw-coxgs-0:ethernet1/2
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-fw-coxgs-0:ethernet1/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/3:
+    dataRef: clab-coxgs-fw-coxgs-0:ethernet1/2:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-fw-coxgs-0:ethernet1/3:clab-coxgs-agsr-coxgs-0.2:Te2/1/10:
+    dataRef: oper-state:clab-coxgs-fw-coxgs-0:ethernet1/3
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-fw-coxgs-0:ethernet1/3:clab-coxgs-agsr-coxgs-0.2:Te2/1/10:
+    dataRef: clab-coxgs-fw-coxgs-0:ethernet1/3:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-fw-coxgs-0:ethernet1/4:clab-coxgs-agsr-coxgs-0.2:Te2/1/11:
+    dataRef: oper-state:clab-coxgs-fw-coxgs-0:ethernet1/4
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-fw-coxgs-0:ethernet1/4:clab-coxgs-agsr-coxgs-0.2:Te2/1/11:
+    dataRef: clab-coxgs-fw-coxgs-0:ethernet1/4:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-esr-cloin-2:Ethernet50:clab-coxgs-agsr-coxgs-0.2:Te2/1/9:
+    dataRef: oper-state:clab-coxgs-esr-cloin-2:Ethernet50
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-esr-cloin-2:Ethernet50:clab-coxgs-agsr-coxgs-0.2:Te2/1/9:
+    dataRef: clab-coxgs-esr-cloin-2:Ethernet50:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.1:Te1/1/4:clab-coxgs-spine-coxgs-1:Ethernet7/3:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.1:Te1/1/4
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.1:Te1/1/4:clab-coxgs-spine-coxgs-1:Ethernet7/3:
+    dataRef: clab-coxgs-agsr-coxgs-0.1:Te1/1/4:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.1:Te1/1/5:clab-coxgs-spine-coxgs-1:Ethernet7/4:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.1:Te1/1/5
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.1:Te1/1/5:clab-coxgs-spine-coxgs-1:Ethernet7/4:
+    dataRef: clab-coxgs-agsr-coxgs-0.1:Te1/1/5:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.1:Te2/1/12:clab-coxgs-spine-coxgs-2:Ethernet7/1:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.1:Te2/1/12
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.1:Te2/1/12:clab-coxgs-spine-coxgs-2:Ethernet7/1:
+    dataRef: clab-coxgs-agsr-coxgs-0.1:Te2/1/12:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.1:Te1/1/12:clab-coxgs-spine-coxgs-2:Ethernet7/3:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.1:Te1/1/12
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.1:Te1/1/12:clab-coxgs-spine-coxgs-2:Ethernet7/3:
+    dataRef: clab-coxgs-agsr-coxgs-0.1:Te1/1/12:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.1:Te1/1/1:clab-coxgs-agsr-coxgs-0.2:Te2/1/2:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.1:Te1/1/1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.1:Te1/1/1:clab-coxgs-agsr-coxgs-0.2:Te2/1/2:
+    dataRef: clab-coxgs-agsr-coxgs-0.1:Te1/1/1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.1:Te1/1/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/1:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.1:Te1/1/2
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.1:Te1/1/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/1:
+    dataRef: clab-coxgs-agsr-coxgs-0.1:Te1/1/2:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.1:Te1/1/14:clab-coxgs-agsr-coxgs-0.2:Te2/1/14:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.1:Te1/1/14
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.1:Te1/1/14:clab-coxgs-agsr-coxgs-0.2:Te2/1/14:
+    dataRef: clab-coxgs-agsr-coxgs-0.1:Te1/1/14:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.1:Te1/1/16:clab-coxgs-agsr-coxgs-0.2:Te2/1/16:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.1:Te1/1/16
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.1:Te1/1/16:clab-coxgs-agsr-coxgs-0.2:Te2/1/16:
+    dataRef: clab-coxgs-agsr-coxgs-0.1:Te1/1/16:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.1:Te1/1/3:clab-coxgs-fw-coxgs-0:ethernet1/1:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.1:Te1/1/3
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.1:Te1/1/3:clab-coxgs-fw-coxgs-0:ethernet1/1:
+    dataRef: clab-coxgs-agsr-coxgs-0.1:Te1/1/3:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.1:Te1/1/9:clab-coxgs-fw-coxgs-0:ha1:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.1:Te1/1/9
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.1:Te1/1/9:clab-coxgs-fw-coxgs-0:ha1:
+    dataRef: clab-coxgs-agsr-coxgs-0.1:Te1/1/9:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.1:Te1/1/10:clab-coxgs-fw-coxgs-0:ha2:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.1:Te1/1/10
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.1:Te1/1/10:clab-coxgs-fw-coxgs-0:ha2:
+    dataRef: clab-coxgs-agsr-coxgs-0.1:Te1/1/10:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.1:Te1/1/7:clab-coxgs-vpnr-coxgs-1:internal2:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.1:Te1/1/7
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.1:Te1/1/7:clab-coxgs-vpnr-coxgs-1:internal2:
+    dataRef: clab-coxgs-agsr-coxgs-0.1:Te1/1/7:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.2:Te2/1/5:clab-coxgs-spine-coxgs-1:Ethernet7/1:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.2:Te2/1/5
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.2:Te2/1/5:clab-coxgs-spine-coxgs-1:Ethernet7/1:
+    dataRef: clab-coxgs-agsr-coxgs-0.2:Te2/1/5:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.2:Te2/1/6:clab-coxgs-spine-coxgs-1:Ethernet7/2:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.2:Te2/1/6
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.2:Te2/1/6:clab-coxgs-spine-coxgs-1:Ethernet7/2:
+    dataRef: clab-coxgs-agsr-coxgs-0.2:Te2/1/6:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.2:Te2/1/13:clab-coxgs-spine-coxgs-2:Ethernet7/2:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.2:Te2/1/13
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.2:Te2/1/13:clab-coxgs-spine-coxgs-2:Ethernet7/2:
+    dataRef: clab-coxgs-agsr-coxgs-0.2:Te2/1/13:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.2:Te1/1/13:clab-coxgs-spine-coxgs-2:Ethernet7/4:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.2:Te1/1/13
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.2:Te1/1/13:clab-coxgs-spine-coxgs-2:Ethernet7/4:
+    dataRef: clab-coxgs-agsr-coxgs-0.2:Te1/1/13:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.2:Te2/1/2:clab-coxgs-agsr-coxgs-0.1:Te1/1/1:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.2:Te2/1/2
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.2:Te2/1/2:clab-coxgs-agsr-coxgs-0.1:Te1/1/1:
+    dataRef: clab-coxgs-agsr-coxgs-0.2:Te2/1/2:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.2:Te2/1/1:clab-coxgs-agsr-coxgs-0.1:Te1/1/2:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.2:Te2/1/1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.2:Te2/1/1:clab-coxgs-agsr-coxgs-0.1:Te1/1/2:
+    dataRef: clab-coxgs-agsr-coxgs-0.2:Te2/1/1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.2:Te2/1/14:clab-coxgs-agsr-coxgs-0.1:Te1/1/14:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.2:Te2/1/14
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.2:Te2/1/14:clab-coxgs-agsr-coxgs-0.1:Te1/1/14:
+    dataRef: clab-coxgs-agsr-coxgs-0.2:Te2/1/14:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.2:Te2/1/16:clab-coxgs-agsr-coxgs-0.1:Te1/1/16:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.2:Te2/1/16
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.2:Te2/1/16:clab-coxgs-agsr-coxgs-0.1:Te1/1/16:
+    dataRef: clab-coxgs-agsr-coxgs-0.2:Te2/1/16:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.2:Te2/1/3:clab-coxgs-fw-coxgs-0:ethernet1/2:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.2:Te2/1/3
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.2:Te2/1/3:clab-coxgs-fw-coxgs-0:ethernet1/2:
+    dataRef: clab-coxgs-agsr-coxgs-0.2:Te2/1/3:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.2:Te2/1/10:clab-coxgs-fw-coxgs-0:ethernet1/3:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.2:Te2/1/10
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.2:Te2/1/10:clab-coxgs-fw-coxgs-0:ethernet1/3:
+    dataRef: clab-coxgs-agsr-coxgs-0.2:Te2/1/10:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.2:Te2/1/11:clab-coxgs-fw-coxgs-0:ethernet1/4:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.2:Te2/1/11
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.2:Te2/1/11:clab-coxgs-fw-coxgs-0:ethernet1/4:
+    dataRef: clab-coxgs-agsr-coxgs-0.2:Te2/1/11:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-agsr-coxgs-0.2:Te2/1/9:clab-coxgs-esr-cloin-2:Ethernet50:
+    dataRef: oper-state:clab-coxgs-agsr-coxgs-0.2:Te2/1/9
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-agsr-coxgs-0.2:Te2/1/9:clab-coxgs-esr-cloin-2:Ethernet50:
+    dataRef: clab-coxgs-agsr-coxgs-0.2:Te2/1/9:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-1:Ethernet7/1:clab-coxgs-agsr-coxgs-0.2:Te2/1/5:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-1:Ethernet7/1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-1:Ethernet7/1:clab-coxgs-agsr-coxgs-0.2:Te2/1/5:
+    dataRef: clab-coxgs-spine-coxgs-1:Ethernet7/1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-1:Ethernet7/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/6:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-1:Ethernet7/2
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-1:Ethernet7/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/6:
+    dataRef: clab-coxgs-spine-coxgs-1:Ethernet7/2:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-1:Ethernet7/3:clab-coxgs-agsr-coxgs-0.1:Te1/1/4:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-1:Ethernet7/3
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-1:Ethernet7/3:clab-coxgs-agsr-coxgs-0.1:Te1/1/4:
+    dataRef: clab-coxgs-spine-coxgs-1:Ethernet7/3:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-1:Ethernet7/4:clab-coxgs-agsr-coxgs-0.1:Te1/1/5:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-1:Ethernet7/4
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-1:Ethernet7/4:clab-coxgs-agsr-coxgs-0.1:Te1/1/5:
+    dataRef: clab-coxgs-spine-coxgs-1:Ethernet7/4:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-1:Ethernet1/1:clab-coxgs-spine-coxgs-2:Ethernet1/1:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-1:Ethernet1/1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-1:Ethernet1/1:clab-coxgs-spine-coxgs-2:Ethernet1/1:
+    dataRef: clab-coxgs-spine-coxgs-1:Ethernet1/1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-1:Ethernet2/1:clab-coxgs-spine-coxgs-2:Ethernet2/1:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-1:Ethernet2/1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-1:Ethernet2/1:clab-coxgs-spine-coxgs-2:Ethernet2/1:
+    dataRef: clab-coxgs-spine-coxgs-1:Ethernet2/1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-1:Ethernet5/1:clab-coxgs-csr-coxgs-0a:Ethernet1/5:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-1:Ethernet5/1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-1:Ethernet5/1:clab-coxgs-csr-coxgs-0a:Ethernet1/5:
+    dataRef: clab-coxgs-spine-coxgs-1:Ethernet5/1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-1:Ethernet5/2:clab-coxgs-csr-coxgs-0a:Ethernet1/6:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-1:Ethernet5/2
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-1:Ethernet5/2:clab-coxgs-csr-coxgs-0a:Ethernet1/6:
+    dataRef: clab-coxgs-spine-coxgs-1:Ethernet5/2:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-1:Ethernet5/3:clab-coxgs-csr-coxgs-0a:Ethernet2/7:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-1:Ethernet5/3
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-1:Ethernet5/3:clab-coxgs-csr-coxgs-0a:Ethernet2/7:
+    dataRef: clab-coxgs-spine-coxgs-1:Ethernet5/3:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-1:Ethernet5/4:clab-coxgs-csr-coxgs-0a:Ethernet2/8:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-1:Ethernet5/4
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-1:Ethernet5/4:clab-coxgs-csr-coxgs-0a:Ethernet2/8:
+    dataRef: clab-coxgs-spine-coxgs-1:Ethernet5/4:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-1:Ethernet6/1:clab-coxgs-csr-coxgs-0b:Ethernet1/5:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-1:Ethernet6/1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-1:Ethernet6/1:clab-coxgs-csr-coxgs-0b:Ethernet1/5:
+    dataRef: clab-coxgs-spine-coxgs-1:Ethernet6/1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-1:Ethernet6/2:clab-coxgs-csr-coxgs-0b:Ethernet1/6:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-1:Ethernet6/2
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-1:Ethernet6/2:clab-coxgs-csr-coxgs-0b:Ethernet1/6:
+    dataRef: clab-coxgs-spine-coxgs-1:Ethernet6/2:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-1:Ethernet6/3:clab-coxgs-csr-coxgs-0b:Ethernet1/14:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-1:Ethernet6/3
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-1:Ethernet6/3:clab-coxgs-csr-coxgs-0b:Ethernet1/14:
+    dataRef: clab-coxgs-spine-coxgs-1:Ethernet6/3:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-1:Ethernet6/4:clab-coxgs-csr-coxgs-0b:Ethernet1/16:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-1:Ethernet6/4
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-1:Ethernet6/4:clab-coxgs-csr-coxgs-0b:Ethernet1/16:
+    dataRef: clab-coxgs-spine-coxgs-1:Ethernet6/4:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-2:Ethernet7/1:clab-coxgs-agsr-coxgs-0.1:Te2/1/12:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-2:Ethernet7/1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-2:Ethernet7/1:clab-coxgs-agsr-coxgs-0.1:Te2/1/12:
+    dataRef: clab-coxgs-spine-coxgs-2:Ethernet7/1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-2:Ethernet7/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/13:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-2:Ethernet7/2
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-2:Ethernet7/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/13:
+    dataRef: clab-coxgs-spine-coxgs-2:Ethernet7/2:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-2:Ethernet7/3:clab-coxgs-agsr-coxgs-0.1:Te1/1/12:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-2:Ethernet7/3
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-2:Ethernet7/3:clab-coxgs-agsr-coxgs-0.1:Te1/1/12:
+    dataRef: clab-coxgs-spine-coxgs-2:Ethernet7/3:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-2:Ethernet7/4:clab-coxgs-agsr-coxgs-0.2:Te1/1/13:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-2:Ethernet7/4
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-2:Ethernet7/4:clab-coxgs-agsr-coxgs-0.2:Te1/1/13:
+    dataRef: clab-coxgs-spine-coxgs-2:Ethernet7/4:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-2:Ethernet1/1:clab-coxgs-spine-coxgs-1:Ethernet1/1:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-2:Ethernet1/1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-2:Ethernet1/1:clab-coxgs-spine-coxgs-1:Ethernet1/1:
+    dataRef: clab-coxgs-spine-coxgs-2:Ethernet1/1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-2:Ethernet2/1:clab-coxgs-spine-coxgs-1:Ethernet2/1:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-2:Ethernet2/1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-2:Ethernet2/1:clab-coxgs-spine-coxgs-1:Ethernet2/1:
+    dataRef: clab-coxgs-spine-coxgs-2:Ethernet2/1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-2:Ethernet5/1:clab-coxgs-csr-coxgs-0a:Ethernet1/15:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-2:Ethernet5/1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-2:Ethernet5/1:clab-coxgs-csr-coxgs-0a:Ethernet1/15:
+    dataRef: clab-coxgs-spine-coxgs-2:Ethernet5/1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-2:Ethernet5/2:clab-coxgs-csr-coxgs-0a:Ethernet2/16:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-2:Ethernet5/2
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-2:Ethernet5/2:clab-coxgs-csr-coxgs-0a:Ethernet2/16:
+    dataRef: clab-coxgs-spine-coxgs-2:Ethernet5/2:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-2:Ethernet5/3:clab-coxgs-csr-coxgs-0a:Ethernet1/14:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-2:Ethernet5/3
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-2:Ethernet5/3:clab-coxgs-csr-coxgs-0a:Ethernet1/14:
+    dataRef: clab-coxgs-spine-coxgs-2:Ethernet5/3:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-2:Ethernet5/4:clab-coxgs-csr-coxgs-0a:Ethernet1/16:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-2:Ethernet5/4
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-2:Ethernet5/4:clab-coxgs-csr-coxgs-0a:Ethernet1/16:
+    dataRef: clab-coxgs-spine-coxgs-2:Ethernet5/4:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-2:Ethernet6/1:clab-coxgs-csr-coxgs-0b:Ethernet1/15:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-2:Ethernet6/1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-2:Ethernet6/1:clab-coxgs-csr-coxgs-0b:Ethernet1/15:
+    dataRef: clab-coxgs-spine-coxgs-2:Ethernet6/1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-2:Ethernet6/2:clab-coxgs-csr-coxgs-0b:Ethernet1/9:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-2:Ethernet6/2
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-2:Ethernet6/2:clab-coxgs-csr-coxgs-0b:Ethernet1/9:
+    dataRef: clab-coxgs-spine-coxgs-2:Ethernet6/2:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-2:Ethernet6/3:clab-coxgs-csr-coxgs-0b:Ethernet2/7:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-2:Ethernet6/3
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-2:Ethernet6/3:clab-coxgs-csr-coxgs-0b:Ethernet2/7:
+    dataRef: clab-coxgs-spine-coxgs-2:Ethernet6/3:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-spine-coxgs-2:Ethernet6/4:clab-coxgs-csr-coxgs-0b:Ethernet2/8:
+    dataRef: oper-state:clab-coxgs-spine-coxgs-2:Ethernet6/4
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-spine-coxgs-2:Ethernet6/4:clab-coxgs-csr-coxgs-0b:Ethernet2/8:
+    dataRef: clab-coxgs-spine-coxgs-2:Ethernet6/4:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0a:Ethernet1/5:clab-coxgs-spine-coxgs-1:Ethernet5/1:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0a:Ethernet1/5
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0a:Ethernet1/5:clab-coxgs-spine-coxgs-1:Ethernet5/1:
+    dataRef: clab-coxgs-csr-coxgs-0a:Ethernet1/5:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0a:Ethernet1/6:clab-coxgs-spine-coxgs-1:Ethernet5/2:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0a:Ethernet1/6
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0a:Ethernet1/6:clab-coxgs-spine-coxgs-1:Ethernet5/2:
+    dataRef: clab-coxgs-csr-coxgs-0a:Ethernet1/6:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0a:Ethernet2/7:clab-coxgs-spine-coxgs-1:Ethernet5/3:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0a:Ethernet2/7
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0a:Ethernet2/7:clab-coxgs-spine-coxgs-1:Ethernet5/3:
+    dataRef: clab-coxgs-csr-coxgs-0a:Ethernet2/7:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0a:Ethernet2/8:clab-coxgs-spine-coxgs-1:Ethernet5/4:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0a:Ethernet2/8
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0a:Ethernet2/8:clab-coxgs-spine-coxgs-1:Ethernet5/4:
+    dataRef: clab-coxgs-csr-coxgs-0a:Ethernet2/8:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0a:Ethernet1/15:clab-coxgs-spine-coxgs-2:Ethernet5/1:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0a:Ethernet1/15
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0a:Ethernet1/15:clab-coxgs-spine-coxgs-2:Ethernet5/1:
+    dataRef: clab-coxgs-csr-coxgs-0a:Ethernet1/15:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0a:Ethernet2/16:clab-coxgs-spine-coxgs-2:Ethernet5/2:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0a:Ethernet2/16
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0a:Ethernet2/16:clab-coxgs-spine-coxgs-2:Ethernet5/2:
+    dataRef: clab-coxgs-csr-coxgs-0a:Ethernet2/16:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0a:Ethernet1/14:clab-coxgs-spine-coxgs-2:Ethernet5/3:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0a:Ethernet1/14
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0a:Ethernet1/14:clab-coxgs-spine-coxgs-2:Ethernet5/3:
+    dataRef: clab-coxgs-csr-coxgs-0a:Ethernet1/14:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0a:Ethernet1/16:clab-coxgs-spine-coxgs-2:Ethernet5/4:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0a:Ethernet1/16
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0a:Ethernet1/16:clab-coxgs-spine-coxgs-2:Ethernet5/4:
+    dataRef: clab-coxgs-csr-coxgs-0a:Ethernet1/16:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0a:Ethernet1/1:clab-coxgs-csr-coxgs-0b:Ethernet1/2:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0a:Ethernet1/1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0a:Ethernet1/1:clab-coxgs-csr-coxgs-0b:Ethernet1/2:
+    dataRef: clab-coxgs-csr-coxgs-0a:Ethernet1/1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0a:Ethernet1/2:clab-coxgs-csr-coxgs-0b:Ethernet1/1:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0a:Ethernet1/2
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0a:Ethernet1/2:clab-coxgs-csr-coxgs-0b:Ethernet1/1:
+    dataRef: clab-coxgs-csr-coxgs-0a:Ethernet1/2:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0a:Ethernet1/3:clab-coxgs-csr-coxgs-0b:Ethernet1/3:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0a:Ethernet1/3
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0a:Ethernet1/3:clab-coxgs-csr-coxgs-0b:Ethernet1/3:
+    dataRef: clab-coxgs-csr-coxgs-0a:Ethernet1/3:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0a:Ethernet1/4:clab-coxgs-csr-coxgs-0b:Ethernet1/4:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0a:Ethernet1/4
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0a:Ethernet1/4:clab-coxgs-csr-coxgs-0b:Ethernet1/4:
+    dataRef: clab-coxgs-csr-coxgs-0a:Ethernet1/4:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0a:Ethernet2/12:clab-coxgs-csr-coxgs-1a:Ethernet1/15:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0a:Ethernet2/12
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0a:Ethernet2/12:clab-coxgs-csr-coxgs-1a:Ethernet1/15:
+    dataRef: clab-coxgs-csr-coxgs-0a:Ethernet2/12:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0a:Ethernet2/13:clab-coxgs-csr-coxgs-1a:Ethernet1/31:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0a:Ethernet2/13
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0a:Ethernet2/13:clab-coxgs-csr-coxgs-1a:Ethernet1/31:
+    dataRef: clab-coxgs-csr-coxgs-0a:Ethernet2/13:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0a:Ethernet2/14:clab-coxgs-csr-coxgs-1b:Ethernet1/15:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0a:Ethernet2/14
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0a:Ethernet2/14:clab-coxgs-csr-coxgs-1b:Ethernet1/15:
+    dataRef: clab-coxgs-csr-coxgs-0a:Ethernet2/14:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0a:Ethernet2/15:clab-coxgs-csr-coxgs-1b:Ethernet1/31:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0a:Ethernet2/15
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0a:Ethernet2/15:clab-coxgs-csr-coxgs-1b:Ethernet1/31:
+    dataRef: clab-coxgs-csr-coxgs-0a:Ethernet2/15:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0b:Ethernet1/5:clab-coxgs-spine-coxgs-1:Ethernet6/1:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0b:Ethernet1/5
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0b:Ethernet1/5:clab-coxgs-spine-coxgs-1:Ethernet6/1:
+    dataRef: clab-coxgs-csr-coxgs-0b:Ethernet1/5:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0b:Ethernet1/6:clab-coxgs-spine-coxgs-1:Ethernet6/2:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0b:Ethernet1/6
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0b:Ethernet1/6:clab-coxgs-spine-coxgs-1:Ethernet6/2:
+    dataRef: clab-coxgs-csr-coxgs-0b:Ethernet1/6:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0b:Ethernet1/14:clab-coxgs-spine-coxgs-1:Ethernet6/3:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0b:Ethernet1/14
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0b:Ethernet1/14:clab-coxgs-spine-coxgs-1:Ethernet6/3:
+    dataRef: clab-coxgs-csr-coxgs-0b:Ethernet1/14:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0b:Ethernet1/16:clab-coxgs-spine-coxgs-1:Ethernet6/4:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0b:Ethernet1/16
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0b:Ethernet1/16:clab-coxgs-spine-coxgs-1:Ethernet6/4:
+    dataRef: clab-coxgs-csr-coxgs-0b:Ethernet1/16:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0b:Ethernet1/15:clab-coxgs-spine-coxgs-2:Ethernet6/1:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0b:Ethernet1/15
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0b:Ethernet1/15:clab-coxgs-spine-coxgs-2:Ethernet6/1:
+    dataRef: clab-coxgs-csr-coxgs-0b:Ethernet1/15:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0b:Ethernet1/9:clab-coxgs-spine-coxgs-2:Ethernet6/2:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0b:Ethernet1/9
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0b:Ethernet1/9:clab-coxgs-spine-coxgs-2:Ethernet6/2:
+    dataRef: clab-coxgs-csr-coxgs-0b:Ethernet1/9:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0b:Ethernet2/7:clab-coxgs-spine-coxgs-2:Ethernet6/3:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0b:Ethernet2/7
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0b:Ethernet2/7:clab-coxgs-spine-coxgs-2:Ethernet6/3:
+    dataRef: clab-coxgs-csr-coxgs-0b:Ethernet2/7:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0b:Ethernet2/8:clab-coxgs-spine-coxgs-2:Ethernet6/4:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0b:Ethernet2/8
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0b:Ethernet2/8:clab-coxgs-spine-coxgs-2:Ethernet6/4:
+    dataRef: clab-coxgs-csr-coxgs-0b:Ethernet2/8:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0b:Ethernet1/2:clab-coxgs-csr-coxgs-0a:Ethernet1/1:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0b:Ethernet1/2
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0b:Ethernet1/2:clab-coxgs-csr-coxgs-0a:Ethernet1/1:
+    dataRef: clab-coxgs-csr-coxgs-0b:Ethernet1/2:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0b:Ethernet1/1:clab-coxgs-csr-coxgs-0a:Ethernet1/2:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0b:Ethernet1/1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0b:Ethernet1/1:clab-coxgs-csr-coxgs-0a:Ethernet1/2:
+    dataRef: clab-coxgs-csr-coxgs-0b:Ethernet1/1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0b:Ethernet1/3:clab-coxgs-csr-coxgs-0a:Ethernet1/3:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0b:Ethernet1/3
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0b:Ethernet1/3:clab-coxgs-csr-coxgs-0a:Ethernet1/3:
+    dataRef: clab-coxgs-csr-coxgs-0b:Ethernet1/3:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0b:Ethernet1/4:clab-coxgs-csr-coxgs-0a:Ethernet1/4:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0b:Ethernet1/4
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0b:Ethernet1/4:clab-coxgs-csr-coxgs-0a:Ethernet1/4:
+    dataRef: clab-coxgs-csr-coxgs-0b:Ethernet1/4:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0b:Ethernet2/12:clab-coxgs-csr-coxgs-1a:Ethernet1/16:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0b:Ethernet2/12
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0b:Ethernet2/12:clab-coxgs-csr-coxgs-1a:Ethernet1/16:
+    dataRef: clab-coxgs-csr-coxgs-0b:Ethernet2/12:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0b:Ethernet2/13:clab-coxgs-csr-coxgs-1a:Ethernet1/32:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0b:Ethernet2/13
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0b:Ethernet2/13:clab-coxgs-csr-coxgs-1a:Ethernet1/32:
+    dataRef: clab-coxgs-csr-coxgs-0b:Ethernet2/13:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0b:Ethernet2/14:clab-coxgs-csr-coxgs-1b:Ethernet1/16:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0b:Ethernet2/14
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0b:Ethernet2/14:clab-coxgs-csr-coxgs-1b:Ethernet1/16:
+    dataRef: clab-coxgs-csr-coxgs-0b:Ethernet2/14:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-0b:Ethernet2/15:clab-coxgs-csr-coxgs-1b:Ethernet1/32:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-0b:Ethernet2/15
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-0b:Ethernet2/15:clab-coxgs-csr-coxgs-1b:Ethernet1/32:
+    dataRef: clab-coxgs-csr-coxgs-0b:Ethernet2/15:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-1a:Ethernet1/1:clab-coxgs-csr-coxgs-1b:Ethernet1/1:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-1a:Ethernet1/1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-1a:Ethernet1/1:clab-coxgs-csr-coxgs-1b:Ethernet1/1:
+    dataRef: clab-coxgs-csr-coxgs-1a:Ethernet1/1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-1a:Ethernet1/2:clab-coxgs-csr-coxgs-1b:Ethernet1/2:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-1a:Ethernet1/2
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-1a:Ethernet1/2:clab-coxgs-csr-coxgs-1b:Ethernet1/2:
+    dataRef: clab-coxgs-csr-coxgs-1a:Ethernet1/2:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-1a:Ethernet1/17:clab-coxgs-csr-coxgs-1b:Ethernet1/17:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-1a:Ethernet1/17
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-1a:Ethernet1/17:clab-coxgs-csr-coxgs-1b:Ethernet1/17:
+    dataRef: clab-coxgs-csr-coxgs-1a:Ethernet1/17:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-1a:Ethernet1/18:clab-coxgs-csr-coxgs-1b:Ethernet1/18:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-1a:Ethernet1/18
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-1a:Ethernet1/18:clab-coxgs-csr-coxgs-1b:Ethernet1/18:
+    dataRef: clab-coxgs-csr-coxgs-1a:Ethernet1/18:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-1a:Ethernet1/15:clab-coxgs-csr-coxgs-0a:Ethernet2/12:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-1a:Ethernet1/15
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-1a:Ethernet1/15:clab-coxgs-csr-coxgs-0a:Ethernet2/12:
+    dataRef: clab-coxgs-csr-coxgs-1a:Ethernet1/15:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-1a:Ethernet1/31:clab-coxgs-csr-coxgs-0a:Ethernet2/13:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-1a:Ethernet1/31
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-1a:Ethernet1/31:clab-coxgs-csr-coxgs-0a:Ethernet2/13:
+    dataRef: clab-coxgs-csr-coxgs-1a:Ethernet1/31:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-1a:Ethernet1/16:clab-coxgs-csr-coxgs-0b:Ethernet2/12:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-1a:Ethernet1/16
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-1a:Ethernet1/16:clab-coxgs-csr-coxgs-0b:Ethernet2/12:
+    dataRef: clab-coxgs-csr-coxgs-1a:Ethernet1/16:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-1a:Ethernet1/32:clab-coxgs-csr-coxgs-0b:Ethernet2/13:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-1a:Ethernet1/32
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-1a:Ethernet1/32:clab-coxgs-csr-coxgs-0b:Ethernet2/13:
+    dataRef: clab-coxgs-csr-coxgs-1a:Ethernet1/32:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-1b:Ethernet1/1:clab-coxgs-csr-coxgs-1a:Ethernet1/1:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-1b:Ethernet1/1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-1b:Ethernet1/1:clab-coxgs-csr-coxgs-1a:Ethernet1/1:
+    dataRef: clab-coxgs-csr-coxgs-1b:Ethernet1/1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-1b:Ethernet1/2:clab-coxgs-csr-coxgs-1a:Ethernet1/2:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-1b:Ethernet1/2
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-1b:Ethernet1/2:clab-coxgs-csr-coxgs-1a:Ethernet1/2:
+    dataRef: clab-coxgs-csr-coxgs-1b:Ethernet1/2:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-1b:Ethernet1/17:clab-coxgs-csr-coxgs-1a:Ethernet1/17:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-1b:Ethernet1/17
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-1b:Ethernet1/17:clab-coxgs-csr-coxgs-1a:Ethernet1/17:
+    dataRef: clab-coxgs-csr-coxgs-1b:Ethernet1/17:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-1b:Ethernet1/18:clab-coxgs-csr-coxgs-1a:Ethernet1/18:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-1b:Ethernet1/18
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-1b:Ethernet1/18:clab-coxgs-csr-coxgs-1a:Ethernet1/18:
+    dataRef: clab-coxgs-csr-coxgs-1b:Ethernet1/18:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-1b:Ethernet1/15:clab-coxgs-csr-coxgs-0a:Ethernet2/14:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-1b:Ethernet1/15
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-1b:Ethernet1/15:clab-coxgs-csr-coxgs-0a:Ethernet2/14:
+    dataRef: clab-coxgs-csr-coxgs-1b:Ethernet1/15:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-1b:Ethernet1/31:clab-coxgs-csr-coxgs-0a:Ethernet2/15:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-1b:Ethernet1/31
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-1b:Ethernet1/31:clab-coxgs-csr-coxgs-0a:Ethernet2/15:
+    dataRef: clab-coxgs-csr-coxgs-1b:Ethernet1/31:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-1b:Ethernet1/16:clab-coxgs-csr-coxgs-0b:Ethernet2/14:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-1b:Ethernet1/16
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-1b:Ethernet1/16:clab-coxgs-csr-coxgs-0b:Ethernet2/14:
+    dataRef: clab-coxgs-csr-coxgs-1b:Ethernet1/16:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  clab-coxgs-csr-coxgs-1b:Ethernet1/32:clab-coxgs-csr-coxgs-0b:Ethernet2/15:
+    dataRef: oper-state:clab-coxgs-csr-coxgs-1b:Ethernet1/32
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:clab-coxgs-csr-coxgs-1b:Ethernet1/32:clab-coxgs-csr-coxgs-0b:Ethernet2/15:
+    dataRef: clab-coxgs-csr-coxgs-1b:Ethernet1/32:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
