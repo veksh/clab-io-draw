@@ -1,6 +1,6 @@
 <mxfile type="device" compressed="false">
     <diagram id="Network Topology" name="Network Topology">
-          <mxGraphModel dx="1360" dy="864" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100.0" pageHeight="1000.0" math="0" shadow="0" background="none">
+          <mxGraphModel dx="1360" dy="864" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1140.0" pageHeight="900.0" math="0" shadow="0" background="none">
             <root>
               <mxCell id="0" />
               <mxCell id="1" parent="0" />
@@ -58,7 +58,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/1:clab-coxgs-agsr-coxgs-0.2:Te2/1/2" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="575.032156408071" y="313.0" width="4" height="4" as="geometry" />
+          <mxGeometry x="617.4386142067513" y="288.0" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-agsr-coxgs-0.1:Te1/1/1:clab-coxgs-agsr-coxgs-0.2:Te2/1/2" label="rate_s" source="clab-coxgs-agsr-coxgs-0.1:Te1/1/1:clab-coxgs-agsr-coxgs-0.2:Te2/1/2" target="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/1:clab-coxgs-agsr-coxgs-0.2:Te2/1/2">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-agsr-coxgs-0.1:Te1/1/1:clab-coxgs-agsr-coxgs-0.2:Te2/1/2" target="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/1:clab-coxgs-agsr-coxgs-0.2:Te2/1/2">
@@ -78,7 +78,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/1" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="565.5264331896177" y="328.0" width="4" height="4" as="geometry" />
+          <mxGeometry x="594.1223982738684" y="303.0" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-agsr-coxgs-0.1:Te1/1/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/1" label="rate_s" source="clab-coxgs-agsr-coxgs-0.1:Te1/1/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/1" target="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/1">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-agsr-coxgs-0.1:Te1/1/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/1" target="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/1">
@@ -98,7 +98,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/14:clab-coxgs-agsr-coxgs-0.2:Te2/1/14" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="599.1183122024994" y="343.0" width="4" height="4" as="geometry" />
+          <mxGeometry x="591.1966509543074" y="318.0" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-agsr-coxgs-0.1:Te1/1/14:clab-coxgs-agsr-coxgs-0.2:Te2/1/14" label="rate_s" source="clab-coxgs-agsr-coxgs-0.1:Te1/1/14:clab-coxgs-agsr-coxgs-0.2:Te2/1/14" target="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/14:clab-coxgs-agsr-coxgs-0.2:Te2/1/14">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-agsr-coxgs-0.1:Te1/1/14:clab-coxgs-agsr-coxgs-0.2:Te2/1/14" target="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/14:clab-coxgs-agsr-coxgs-0.2:Te2/1/14">
@@ -118,7 +118,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/16:clab-coxgs-agsr-coxgs-0.2:Te2/1/16" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="602.7243462736321" y="358.0" width="4" height="4" as="geometry" />
+          <mxGeometry x="623.149041498285" y="333.0" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-agsr-coxgs-0.1:Te1/1/16:clab-coxgs-agsr-coxgs-0.2:Te2/1/16" label="rate_s" source="clab-coxgs-agsr-coxgs-0.1:Te1/1/16:clab-coxgs-agsr-coxgs-0.2:Te2/1/16" target="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/16:clab-coxgs-agsr-coxgs-0.2:Te2/1/16">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-agsr-coxgs-0.1:Te1/1/16:clab-coxgs-agsr-coxgs-0.2:Te2/1/16" target="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/16:clab-coxgs-agsr-coxgs-0.2:Te2/1/16">
@@ -138,7 +138,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/3:clab-coxgs-fw-coxgs-0:ethernet1/1" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="475.20668304705214" y="227.3305057890845" width="4" height="4" as="geometry" />
+          <mxGeometry x="457.33440937908216" y="230.06514832491595" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-agsr-coxgs-0.1:Te1/1/3:clab-coxgs-fw-coxgs-0:ethernet1/1" label="rate_s" source="clab-coxgs-agsr-coxgs-0.1:Te1/1/3:clab-coxgs-fw-coxgs-0:ethernet1/1" target="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/3:clab-coxgs-fw-coxgs-0:ethernet1/1">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-agsr-coxgs-0.1:Te1/1/3:clab-coxgs-fw-coxgs-0:ethernet1/1" target="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/3:clab-coxgs-fw-coxgs-0:ethernet1/1">
@@ -158,7 +158,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/9:clab-coxgs-fw-coxgs-0:ha1" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="514.8406923295511" y="226.46686451926476" width="4" height="4" as="geometry" />
+          <mxGeometry x="497.8039641897853" y="229.06330053152726" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-agsr-coxgs-0.1:Te1/1/9:clab-coxgs-fw-coxgs-0:ha1" label="rate_s" source="clab-coxgs-agsr-coxgs-0.1:Te1/1/9:clab-coxgs-fw-coxgs-0:ha1" target="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/9:clab-coxgs-fw-coxgs-0:ha1">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-agsr-coxgs-0.1:Te1/1/9:clab-coxgs-fw-coxgs-0:ha1" target="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/9:clab-coxgs-fw-coxgs-0:ha1">
@@ -178,7 +178,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/10:clab-coxgs-fw-coxgs-0:ha2" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="525.515070613766" y="240.90958212803065" width="4" height="4" as="geometry" />
+          <mxGeometry x="534.5381727126631" y="229.57680620175938" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-agsr-coxgs-0.1:Te1/1/10:clab-coxgs-fw-coxgs-0:ha2" label="rate_s" source="clab-coxgs-agsr-coxgs-0.1:Te1/1/10:clab-coxgs-fw-coxgs-0:ha2" target="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/10:clab-coxgs-fw-coxgs-0:ha2">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-agsr-coxgs-0.1:Te1/1/10:clab-coxgs-fw-coxgs-0:ha2" target="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/10:clab-coxgs-fw-coxgs-0:ha2">
@@ -198,7 +198,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/7:clab-coxgs-vpnr-coxgs-1:internal2" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="228.89947267560578" y="242.49365526458763" width="4" height="4" as="geometry" />
+          <mxGeometry x="238.63623386803405" y="230.94170442024387" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-agsr-coxgs-0.1:Te1/1/7:clab-coxgs-vpnr-coxgs-1:internal2" label="rate_s" source="clab-coxgs-agsr-coxgs-0.1:Te1/1/7:clab-coxgs-vpnr-coxgs-1:internal2" target="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/7:clab-coxgs-vpnr-coxgs-1:internal2">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-agsr-coxgs-0.1:Te1/1/7:clab-coxgs-vpnr-coxgs-1:internal2" target="mid:clab-coxgs-agsr-coxgs-0.1:Te1/1/7:clab-coxgs-vpnr-coxgs-1:internal2">
@@ -218,7 +218,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-agsr-coxgs-0.2:Te2/1/3:clab-coxgs-fw-coxgs-0:ethernet1/2" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="718.1764124749801" y="226.20409039630113" width="4" height="4" as="geometry" />
+          <mxGeometry x="736.7005004047865" y="207.54615441228876" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-agsr-coxgs-0.2:Te2/1/3:clab-coxgs-fw-coxgs-0:ethernet1/2" label="rate_s" source="clab-coxgs-agsr-coxgs-0.2:Te2/1/3:clab-coxgs-fw-coxgs-0:ethernet1/2" target="mid:clab-coxgs-agsr-coxgs-0.2:Te2/1/3:clab-coxgs-fw-coxgs-0:ethernet1/2">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-agsr-coxgs-0.2:Te2/1/3:clab-coxgs-fw-coxgs-0:ethernet1/2" target="mid:clab-coxgs-agsr-coxgs-0.2:Te2/1/3:clab-coxgs-fw-coxgs-0:ethernet1/2">
@@ -238,7 +238,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-agsr-coxgs-0.2:Te2/1/10:clab-coxgs-fw-coxgs-0:ethernet1/3" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="753.7889116065512" y="221.35144635477894" width="4" height="4" as="geometry" />
+          <mxGeometry x="793.3722637684062" y="233.6605087670018" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-agsr-coxgs-0.2:Te2/1/10:clab-coxgs-fw-coxgs-0:ethernet1/3" label="rate_s" source="clab-coxgs-agsr-coxgs-0.2:Te2/1/10:clab-coxgs-fw-coxgs-0:ethernet1/3" target="mid:clab-coxgs-agsr-coxgs-0.2:Te2/1/10:clab-coxgs-fw-coxgs-0:ethernet1/3">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-agsr-coxgs-0.2:Te2/1/10:clab-coxgs-fw-coxgs-0:ethernet1/3" target="mid:clab-coxgs-agsr-coxgs-0.2:Te2/1/10:clab-coxgs-fw-coxgs-0:ethernet1/3">
@@ -258,7 +258,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-agsr-coxgs-0.2:Te2/1/11:clab-coxgs-fw-coxgs-0:ethernet1/4" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="793.8408353879965" y="225.52202314633456" width="4" height="4" as="geometry" />
+          <mxGeometry x="832.2839267998004" y="234.93556195776276" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-agsr-coxgs-0.2:Te2/1/11:clab-coxgs-fw-coxgs-0:ethernet1/4" label="rate_s" source="clab-coxgs-agsr-coxgs-0.2:Te2/1/11:clab-coxgs-fw-coxgs-0:ethernet1/4" target="mid:clab-coxgs-agsr-coxgs-0.2:Te2/1/11:clab-coxgs-fw-coxgs-0:ethernet1/4">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-agsr-coxgs-0.2:Te2/1/11:clab-coxgs-fw-coxgs-0:ethernet1/4" target="mid:clab-coxgs-agsr-coxgs-0.2:Te2/1/11:clab-coxgs-fw-coxgs-0:ethernet1/4">
@@ -278,7 +278,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-agsr-coxgs-0.2:Te2/1/9:clab-coxgs-esr-cloin-2:Ethernet50" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="961.5538327821577" y="228.01946965613269" width="4" height="4" as="geometry" />
+          <mxGeometry x="1003.9172048415069" y="213.21505345982757" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-agsr-coxgs-0.2:Te2/1/9:clab-coxgs-esr-cloin-2:Ethernet50" label="rate_s" source="clab-coxgs-agsr-coxgs-0.2:Te2/1/9:clab-coxgs-esr-cloin-2:Ethernet50" target="mid:clab-coxgs-agsr-coxgs-0.2:Te2/1/9:clab-coxgs-esr-cloin-2:Ethernet50">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-agsr-coxgs-0.2:Te2/1/9:clab-coxgs-esr-cloin-2:Ethernet50" target="mid:clab-coxgs-agsr-coxgs-0.2:Te2/1/9:clab-coxgs-esr-cloin-2:Ethernet50">
@@ -298,7 +298,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-1:Ethernet7/1:clab-coxgs-agsr-coxgs-0.2:Te2/1/5" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="555.2361462600173" y="439.2646569986573" width="4" height="4" as="geometry" />
+          <mxGeometry x="576.5098158174544" y="400.53557974176283" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-1:Ethernet7/1:clab-coxgs-agsr-coxgs-0.2:Te2/1/5" label="rate_s" source="clab-coxgs-spine-coxgs-1:Ethernet7/1:clab-coxgs-agsr-coxgs-0.2:Te2/1/5" target="mid:clab-coxgs-spine-coxgs-1:Ethernet7/1:clab-coxgs-agsr-coxgs-0.2:Te2/1/5">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-1:Ethernet7/1:clab-coxgs-agsr-coxgs-0.2:Te2/1/5" target="mid:clab-coxgs-spine-coxgs-1:Ethernet7/1:clab-coxgs-agsr-coxgs-0.2:Te2/1/5">
@@ -318,7 +318,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-1:Ethernet7/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/6" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="586.9521201297215" y="441.3649331117241" width="4" height="4" as="geometry" />
+          <mxGeometry x="606.5142624826154" y="402.5649079993362" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-1:Ethernet7/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/6" label="rate_s" source="clab-coxgs-spine-coxgs-1:Ethernet7/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/6" target="mid:clab-coxgs-spine-coxgs-1:Ethernet7/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/6">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-1:Ethernet7/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/6" target="mid:clab-coxgs-spine-coxgs-1:Ethernet7/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/6">
@@ -338,7 +338,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-1:Ethernet7/3:clab-coxgs-agsr-coxgs-0.1:Te1/1/4" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="303.5" y="455.3240643349876" width="4" height="4" as="geometry" />
+          <mxGeometry x="313.5" y="383.70468141880616" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-1:Ethernet7/3:clab-coxgs-agsr-coxgs-0.1:Te1/1/4" label="rate_s" source="clab-coxgs-spine-coxgs-1:Ethernet7/3:clab-coxgs-agsr-coxgs-0.1:Te1/1/4" target="mid:clab-coxgs-spine-coxgs-1:Ethernet7/3:clab-coxgs-agsr-coxgs-0.1:Te1/1/4">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-1:Ethernet7/3:clab-coxgs-agsr-coxgs-0.1:Te1/1/4" target="mid:clab-coxgs-spine-coxgs-1:Ethernet7/3:clab-coxgs-agsr-coxgs-0.1:Te1/1/4">
@@ -358,7 +358,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-1:Ethernet7/4:clab-coxgs-agsr-coxgs-0.1:Te1/1/5" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="341.5" y="452.0485492219068" width="4" height="4" as="geometry" />
+          <mxGeometry x="351.5" y="416.7359031199621" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-1:Ethernet7/4:clab-coxgs-agsr-coxgs-0.1:Te1/1/5" label="rate_s" source="clab-coxgs-spine-coxgs-1:Ethernet7/4:clab-coxgs-agsr-coxgs-0.1:Te1/1/5" target="mid:clab-coxgs-spine-coxgs-1:Ethernet7/4:clab-coxgs-agsr-coxgs-0.1:Te1/1/5">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-1:Ethernet7/4:clab-coxgs-agsr-coxgs-0.1:Te1/1/5" target="mid:clab-coxgs-spine-coxgs-1:Ethernet7/4:clab-coxgs-agsr-coxgs-0.1:Te1/1/5">
@@ -378,7 +378,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-1:Ethernet1/1:clab-coxgs-spine-coxgs-2:Ethernet1/1" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="574.7043768963638" y="528.0" width="4" height="4" as="geometry" />
+          <mxGeometry x="617.509765986817" y="478.0" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-1:Ethernet1/1:clab-coxgs-spine-coxgs-2:Ethernet1/1" label="rate_s" source="clab-coxgs-spine-coxgs-1:Ethernet1/1:clab-coxgs-spine-coxgs-2:Ethernet1/1" target="mid:clab-coxgs-spine-coxgs-1:Ethernet1/1:clab-coxgs-spine-coxgs-2:Ethernet1/1">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-1:Ethernet1/1:clab-coxgs-spine-coxgs-2:Ethernet1/1" target="mid:clab-coxgs-spine-coxgs-1:Ethernet1/1:clab-coxgs-spine-coxgs-2:Ethernet1/1">
@@ -398,7 +398,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-1:Ethernet2/1:clab-coxgs-spine-coxgs-2:Ethernet2/1" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="566.0141890372952" y="543.0" width="4" height="4" as="geometry" />
+          <mxGeometry x="624.1553277932913" y="493.0" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-1:Ethernet2/1:clab-coxgs-spine-coxgs-2:Ethernet2/1" label="rate_s" source="clab-coxgs-spine-coxgs-1:Ethernet2/1:clab-coxgs-spine-coxgs-2:Ethernet2/1" target="mid:clab-coxgs-spine-coxgs-1:Ethernet2/1:clab-coxgs-spine-coxgs-2:Ethernet2/1">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-1:Ethernet2/1:clab-coxgs-spine-coxgs-2:Ethernet2/1" target="mid:clab-coxgs-spine-coxgs-1:Ethernet2/1:clab-coxgs-spine-coxgs-2:Ethernet2/1">
@@ -418,7 +418,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-1:Ethernet5/1:clab-coxgs-csr-coxgs-0a:Ethernet1/5" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="227.5" y="621.522445571742" width="4" height="4" as="geometry" />
+          <mxGeometry x="237.5" y="587.8299416714098" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-1:Ethernet5/1:clab-coxgs-csr-coxgs-0a:Ethernet1/5" label="rate_s" source="clab-coxgs-spine-coxgs-1:Ethernet5/1:clab-coxgs-csr-coxgs-0a:Ethernet1/5" target="mid:clab-coxgs-spine-coxgs-1:Ethernet5/1:clab-coxgs-csr-coxgs-0a:Ethernet1/5">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-1:Ethernet5/1:clab-coxgs-csr-coxgs-0a:Ethernet1/5" target="mid:clab-coxgs-spine-coxgs-1:Ethernet5/1:clab-coxgs-csr-coxgs-0a:Ethernet1/5">
@@ -438,7 +438,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-1:Ethernet5/2:clab-coxgs-csr-coxgs-0a:Ethernet1/6" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="265.5" y="619.3110031056051" width="4" height="4" as="geometry" />
+          <mxGeometry x="275.5" y="590.7286091461676" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-1:Ethernet5/2:clab-coxgs-csr-coxgs-0a:Ethernet1/6" label="rate_s" source="clab-coxgs-spine-coxgs-1:Ethernet5/2:clab-coxgs-csr-coxgs-0a:Ethernet1/6" target="mid:clab-coxgs-spine-coxgs-1:Ethernet5/2:clab-coxgs-csr-coxgs-0a:Ethernet1/6">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-1:Ethernet5/2:clab-coxgs-csr-coxgs-0a:Ethernet1/6" target="mid:clab-coxgs-spine-coxgs-1:Ethernet5/2:clab-coxgs-csr-coxgs-0a:Ethernet1/6">
@@ -458,7 +458,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-1:Ethernet5/3:clab-coxgs-csr-coxgs-0a:Ethernet2/7" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="303.5" y="618.3648022595079" width="4" height="4" as="geometry" />
+          <mxGeometry x="313.5" y="555.6450685163798" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-1:Ethernet5/3:clab-coxgs-csr-coxgs-0a:Ethernet2/7" label="rate_s" source="clab-coxgs-spine-coxgs-1:Ethernet5/3:clab-coxgs-csr-coxgs-0a:Ethernet2/7" target="mid:clab-coxgs-spine-coxgs-1:Ethernet5/3:clab-coxgs-csr-coxgs-0a:Ethernet2/7">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-1:Ethernet5/3:clab-coxgs-csr-coxgs-0a:Ethernet2/7" target="mid:clab-coxgs-spine-coxgs-1:Ethernet5/3:clab-coxgs-csr-coxgs-0a:Ethernet2/7">
@@ -478,7 +478,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-1:Ethernet5/4:clab-coxgs-csr-coxgs-0a:Ethernet2/8" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="341.5" y="654.7094477441201" width="4" height="4" as="geometry" />
+          <mxGeometry x="351.5" y="583.7071716521178" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-1:Ethernet5/4:clab-coxgs-csr-coxgs-0a:Ethernet2/8" label="rate_s" source="clab-coxgs-spine-coxgs-1:Ethernet5/4:clab-coxgs-csr-coxgs-0a:Ethernet2/8" target="mid:clab-coxgs-spine-coxgs-1:Ethernet5/4:clab-coxgs-csr-coxgs-0a:Ethernet2/8">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-1:Ethernet5/4:clab-coxgs-csr-coxgs-0a:Ethernet2/8" target="mid:clab-coxgs-spine-coxgs-1:Ethernet5/4:clab-coxgs-csr-coxgs-0a:Ethernet2/8">
@@ -498,7 +498,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-1:Ethernet6/1:clab-coxgs-csr-coxgs-0b:Ethernet1/5" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="512.4665776724745" y="628.77457117134" width="4" height="4" as="geometry" />
+          <mxGeometry x="559.2973293952022" y="576.3953866022648" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-1:Ethernet6/1:clab-coxgs-csr-coxgs-0b:Ethernet1/5" label="rate_s" source="clab-coxgs-spine-coxgs-1:Ethernet6/1:clab-coxgs-csr-coxgs-0b:Ethernet1/5" target="mid:clab-coxgs-spine-coxgs-1:Ethernet6/1:clab-coxgs-csr-coxgs-0b:Ethernet1/5">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-1:Ethernet6/1:clab-coxgs-csr-coxgs-0b:Ethernet1/5" target="mid:clab-coxgs-spine-coxgs-1:Ethernet6/1:clab-coxgs-csr-coxgs-0b:Ethernet1/5">
@@ -518,7 +518,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-1:Ethernet6/2:clab-coxgs-csr-coxgs-0b:Ethernet1/6" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="552.755418625825" y="629.7346554638527" width="4" height="4" as="geometry" />
+          <mxGeometry x="568.567048570472" y="567.3607070976327" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-1:Ethernet6/2:clab-coxgs-csr-coxgs-0b:Ethernet1/6" label="rate_s" source="clab-coxgs-spine-coxgs-1:Ethernet6/2:clab-coxgs-csr-coxgs-0b:Ethernet1/6" target="mid:clab-coxgs-spine-coxgs-1:Ethernet6/2:clab-coxgs-csr-coxgs-0b:Ethernet1/6">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-1:Ethernet6/2:clab-coxgs-csr-coxgs-0b:Ethernet1/6" target="mid:clab-coxgs-spine-coxgs-1:Ethernet6/2:clab-coxgs-csr-coxgs-0b:Ethernet1/6">
@@ -538,7 +538,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-1:Ethernet6/3:clab-coxgs-csr-coxgs-0b:Ethernet1/14" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="591.9660118279618" y="630.2424546258229" width="4" height="4" as="geometry" />
+          <mxGeometry x="634.0915513637552" y="576.0162111206778" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-1:Ethernet6/3:clab-coxgs-csr-coxgs-0b:Ethernet1/14" label="rate_s" source="clab-coxgs-spine-coxgs-1:Ethernet6/3:clab-coxgs-csr-coxgs-0b:Ethernet1/14" target="mid:clab-coxgs-spine-coxgs-1:Ethernet6/3:clab-coxgs-csr-coxgs-0b:Ethernet1/14">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-1:Ethernet6/3:clab-coxgs-csr-coxgs-0b:Ethernet1/14" target="mid:clab-coxgs-spine-coxgs-1:Ethernet6/3:clab-coxgs-csr-coxgs-0b:Ethernet1/14">
@@ -558,7 +558,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-1:Ethernet6/4:clab-coxgs-csr-coxgs-0b:Ethernet1/16" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="625.3886231608833" y="628.3224090439946" width="4" height="4" as="geometry" />
+          <mxGeometry x="675.5483392504522" y="577.1032513366201" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-1:Ethernet6/4:clab-coxgs-csr-coxgs-0b:Ethernet1/16" label="rate_s" source="clab-coxgs-spine-coxgs-1:Ethernet6/4:clab-coxgs-csr-coxgs-0b:Ethernet1/16" target="mid:clab-coxgs-spine-coxgs-1:Ethernet6/4:clab-coxgs-csr-coxgs-0b:Ethernet1/16">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-1:Ethernet6/4:clab-coxgs-csr-coxgs-0b:Ethernet1/16" target="mid:clab-coxgs-spine-coxgs-1:Ethernet6/4:clab-coxgs-csr-coxgs-0b:Ethernet1/16">
@@ -578,7 +578,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-2:Ethernet7/1:clab-coxgs-agsr-coxgs-0.1:Te2/1/12" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="579.1544111357509" y="439.7294154865478" width="4" height="4" as="geometry" />
+          <mxGeometry x="605.4975258811365" y="402.8217070764306" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-2:Ethernet7/1:clab-coxgs-agsr-coxgs-0.1:Te2/1/12" label="rate_s" source="clab-coxgs-spine-coxgs-2:Ethernet7/1:clab-coxgs-agsr-coxgs-0.1:Te2/1/12" target="mid:clab-coxgs-spine-coxgs-2:Ethernet7/1:clab-coxgs-agsr-coxgs-0.1:Te2/1/12">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-2:Ethernet7/1:clab-coxgs-agsr-coxgs-0.1:Te2/1/12" target="mid:clab-coxgs-spine-coxgs-2:Ethernet7/1:clab-coxgs-agsr-coxgs-0.1:Te2/1/12">
@@ -598,7 +598,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-2:Ethernet7/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/13" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="829.5" y="421.2453476173696" width="4" height="4" as="geometry" />
+          <mxGeometry x="859.5" y="384.66396574011924" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-2:Ethernet7/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/13" label="rate_s" source="clab-coxgs-spine-coxgs-2:Ethernet7/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/13" target="mid:clab-coxgs-spine-coxgs-2:Ethernet7/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/13">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-2:Ethernet7/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/13" target="mid:clab-coxgs-spine-coxgs-2:Ethernet7/2:clab-coxgs-agsr-coxgs-0.2:Te2/1/13">
@@ -618,7 +618,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-2:Ethernet7/3:clab-coxgs-agsr-coxgs-0.1:Te1/1/12" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="623.3543908236312" y="441.8016012111067" width="4" height="4" as="geometry" />
+          <mxGeometry x="642.0102423292794" y="402.44422394144146" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-2:Ethernet7/3:clab-coxgs-agsr-coxgs-0.1:Te1/1/12" label="rate_s" source="clab-coxgs-spine-coxgs-2:Ethernet7/3:clab-coxgs-agsr-coxgs-0.1:Te1/1/12" target="mid:clab-coxgs-spine-coxgs-2:Ethernet7/3:clab-coxgs-agsr-coxgs-0.1:Te1/1/12">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-2:Ethernet7/3:clab-coxgs-agsr-coxgs-0.1:Te1/1/12" target="mid:clab-coxgs-spine-coxgs-2:Ethernet7/3:clab-coxgs-agsr-coxgs-0.1:Te1/1/12">
@@ -638,7 +638,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-2:Ethernet7/4:clab-coxgs-agsr-coxgs-0.2:Te1/1/13" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="867.5" y="451.49726320394507" width="4" height="4" as="geometry" />
+          <mxGeometry x="897.5" y="386.3902610006082" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-2:Ethernet7/4:clab-coxgs-agsr-coxgs-0.2:Te1/1/13" label="rate_s" source="clab-coxgs-spine-coxgs-2:Ethernet7/4:clab-coxgs-agsr-coxgs-0.2:Te1/1/13" target="mid:clab-coxgs-spine-coxgs-2:Ethernet7/4:clab-coxgs-agsr-coxgs-0.2:Te1/1/13">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-2:Ethernet7/4:clab-coxgs-agsr-coxgs-0.2:Te1/1/13" target="mid:clab-coxgs-spine-coxgs-2:Ethernet7/4:clab-coxgs-agsr-coxgs-0.2:Te1/1/13">
@@ -658,7 +658,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-2:Ethernet5/1:clab-coxgs-csr-coxgs-0a:Ethernet1/15" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="543.9695863123153" y="629.0110795669818" width="4" height="4" as="geometry" />
+          <mxGeometry x="532.0791186817193" y="578.1637991566921" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-2:Ethernet5/1:clab-coxgs-csr-coxgs-0a:Ethernet1/15" label="rate_s" source="clab-coxgs-spine-coxgs-2:Ethernet5/1:clab-coxgs-csr-coxgs-0a:Ethernet1/15" target="mid:clab-coxgs-spine-coxgs-2:Ethernet5/1:clab-coxgs-csr-coxgs-0a:Ethernet1/15">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-2:Ethernet5/1:clab-coxgs-csr-coxgs-0a:Ethernet1/15" target="mid:clab-coxgs-spine-coxgs-2:Ethernet5/1:clab-coxgs-csr-coxgs-0a:Ethernet1/15">
@@ -678,7 +678,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-2:Ethernet5/2:clab-coxgs-csr-coxgs-0a:Ethernet2/16" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="553.1753662614411" y="641.089192004429" width="4" height="4" as="geometry" />
+          <mxGeometry x="597.4107920519235" y="569.5689333170052" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-2:Ethernet5/2:clab-coxgs-csr-coxgs-0a:Ethernet2/16" label="rate_s" source="clab-coxgs-spine-coxgs-2:Ethernet5/2:clab-coxgs-csr-coxgs-0a:Ethernet2/16" target="mid:clab-coxgs-spine-coxgs-2:Ethernet5/2:clab-coxgs-csr-coxgs-0a:Ethernet2/16">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-2:Ethernet5/2:clab-coxgs-csr-coxgs-0a:Ethernet2/16" target="mid:clab-coxgs-spine-coxgs-2:Ethernet5/2:clab-coxgs-csr-coxgs-0a:Ethernet2/16">
@@ -698,7 +698,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-2:Ethernet5/3:clab-coxgs-csr-coxgs-0a:Ethernet1/14" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="590.1023087545392" y="641.5393000190692" width="4" height="4" as="geometry" />
+          <mxGeometry x="612.625339695456" y="576.7341699070893" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-2:Ethernet5/3:clab-coxgs-csr-coxgs-0a:Ethernet1/14" label="rate_s" source="clab-coxgs-spine-coxgs-2:Ethernet5/3:clab-coxgs-csr-coxgs-0a:Ethernet1/14" target="mid:clab-coxgs-spine-coxgs-2:Ethernet5/3:clab-coxgs-csr-coxgs-0a:Ethernet1/14">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-2:Ethernet5/3:clab-coxgs-csr-coxgs-0a:Ethernet1/14" target="mid:clab-coxgs-spine-coxgs-2:Ethernet5/3:clab-coxgs-csr-coxgs-0a:Ethernet1/14">
@@ -718,7 +718,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-2:Ethernet5/4:clab-coxgs-csr-coxgs-0a:Ethernet1/16" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="653.020129044437" y="631.0871941927697" width="4" height="4" as="geometry" />
+          <mxGeometry x="649.0971750122679" y="577.2147248389094" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-2:Ethernet5/4:clab-coxgs-csr-coxgs-0a:Ethernet1/16" label="rate_s" source="clab-coxgs-spine-coxgs-2:Ethernet5/4:clab-coxgs-csr-coxgs-0a:Ethernet1/16" target="mid:clab-coxgs-spine-coxgs-2:Ethernet5/4:clab-coxgs-csr-coxgs-0a:Ethernet1/16">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-2:Ethernet5/4:clab-coxgs-csr-coxgs-0a:Ethernet1/16" target="mid:clab-coxgs-spine-coxgs-2:Ethernet5/4:clab-coxgs-csr-coxgs-0a:Ethernet1/16">
@@ -738,7 +738,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-2:Ethernet6/1:clab-coxgs-csr-coxgs-0b:Ethernet1/15" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="829.5" y="650.256502368786" width="4" height="4" as="geometry" />
+          <mxGeometry x="859.5" y="592.842241478603" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-2:Ethernet6/1:clab-coxgs-csr-coxgs-0b:Ethernet1/15" label="rate_s" source="clab-coxgs-spine-coxgs-2:Ethernet6/1:clab-coxgs-csr-coxgs-0b:Ethernet1/15" target="mid:clab-coxgs-spine-coxgs-2:Ethernet6/1:clab-coxgs-csr-coxgs-0b:Ethernet1/15">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-2:Ethernet6/1:clab-coxgs-csr-coxgs-0b:Ethernet1/15" target="mid:clab-coxgs-spine-coxgs-2:Ethernet6/1:clab-coxgs-csr-coxgs-0b:Ethernet1/15">
@@ -758,7 +758,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-2:Ethernet6/2:clab-coxgs-csr-coxgs-0b:Ethernet1/9" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="867.5" y="616.2913383738638" width="4" height="4" as="geometry" />
+          <mxGeometry x="897.5" y="583.5679160718242" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-2:Ethernet6/2:clab-coxgs-csr-coxgs-0b:Ethernet1/9" label="rate_s" source="clab-coxgs-spine-coxgs-2:Ethernet6/2:clab-coxgs-csr-coxgs-0b:Ethernet1/9" target="mid:clab-coxgs-spine-coxgs-2:Ethernet6/2:clab-coxgs-csr-coxgs-0b:Ethernet1/9">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-2:Ethernet6/2:clab-coxgs-csr-coxgs-0b:Ethernet1/9" target="mid:clab-coxgs-spine-coxgs-2:Ethernet6/2:clab-coxgs-csr-coxgs-0b:Ethernet1/9">
@@ -778,7 +778,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-2:Ethernet6/3:clab-coxgs-csr-coxgs-0b:Ethernet2/7" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="905.5" y="620.3011115288665" width="4" height="4" as="geometry" />
+          <mxGeometry x="935.5" y="588.3631093385031" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-2:Ethernet6/3:clab-coxgs-csr-coxgs-0b:Ethernet2/7" label="rate_s" source="clab-coxgs-spine-coxgs-2:Ethernet6/3:clab-coxgs-csr-coxgs-0b:Ethernet2/7" target="mid:clab-coxgs-spine-coxgs-2:Ethernet6/3:clab-coxgs-csr-coxgs-0b:Ethernet2/7">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-2:Ethernet6/3:clab-coxgs-csr-coxgs-0b:Ethernet2/7" target="mid:clab-coxgs-spine-coxgs-2:Ethernet6/3:clab-coxgs-csr-coxgs-0b:Ethernet2/7">
@@ -798,7 +798,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-spine-coxgs-2:Ethernet6/4:clab-coxgs-csr-coxgs-0b:Ethernet2/8" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="943.5" y="653.4125308322466" width="4" height="4" as="geometry" />
+          <mxGeometry x="973.5" y="586.05341590773" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-spine-coxgs-2:Ethernet6/4:clab-coxgs-csr-coxgs-0b:Ethernet2/8" label="rate_s" source="clab-coxgs-spine-coxgs-2:Ethernet6/4:clab-coxgs-csr-coxgs-0b:Ethernet2/8" target="mid:clab-coxgs-spine-coxgs-2:Ethernet6/4:clab-coxgs-csr-coxgs-0b:Ethernet2/8">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-spine-coxgs-2:Ethernet6/4:clab-coxgs-csr-coxgs-0b:Ethernet2/8" target="mid:clab-coxgs-spine-coxgs-2:Ethernet6/4:clab-coxgs-csr-coxgs-0b:Ethernet2/8">
@@ -818,7 +818,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-csr-coxgs-0a:Ethernet1/1:clab-coxgs-csr-coxgs-0b:Ethernet1/2" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="571.7110970005504" y="713.0" width="4" height="4" as="geometry" />
+          <mxGeometry x="592.2668127706038" y="638.0" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-csr-coxgs-0a:Ethernet1/1:clab-coxgs-csr-coxgs-0b:Ethernet1/2" label="rate_s" source="clab-coxgs-csr-coxgs-0a:Ethernet1/1:clab-coxgs-csr-coxgs-0b:Ethernet1/2" target="mid:clab-coxgs-csr-coxgs-0a:Ethernet1/1:clab-coxgs-csr-coxgs-0b:Ethernet1/2">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-csr-coxgs-0a:Ethernet1/1:clab-coxgs-csr-coxgs-0b:Ethernet1/2" target="mid:clab-coxgs-csr-coxgs-0a:Ethernet1/1:clab-coxgs-csr-coxgs-0b:Ethernet1/2">
@@ -838,7 +838,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-csr-coxgs-0a:Ethernet1/2:clab-coxgs-csr-coxgs-0b:Ethernet1/1" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="598.6846745405227" y="728.0" width="4" height="4" as="geometry" />
+          <mxGeometry x="589.9286689990284" y="653.0" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-csr-coxgs-0a:Ethernet1/2:clab-coxgs-csr-coxgs-0b:Ethernet1/1" label="rate_s" source="clab-coxgs-csr-coxgs-0a:Ethernet1/2:clab-coxgs-csr-coxgs-0b:Ethernet1/1" target="mid:clab-coxgs-csr-coxgs-0a:Ethernet1/2:clab-coxgs-csr-coxgs-0b:Ethernet1/1">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-csr-coxgs-0a:Ethernet1/2:clab-coxgs-csr-coxgs-0b:Ethernet1/1" target="mid:clab-coxgs-csr-coxgs-0a:Ethernet1/2:clab-coxgs-csr-coxgs-0b:Ethernet1/1">
@@ -858,7 +858,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-csr-coxgs-0a:Ethernet1/3:clab-coxgs-csr-coxgs-0b:Ethernet1/3" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="598.9992610360442" y="743.0" width="4" height="4" as="geometry" />
+          <mxGeometry x="585.7236422774973" y="668.0" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-csr-coxgs-0a:Ethernet1/3:clab-coxgs-csr-coxgs-0b:Ethernet1/3" label="rate_s" source="clab-coxgs-csr-coxgs-0a:Ethernet1/3:clab-coxgs-csr-coxgs-0b:Ethernet1/3" target="mid:clab-coxgs-csr-coxgs-0a:Ethernet1/3:clab-coxgs-csr-coxgs-0b:Ethernet1/3">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-csr-coxgs-0a:Ethernet1/3:clab-coxgs-csr-coxgs-0b:Ethernet1/3" target="mid:clab-coxgs-csr-coxgs-0a:Ethernet1/3:clab-coxgs-csr-coxgs-0b:Ethernet1/3">
@@ -878,7 +878,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-csr-coxgs-0a:Ethernet1/4:clab-coxgs-csr-coxgs-0b:Ethernet1/4" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="600.2098792579087" y="758.0" width="4" height="4" as="geometry" />
+          <mxGeometry x="589.0949769418299" y="683.0" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-csr-coxgs-0a:Ethernet1/4:clab-coxgs-csr-coxgs-0b:Ethernet1/4" label="rate_s" source="clab-coxgs-csr-coxgs-0a:Ethernet1/4:clab-coxgs-csr-coxgs-0b:Ethernet1/4" target="mid:clab-coxgs-csr-coxgs-0a:Ethernet1/4:clab-coxgs-csr-coxgs-0b:Ethernet1/4">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-csr-coxgs-0a:Ethernet1/4:clab-coxgs-csr-coxgs-0b:Ethernet1/4" target="mid:clab-coxgs-csr-coxgs-0a:Ethernet1/4:clab-coxgs-csr-coxgs-0b:Ethernet1/4">
@@ -898,7 +898,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-csr-coxgs-0a:Ethernet2/12:clab-coxgs-csr-coxgs-1a:Ethernet1/15" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="303.5" y="851.4174821841713" width="4" height="4" as="geometry" />
+          <mxGeometry x="313.5" y="761.2089016758672" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-csr-coxgs-0a:Ethernet2/12:clab-coxgs-csr-coxgs-1a:Ethernet1/15" label="rate_s" source="clab-coxgs-csr-coxgs-0a:Ethernet2/12:clab-coxgs-csr-coxgs-1a:Ethernet1/15" target="mid:clab-coxgs-csr-coxgs-0a:Ethernet2/12:clab-coxgs-csr-coxgs-1a:Ethernet1/15">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-csr-coxgs-0a:Ethernet2/12:clab-coxgs-csr-coxgs-1a:Ethernet1/15" target="mid:clab-coxgs-csr-coxgs-0a:Ethernet2/12:clab-coxgs-csr-coxgs-1a:Ethernet1/15">
@@ -918,7 +918,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-csr-coxgs-0a:Ethernet2/13:clab-coxgs-csr-coxgs-1a:Ethernet1/31" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="341.5" y="846.5413033550396" width="4" height="4" as="geometry" />
+          <mxGeometry x="351.5" y="765.0363452624531" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-csr-coxgs-0a:Ethernet2/13:clab-coxgs-csr-coxgs-1a:Ethernet1/31" label="rate_s" source="clab-coxgs-csr-coxgs-0a:Ethernet2/13:clab-coxgs-csr-coxgs-1a:Ethernet1/31" target="mid:clab-coxgs-csr-coxgs-0a:Ethernet2/13:clab-coxgs-csr-coxgs-1a:Ethernet1/31">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-csr-coxgs-0a:Ethernet2/13:clab-coxgs-csr-coxgs-1a:Ethernet1/31" target="mid:clab-coxgs-csr-coxgs-0a:Ethernet2/13:clab-coxgs-csr-coxgs-1a:Ethernet1/31">
@@ -938,7 +938,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-csr-coxgs-0a:Ethernet2/14:clab-coxgs-csr-coxgs-1b:Ethernet1/15" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="578.8323620005374" y="839.6217787434952" width="4" height="4" as="geometry" />
+          <mxGeometry x="600.6984108895464" y="751.6036575861793" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-csr-coxgs-0a:Ethernet2/14:clab-coxgs-csr-coxgs-1b:Ethernet1/15" label="rate_s" source="clab-coxgs-csr-coxgs-0a:Ethernet2/14:clab-coxgs-csr-coxgs-1b:Ethernet1/15" target="mid:clab-coxgs-csr-coxgs-0a:Ethernet2/14:clab-coxgs-csr-coxgs-1b:Ethernet1/15">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-csr-coxgs-0a:Ethernet2/14:clab-coxgs-csr-coxgs-1b:Ethernet1/15" target="mid:clab-coxgs-csr-coxgs-0a:Ethernet2/14:clab-coxgs-csr-coxgs-1b:Ethernet1/15">
@@ -958,7 +958,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-csr-coxgs-0a:Ethernet2/15:clab-coxgs-csr-coxgs-1b:Ethernet1/31" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="593.0107791374446" y="831.6600197651887" width="4" height="4" as="geometry" />
+          <mxGeometry x="638.8512706563663" y="751.6424544813112" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-csr-coxgs-0a:Ethernet2/15:clab-coxgs-csr-coxgs-1b:Ethernet1/31" label="rate_s" source="clab-coxgs-csr-coxgs-0a:Ethernet2/15:clab-coxgs-csr-coxgs-1b:Ethernet1/31" target="mid:clab-coxgs-csr-coxgs-0a:Ethernet2/15:clab-coxgs-csr-coxgs-1b:Ethernet1/31">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-csr-coxgs-0a:Ethernet2/15:clab-coxgs-csr-coxgs-1b:Ethernet1/31" target="mid:clab-coxgs-csr-coxgs-0a:Ethernet2/15:clab-coxgs-csr-coxgs-1b:Ethernet1/31">
@@ -978,7 +978,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-csr-coxgs-0b:Ethernet2/12:clab-coxgs-csr-coxgs-1a:Ethernet1/16" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="584.1991356557987" y="829.5845134840245" width="4" height="4" as="geometry" />
+          <mxGeometry x="599.5171682970164" y="744.6961501784223" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-csr-coxgs-0b:Ethernet2/12:clab-coxgs-csr-coxgs-1a:Ethernet1/16" label="rate_s" source="clab-coxgs-csr-coxgs-0b:Ethernet2/12:clab-coxgs-csr-coxgs-1a:Ethernet1/16" target="mid:clab-coxgs-csr-coxgs-0b:Ethernet2/12:clab-coxgs-csr-coxgs-1a:Ethernet1/16">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-csr-coxgs-0b:Ethernet2/12:clab-coxgs-csr-coxgs-1a:Ethernet1/16" target="mid:clab-coxgs-csr-coxgs-0b:Ethernet2/12:clab-coxgs-csr-coxgs-1a:Ethernet1/16">
@@ -998,7 +998,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-csr-coxgs-0b:Ethernet2/13:clab-coxgs-csr-coxgs-1a:Ethernet1/32" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="594.0294666268225" y="838.9995098172385" width="4" height="4" as="geometry" />
+          <mxGeometry x="605.3490953983642" y="752.8606356856943" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-csr-coxgs-0b:Ethernet2/13:clab-coxgs-csr-coxgs-1a:Ethernet1/32" label="rate_s" source="clab-coxgs-csr-coxgs-0b:Ethernet2/13:clab-coxgs-csr-coxgs-1a:Ethernet1/32" target="mid:clab-coxgs-csr-coxgs-0b:Ethernet2/13:clab-coxgs-csr-coxgs-1a:Ethernet1/32">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-csr-coxgs-0b:Ethernet2/13:clab-coxgs-csr-coxgs-1a:Ethernet1/32" target="mid:clab-coxgs-csr-coxgs-0b:Ethernet2/13:clab-coxgs-csr-coxgs-1a:Ethernet1/32">
@@ -1018,7 +1018,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-csr-coxgs-0b:Ethernet2/14:clab-coxgs-csr-coxgs-1b:Ethernet1/16" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="829.5" y="816.249484742953" width="4" height="4" as="geometry" />
+          <mxGeometry x="859.5" y="758.2189510268212" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-csr-coxgs-0b:Ethernet2/14:clab-coxgs-csr-coxgs-1b:Ethernet1/16" label="rate_s" source="clab-coxgs-csr-coxgs-0b:Ethernet2/14:clab-coxgs-csr-coxgs-1b:Ethernet1/16" target="mid:clab-coxgs-csr-coxgs-0b:Ethernet2/14:clab-coxgs-csr-coxgs-1b:Ethernet1/16">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-csr-coxgs-0b:Ethernet2/14:clab-coxgs-csr-coxgs-1b:Ethernet1/16" target="mid:clab-coxgs-csr-coxgs-0b:Ethernet2/14:clab-coxgs-csr-coxgs-1b:Ethernet1/16">
@@ -1038,7 +1038,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-csr-coxgs-0b:Ethernet2/15:clab-coxgs-csr-coxgs-1b:Ethernet1/32" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="867.5" y="815.8997419955657" width="4" height="4" as="geometry" />
+          <mxGeometry x="897.5" y="737.4442782491235" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-csr-coxgs-0b:Ethernet2/15:clab-coxgs-csr-coxgs-1b:Ethernet1/32" label="rate_s" source="clab-coxgs-csr-coxgs-0b:Ethernet2/15:clab-coxgs-csr-coxgs-1b:Ethernet1/32" target="mid:clab-coxgs-csr-coxgs-0b:Ethernet2/15:clab-coxgs-csr-coxgs-1b:Ethernet1/32">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-csr-coxgs-0b:Ethernet2/15:clab-coxgs-csr-coxgs-1b:Ethernet1/32" target="mid:clab-coxgs-csr-coxgs-0b:Ethernet2/15:clab-coxgs-csr-coxgs-1b:Ethernet1/32">
@@ -1058,7 +1058,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-csr-coxgs-1a:Ethernet1/1:clab-coxgs-csr-coxgs-1b:Ethernet1/1" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="598.7719019277773" y="913.0" width="4" height="4" as="geometry" />
+          <mxGeometry x="625.4207881750839" y="813.0" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-csr-coxgs-1a:Ethernet1/1:clab-coxgs-csr-coxgs-1b:Ethernet1/1" label="rate_s" source="clab-coxgs-csr-coxgs-1a:Ethernet1/1:clab-coxgs-csr-coxgs-1b:Ethernet1/1" target="mid:clab-coxgs-csr-coxgs-1a:Ethernet1/1:clab-coxgs-csr-coxgs-1b:Ethernet1/1">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-csr-coxgs-1a:Ethernet1/1:clab-coxgs-csr-coxgs-1b:Ethernet1/1" target="mid:clab-coxgs-csr-coxgs-1a:Ethernet1/1:clab-coxgs-csr-coxgs-1b:Ethernet1/1">
@@ -1078,7 +1078,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-csr-coxgs-1a:Ethernet1/2:clab-coxgs-csr-coxgs-1b:Ethernet1/2" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="596.2733734668675" y="928.0" width="4" height="4" as="geometry" />
+          <mxGeometry x="618.8074873875217" y="828.0" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-csr-coxgs-1a:Ethernet1/2:clab-coxgs-csr-coxgs-1b:Ethernet1/2" label="rate_s" source="clab-coxgs-csr-coxgs-1a:Ethernet1/2:clab-coxgs-csr-coxgs-1b:Ethernet1/2" target="mid:clab-coxgs-csr-coxgs-1a:Ethernet1/2:clab-coxgs-csr-coxgs-1b:Ethernet1/2">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-csr-coxgs-1a:Ethernet1/2:clab-coxgs-csr-coxgs-1b:Ethernet1/2" target="mid:clab-coxgs-csr-coxgs-1a:Ethernet1/2:clab-coxgs-csr-coxgs-1b:Ethernet1/2">
@@ -1098,7 +1098,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-csr-coxgs-1a:Ethernet1/17:clab-coxgs-csr-coxgs-1b:Ethernet1/17" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="597.9299876782068" y="943.0" width="4" height="4" as="geometry" />
+          <mxGeometry x="619.7692983334337" y="843.0" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-csr-coxgs-1a:Ethernet1/17:clab-coxgs-csr-coxgs-1b:Ethernet1/17" label="rate_s" source="clab-coxgs-csr-coxgs-1a:Ethernet1/17:clab-coxgs-csr-coxgs-1b:Ethernet1/17" target="mid:clab-coxgs-csr-coxgs-1a:Ethernet1/17:clab-coxgs-csr-coxgs-1b:Ethernet1/17">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-csr-coxgs-1a:Ethernet1/17:clab-coxgs-csr-coxgs-1b:Ethernet1/17" target="mid:clab-coxgs-csr-coxgs-1a:Ethernet1/17:clab-coxgs-csr-coxgs-1b:Ethernet1/17">
@@ -1118,7 +1118,7 @@
       </mxCell>
     </object><object id="mid:clab-coxgs-csr-coxgs-1a:Ethernet1/18:clab-coxgs-csr-coxgs-1b:Ethernet1/18" label="​">
       <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" vertex="1" parent="1">
-          <mxGeometry x="605.1571134098604" y="958.0" width="4" height="4" as="geometry" />
+          <mxGeometry x="586.1335627713795" y="858.0" width="4" height="4" as="geometry" />
       </mxCell>
     </object><object id="link_id:clab-coxgs-csr-coxgs-1a:Ethernet1/18:clab-coxgs-csr-coxgs-1b:Ethernet1/18" label="rate_s" source="clab-coxgs-csr-coxgs-1a:Ethernet1/18:clab-coxgs-csr-coxgs-1b:Ethernet1/18" target="mid:clab-coxgs-csr-coxgs-1a:Ethernet1/18:clab-coxgs-csr-coxgs-1b:Ethernet1/18">
       <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;" edge="1" parent="1" source="clab-coxgs-csr-coxgs-1a:Ethernet1/18:clab-coxgs-csr-coxgs-1b:Ethernet1/18" target="mid:clab-coxgs-csr-coxgs-1a:Ethernet1/18:clab-coxgs-csr-coxgs-1b:Ethernet1/18">
@@ -1129,27 +1129,27 @@
           <mxGeometry relative="1" as="geometry" />
       </mxCell>
     </object><mxCell id="group-clab-coxgs-agsr-coxgs-0.1" value="" style="group" vertex="1" connectable="0" parent="1">
-        <mxGeometry x="272.5" y="294.0" width="196.0" height="87.0" as="geometry" />
+        <mxGeometry x="282.5" y="269.0" width="196.0" height="87.0" as="geometry" />
         </mxCell><mxCell id="group-clab-coxgs-agsr-coxgs-0.2" value="" style="group" vertex="1" connectable="0" parent="1">
-        <mxGeometry x="706.5" y="294.0" width="196.0" height="87.0" as="geometry" />
+        <mxGeometry x="736.5" y="269.0" width="196.0" height="87.0" as="geometry" />
         </mxCell><mxCell id="group-clab-coxgs-fw-coxgs-0" value="" style="group" vertex="1" connectable="0" parent="1">
-        <mxGeometry x="550.0" y="100.0" width="250.0" height="81.0" as="geometry" />
+        <mxGeometry x="570.0" y="100.0" width="250.0" height="81.0" as="geometry" />
         </mxCell><mxCell id="group-clab-coxgs-vpnr-coxgs-1" value="" style="group" vertex="1" connectable="0" parent="1">
         <mxGeometry x="100.0" y="100.0" width="75.0" height="81.0" as="geometry" />
         </mxCell><mxCell id="group-clab-coxgs-esr-cloin-2" value="" style="group" vertex="1" connectable="0" parent="1">
-        <mxGeometry x="1000.0" y="100.0" width="75.0" height="81.0" as="geometry" />
+        <mxGeometry x="1040.0" y="100.0" width="75.0" height="81.0" as="geometry" />
         </mxCell><mxCell id="group-clab-coxgs-spine-coxgs-1" value="" style="group" vertex="1" connectable="0" parent="1">
-        <mxGeometry x="202.5" y="494.0" width="336.0" height="87.0" as="geometry" />
+        <mxGeometry x="212.5" y="444.0" width="336.0" height="87.0" as="geometry" />
         </mxCell><mxCell id="group-clab-coxgs-spine-coxgs-2" value="" style="group" vertex="1" connectable="0" parent="1">
-        <mxGeometry x="636.5" y="494.0" width="336.0" height="87.0" as="geometry" />
+        <mxGeometry x="666.5" y="444.0" width="336.0" height="87.0" as="geometry" />
         </mxCell><mxCell id="group-clab-coxgs-csr-coxgs-0a" value="" style="group" vertex="1" connectable="0" parent="1">
-        <mxGeometry x="202.5" y="694.0" width="336.0" height="87.0" as="geometry" />
+        <mxGeometry x="212.5" y="619.0" width="336.0" height="87.0" as="geometry" />
         </mxCell><mxCell id="group-clab-coxgs-csr-coxgs-0b" value="" style="group" vertex="1" connectable="0" parent="1">
-        <mxGeometry x="636.5" y="694.0" width="336.0" height="87.0" as="geometry" />
+        <mxGeometry x="666.5" y="619.0" width="336.0" height="87.0" as="geometry" />
         </mxCell><mxCell id="group-clab-coxgs-csr-coxgs-1a" value="" style="group" vertex="1" connectable="0" parent="1">
-        <mxGeometry x="272.5" y="894.0" width="196.0" height="81.0" as="geometry" />
+        <mxGeometry x="282.5" y="794.0" width="196.0" height="81.0" as="geometry" />
         </mxCell><mxCell id="group-clab-coxgs-csr-coxgs-1b" value="" style="group" vertex="1" connectable="0" parent="1">
-        <mxGeometry x="706.5" y="894.0" width="196.0" height="81.0" as="geometry" />
+        <mxGeometry x="736.5" y="794.0" width="196.0" height="81.0" as="geometry" />
         </mxCell></root>
           </mxGraphModel>
         </diagram></mxfile>

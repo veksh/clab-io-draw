@@ -101,6 +101,8 @@ topology:
         # ok for vertical: 
         #graph-height: 75
         #graph-width: 300
+        # experimental: different height
+        #graph-height: 100
 
     csr-coxgs-0a:
       kind: cisco-nexus

@@ -23,7 +23,9 @@ class VerticalLayout(LayoutManager):
         for level in sorted_levels:
             nodes_by_level[level].sort(key=lambda nd: nd.name)
             for i, nd in enumerate(nodes_by_level[level]):
-                nd.pos_x = float(100 + i * self.diagram.styles["padding_x"])
+                # Position nodes with proper spacing between them (node_width + padding)
+                total_spacing = self.diagram.styles["node_width"] + self.diagram.styles["padding_x"]
+                nd.pos_x = float(100 + i * total_spacing)
 
         def get_connected_pairs(level_nodes):
             """Get pairs of nodes in the same level that are directly connected."""
@@ -60,26 +62,23 @@ class VerticalLayout(LayoutManager):
                 return [barycenter]
 
             # Consider positions before first node
-            positions.append(existing_positions[0] - self.diagram.styles["padding_x"])
+            total_spacing = self.diagram.styles["node_width"] + self.diagram.styles["padding_x"]
+            positions.append(existing_positions[0] - total_spacing)
 
             # Consider positions after each node
             for pos in existing_positions:
-                positions.append(pos + self.diagram.styles["padding_x"])
+                positions.append(pos + total_spacing)
 
             # If node has same-level connections, prioritize positions next to them
             if same_level_connected:
                 for connected_node in same_level_connected:
-                    positions.append(
-                        connected_node.pos_x + self.diagram.styles["padding_x"]
-                    )
-                    positions.append(
-                        connected_node.pos_x - self.diagram.styles["padding_x"]
-                    )
+                    total_spacing = self.diagram.styles["node_width"] + self.diagram.styles["padding_x"]
+                    positions.append(connected_node.pos_x + total_spacing)
+                    positions.append(connected_node.pos_x - total_spacing)
 
             # Remove invalid positions (too close to existing nodes)
-            min_spacing = (
-                self.diagram.styles["padding_x"] * 0.9
-            )  # Allow slight overlap for adjustment
+            # Allow slight overlap for adjustment
+            min_spacing = (self.diagram.styles["node_width"] + self.diagram.styles["padding_x"]) * 0.9
             valid_positions = []
             for pos in sorted(set(positions)):
                 if all(
@@ -160,10 +159,12 @@ class VerticalLayout(LayoutManager):
             for level in reversed(sorted_levels):
                 reposition_level(nodes_by_level[level])
 
-        # Assign Y positions
+        # Assign Y positions with proper vertical spacing
         for level in sorted_levels:
             for node in nodes_by_level[level]:
-                node.pos_y = float(100 + level * self.diagram.styles["padding_y"])
+                # Calculate total spacing between levels (node_height + padding)
+                total_spacing = self.diagram.styles["node_height"] + self.diagram.styles["padding_y"]
+                node.pos_y = float(100 + level * total_spacing)
 
         self._center_align_nodes(nodes_by_level)
         self._adjust_intermediary_nodes(diagram)

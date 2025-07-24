@@ -12,9 +12,10 @@ pageh: "auto"
 # ok for vertical: 8 horiz ports + 4 vert ports
 node_width: 320
 node_height: 75
-# not taking node_width into account: adjust for wider node
-padding_x: 450
-padding_y: 200
+# works for default width/height as above
+# custom label.graph_height|width are "centered" inside the default box
+padding_x: 150
+padding_y: 100
 
 # Base style for nodes; defines the general appearance for all nodes.
 #base_style: "shape=image;imageAlign=center;imageVerticalAlign=middle;labelPosition=left;align=right;verticalLabelPosition=top;spacingLeft=0;verticalAlign=bottom;spacingTop=0;spacing=0;"
