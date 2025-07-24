@@ -59,16 +59,20 @@ class DiagramBuilder:
                     else:  # left or right
                         links.sort(key=lambda link: link.target.pos_y)
 
-                    # Distribute ports evenly along the edge
+                    # Distribute ports on the edge
                     self._distribute_ports_on_edge(node, links, edge, styles)
         else:
             # Original port positioning for regular layout
             for node in nodes.values():
                 links = node.get_all_links()
+                num_links = len(links)
                 direction_groups = {}
                 for link in links:
                     direction = link.direction
                     direction_groups.setdefault(direction, []).append(link)
+
+                port_padding_x = styles.get("port_padding_x", node.width / (num_links + 1))
+                port_padding_y = styles.get("port_padding_y", node.height / (num_links + 1))
 
                 for direction, group in direction_groups.items():
                     # Position ports depending on layout and direction
@@ -78,8 +82,9 @@ class DiagramBuilder:
                                 group,
                                 key=lambda link: (link.source.pos_x, link.target.pos_x),
                             )
-                            num_links = len(sorted_links)
-                            spacing = styles["node_width"] / (num_links + 1)
+                            
+                            # spacing = styles["node_width"] / (num_links + 1)
+                            spacing = port_padding_x
                             for i, link in enumerate(sorted_links):
                                 port_x = (
                                     node.pos_x
@@ -98,7 +103,8 @@ class DiagramBuilder:
                                 key=lambda link: (link.source.pos_x, link.target.pos_x),
                             )
                             num_links = len(sorted_links)
-                            spacing = styles["node_width"] / (num_links + 1)
+                            #spacing = styles["node_width"] / (num_links + 1)
+                            spacing = port_padding_x
                             for i, link in enumerate(sorted_links):
                                 port_x = (
                                     node.pos_x
@@ -113,7 +119,8 @@ class DiagramBuilder:
                                 key=lambda link: (link.source.pos_y, link.target.pos_y),
                             )
                             num_links = len(sorted_links)
-                            spacing = styles["node_height"] / (num_links + 1)
+                            #spacing = styles["node_height"] / (num_links + 1)
+                            spacing = port_padding_y
                             for i, link in enumerate(sorted_links):
                                 if link.target.pos_x > link.source.pos_x:
                                     port_x = (
@@ -137,7 +144,8 @@ class DiagramBuilder:
                                 key=lambda link: (link.source.pos_y, link.target.pos_y),
                             )
                             num_links = len(sorted_links)
-                            spacing = styles["node_height"] / (num_links + 1)
+                            # spacing = styles["node_height"] / (num_links + 1)
+                            spacing = port_padding_y
                             for i, link in enumerate(sorted_links):
                                 port_x = (
                                     node.pos_x
@@ -157,7 +165,8 @@ class DiagramBuilder:
                                 key=lambda link: (link.source.pos_y, link.target.pos_y),
                             )
                             num_links = len(sorted_links)
-                            spacing = styles["node_height"] / (num_links + 1)
+                            # spacing = styles["node_height"] / (num_links + 1)
+                            spacing = port_padding_y
                             for i, link in enumerate(sorted_links):
                                 port_x = node.pos_x - styles["port_width"] / 2
                                 port_y = (
@@ -172,7 +181,8 @@ class DiagramBuilder:
                                 key=lambda link: (link.source.pos_x, link.target.pos_x),
                             )
                             num_links = len(sorted_links)
-                            spacing = styles["node_width"] / (num_links + 1)
+                            #spacing = styles["node_width"] / (num_links + 1)
+                            spacing = port_padding_x
                             for i, link in enumerate(sorted_links):
                                 if link.target.pos_y > link.source.pos_y:
                                     port_y = (
@@ -392,46 +402,48 @@ class DiagramBuilder:
 
     def _distribute_ports_on_edge(self, node, links, edge, styles):
         """
-        Distribute ports evenly along a specified edge of the node.
+        Distribute ports with constant spacing (port_padding_x/y), centered as a group on the edge.
+        U
         """
         port_width = styles["port_width"]
         port_height = styles["port_height"]
         node_width = node.width
         node_height = node.height
 
+        port_padding_x = styles.get("port_padding_x", node_width / (len(links) + 1))
+        port_padding_y = styles.get("port_padding_y", node_height / (len(links) + 1))
+
+
         # Number of ports to distribute
         num_ports = len(links)
 
-        if edge == "top":
-            # Distribute along top edge
-            spacing = node_width / (num_ports + 1)
+        if num_ports == 0:
+            return
+
+        if edge in ("left", "right"):
+            spacing = port_padding_y
+            group_height = spacing * (num_ports - 1)
+            center_y = node.pos_y + node_height / 2.0
+            start_y = center_y - group_height / 2.0
             for i, link in enumerate(links):
-                port_x = node.pos_x + (i + 1) * spacing - port_width / 2
-                port_y = node.pos_y - port_height / 2
+                port_y = start_y + i * spacing - port_height / 2
+                if edge == "left":
+                    port_x = node.pos_x - port_width / 2
+                else:
+                    port_x = node.pos_x + node_width - port_width / 2
                 link.port_pos = (port_x, port_y)
 
-        elif edge == "right":
-            # Distribute along right edge
-            spacing = node_height / (num_ports + 1)
+        elif edge in ("top", "bottom"):
+            spacing = port_padding_x
+            group_width = spacing * (num_ports - 1)
+            center_x = node.pos_x + node_width / 2.0
+            start_x = center_x - group_width / 2.0
             for i, link in enumerate(links):
-                port_x = node.pos_x + node_width - port_width / 2
-                port_y = node.pos_y + (i + 1) * spacing - port_height / 2
-                link.port_pos = (port_x, port_y)
-
-        elif edge == "bottom":
-            # Distribute along bottom edge
-            spacing = node_width / (num_ports + 1)
-            for i, link in enumerate(links):
-                port_x = node.pos_x + (i + 1) * spacing - port_width / 2
-                port_y = node.pos_y + node_height - port_height / 2
-                link.port_pos = (port_x, port_y)
-
-        elif edge == "left":
-            # Distribute along left edge
-            spacing = node_height / (num_ports + 1)
-            for i, link in enumerate(links):
-                port_x = node.pos_x - port_width / 2
-                port_y = node.pos_y + (i + 1) * spacing - port_height / 2
+                port_x = start_x + i * spacing - port_width / 2
+                if edge == "top":
+                    port_y = node.pos_y - port_height / 2
+                else:
+                    port_y = node.pos_y + node_height - port_height / 2
                 link.port_pos = (port_x, port_y)
 
     # not really used for grafana diagram generation -- "add_port" creates all the links, see above

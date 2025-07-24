@@ -27,6 +27,10 @@ connector_style: "ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;
 port_width:  32
 port_height: 12
 
+# constant spacing between port labels (by default, they are evenly distributed)
+port_padding_x: 38
+port_padding_y: 15
+
 connector_width:  4
 connector_height: 4
 
