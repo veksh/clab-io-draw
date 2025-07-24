@@ -66,11 +66,11 @@ topology:
         graph-icon: empty        
         # graph-width: 250
         # ok for horizontal
-        #graph-height: 150
-        #graph-width: 100
+        graph-height: 150
+        graph-width: 100
         # ok for vertical
-        graph-height: 100
-        graph-width: 300
+        #graph-height: 100
+        #graph-width: 300
 
     spine-coxgs-2:
       kind: arista
@@ -80,11 +80,11 @@ topology:
         graph-icon: empty
         # graph-width: 250
         # ok for horizontal
-        #graph-height: 150
-        #graph-width: 100
+        graph-height: 150
+        graph-width: 100
         # ok for vertical
-        graph-height: 75
-        graph-width: 300
+        #graph-height: 75
+        #graph-width: 300
 
     csr-coxgs-0a:
       kind: cisco-nexus

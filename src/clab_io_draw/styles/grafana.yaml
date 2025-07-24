@@ -28,8 +28,8 @@ port_width:  32
 port_height: 12
 
 # constant spacing between port labels (by default, they are evenly distributed)
-port_padding_x: 38
-port_padding_y: 15
+port_padding_x: 6
+port_padding_y: 3
 
 connector_width:  4
 connector_height: 4

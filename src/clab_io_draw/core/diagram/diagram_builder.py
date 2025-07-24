@@ -65,14 +65,10 @@ class DiagramBuilder:
             # Original port positioning for regular layout
             for node in nodes.values():
                 links = node.get_all_links()
-                num_links = len(links)
                 direction_groups = {}
                 for link in links:
                     direction = link.direction
                     direction_groups.setdefault(direction, []).append(link)
-
-                port_padding_x = styles.get("port_padding_x", node.width / (num_links + 1))
-                port_padding_y = styles.get("port_padding_y", node.height / (num_links + 1))
 
                 for direction, group in direction_groups.items():
                     # Position ports depending on layout and direction
@@ -82,13 +78,10 @@ class DiagramBuilder:
                                 group,
                                 key=lambda link: (link.source.pos_x, link.target.pos_x),
                             )
-                            
-                            # spacing = styles["node_width"] / (num_links + 1)
-                            spacing = port_padding_x
                             for i, link in enumerate(sorted_links):
                                 port_x = (
                                     node.pos_x
-                                    + (i + 1) * spacing
+                                    + (i + 1) * (styles["port_width"] + styles["port_padding_x"])
                                     - styles["port_width"] / 2
                                 )
                                 port_y = (
@@ -102,13 +95,10 @@ class DiagramBuilder:
                                 group,
                                 key=lambda link: (link.source.pos_x, link.target.pos_x),
                             )
-                            num_links = len(sorted_links)
-                            #spacing = styles["node_width"] / (num_links + 1)
-                            spacing = port_padding_x
                             for i, link in enumerate(sorted_links):
                                 port_x = (
                                     node.pos_x
-                                    + (i + 1) * spacing
+                                    + (i + 1) * (styles["port_width"] + styles["port_padding_x"])
                                     - styles["port_width"] / 2
                                 )
                                 port_y = node.pos_y - styles["port_height"] / 2
@@ -118,9 +108,6 @@ class DiagramBuilder:
                                 group,
                                 key=lambda link: (link.source.pos_y, link.target.pos_y),
                             )
-                            num_links = len(sorted_links)
-                            #spacing = styles["node_height"] / (num_links + 1)
-                            spacing = port_padding_y
                             for i, link in enumerate(sorted_links):
                                 if link.target.pos_x > link.source.pos_x:
                                     port_x = (
@@ -132,7 +119,7 @@ class DiagramBuilder:
                                     port_x = node.pos_x - styles["port_width"] / 2
                                 port_y = (
                                     node.pos_y
-                                    + (i + 1) * spacing
+                                    + (i + 1) * (styles["port_height"] + styles["port_padding_y"])
                                     - styles["port_height"] / 2
                                 )
                                 link.port_pos = (port_x, port_y)
@@ -143,9 +130,6 @@ class DiagramBuilder:
                                 group,
                                 key=lambda link: (link.source.pos_y, link.target.pos_y),
                             )
-                            num_links = len(sorted_links)
-                            # spacing = styles["node_height"] / (num_links + 1)
-                            spacing = port_padding_y
                             for i, link in enumerate(sorted_links):
                                 port_x = (
                                     node.pos_x
@@ -154,7 +138,7 @@ class DiagramBuilder:
                                 )
                                 port_y = (
                                     node.pos_y
-                                    + (i + 1) * spacing
+                                    + (i + 1) * (styles["port_height"] + styles["port_padding_y"])
                                     - styles["port_height"] / 2
                                 )
                                 link.port_pos = (port_x, port_y)
@@ -164,14 +148,11 @@ class DiagramBuilder:
                                 group,
                                 key=lambda link: (link.source.pos_y, link.target.pos_y),
                             )
-                            num_links = len(sorted_links)
-                            # spacing = styles["node_height"] / (num_links + 1)
-                            spacing = port_padding_y
                             for i, link in enumerate(sorted_links):
                                 port_x = node.pos_x - styles["port_width"] / 2
                                 port_y = (
                                     node.pos_y
-                                    + (i + 1) * spacing
+                                    + (i + 1) * (styles["port_height"] + styles["port_padding_y"])
                                     - styles["port_height"] / 2
                                 )
                                 link.port_pos = (port_x, port_y)
@@ -180,9 +161,6 @@ class DiagramBuilder:
                                 group,
                                 key=lambda link: (link.source.pos_x, link.target.pos_x),
                             )
-                            num_links = len(sorted_links)
-                            #spacing = styles["node_width"] / (num_links + 1)
-                            spacing = port_padding_x
                             for i, link in enumerate(sorted_links):
                                 if link.target.pos_y > link.source.pos_y:
                                     port_y = (
@@ -194,7 +172,7 @@ class DiagramBuilder:
                                     port_y = node.pos_y - styles["port_height"] / 2
                                 port_x = (
                                     node.pos_x
-                                    + (i + 1) * spacing
+                                    + (i + 1) * (styles["port_width"] + styles["port_padding_x"])
                                     - styles["port_width"] / 2
                                 )
                                 link.port_pos = (port_x, port_y)
@@ -421,12 +399,12 @@ class DiagramBuilder:
             return
 
         if edge in ("left", "right"):
-            spacing = port_padding_y
-            group_height = spacing * (num_ports - 1)
+            total_spacing = port_height + port_padding_y
+            group_height = total_spacing * (num_ports - 1)
             center_y = node.pos_y + node_height / 2.0
             start_y = center_y - group_height / 2.0
             for i, link in enumerate(links):
-                port_y = start_y + i * spacing - port_height / 2
+                port_y = start_y + i * total_spacing - port_height / 2
                 if edge == "left":
                     port_x = node.pos_x - port_width / 2
                 else:
@@ -434,12 +412,12 @@ class DiagramBuilder:
                 link.port_pos = (port_x, port_y)
 
         elif edge in ("top", "bottom"):
-            spacing = port_padding_x
-            group_width = spacing * (num_ports - 1)
+            total_spacing = port_width + port_padding_x
+            group_width = total_spacing * (num_ports - 1)
             center_x = node.pos_x + node_width / 2.0
             start_x = center_x - group_width / 2.0
             for i, link in enumerate(links):
-                port_x = start_x + i * spacing - port_width / 2
+                port_x = start_x + i * total_spacing - port_width / 2
                 if edge == "top":
                     port_y = node.pos_y - port_height / 2
                 else:
