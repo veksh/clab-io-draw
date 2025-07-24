@@ -32,18 +32,27 @@ topology:
       labels:
         graph-level: 1
         graph-icon: router
+        # ok for both: 1 horiz port + 1 vert port
+        graph-height: 75
+        graph-width:  75
 
     fw-coxgs-0:
       kind: paloalto
       labels:
         graph-level: 1
         graph-icon: router
+        # ok for vertical: 6 horiz ports + 1 vert port
+        graph-height:  75
+        graph-width:  250
 
     esr-cloin-2:
       kind: arista-esr
       labels:
         graph-level: 1
         graph-icon: router
+        # ok for both: 1 horiz port + 1 vert port
+        graph-height: 75
+        graph-width:  75
 
     agsr-coxgs-0.1:
       kind: cisco4500
@@ -66,10 +75,10 @@ topology:
         graph-icon: empty        
         # graph-width: 250
         # ok for horizontal
-        graph-height: 150
-        graph-width: 100
-        # ok for vertical
-        #graph-height: 100
+        #graph-height: 150
+        #graph-width: 100
+        # ok for vertical: 8 horiz ports + 4 vert ports
+        #graph-height: 75
         #graph-width: 300
 
     spine-coxgs-2:
@@ -80,9 +89,9 @@ topology:
         graph-icon: empty
         # graph-width: 250
         # ok for horizontal
-        graph-height: 150
-        graph-width: 100
-        # ok for vertical
+        #graph-height: 150
+        #graph-width: 100
+        # ok for vertical: 
         #graph-height: 75
         #graph-width: 300
 
@@ -107,7 +116,6 @@ topology:
       labels:
         graph-level: 5
         graph-icon: switch
-
 
   links:
     # spines to agsrs: it is smart enough to place them in proper order to minimise intersections
