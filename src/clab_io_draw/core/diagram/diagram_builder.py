@@ -79,9 +79,14 @@ class DiagramBuilder:
                                 key=lambda link: (link.source.pos_x, link.target.pos_x),
                             )
                             for i, link in enumerate(sorted_links):
+                                # Calculate spacing based on whether padding is specified
+                                if "port_padding_x" in styles:
+                                    total_spacing = styles["port_width"] + styles["port_padding_x"]
+                                else:
+                                    total_spacing = styles["node_width"] / (len(sorted_links) + 1)
                                 port_x = (
                                     node.pos_x
-                                    + (i + 1) * (styles["port_width"] + styles["port_padding_x"])
+                                    + (i + 1) * total_spacing
                                     - styles["port_width"] / 2
                                 )
                                 port_y = (
@@ -96,9 +101,14 @@ class DiagramBuilder:
                                 key=lambda link: (link.source.pos_x, link.target.pos_x),
                             )
                             for i, link in enumerate(sorted_links):
+                                # Calculate spacing based on whether padding is specified
+                                if "port_padding_x" in styles:
+                                    total_spacing = styles["port_width"] + styles["port_padding_x"]
+                                else:
+                                    total_spacing = styles["node_width"] / (len(sorted_links) + 1)
                                 port_x = (
                                     node.pos_x
-                                    + (i + 1) * (styles["port_width"] + styles["port_padding_x"])
+                                    + (i + 1) * total_spacing
                                     - styles["port_width"] / 2
                                 )
                                 port_y = node.pos_y - styles["port_height"] / 2
@@ -117,9 +127,14 @@ class DiagramBuilder:
                                     )
                                 else:
                                     port_x = node.pos_x - styles["port_width"] / 2
+                                # Calculate spacing based on whether padding is specified
+                                if "port_padding_y" in styles:
+                                    total_spacing = styles["port_height"] + styles["port_padding_y"]
+                                else:
+                                    total_spacing = styles["node_height"] / (len(sorted_links) + 1)
                                 port_y = (
                                     node.pos_y
-                                    + (i + 1) * (styles["port_height"] + styles["port_padding_y"])
+                                    + (i + 1) * total_spacing
                                     - styles["port_height"] / 2
                                 )
                                 link.port_pos = (port_x, port_y)
@@ -136,9 +151,14 @@ class DiagramBuilder:
                                     + styles["node_width"]
                                     - styles["port_width"] / 2
                                 )
+                                # Calculate spacing based on whether padding is specified
+                                if "port_padding_y" in styles:
+                                    total_spacing = styles["port_height"] + styles["port_padding_y"]
+                                else:
+                                    total_spacing = styles["node_height"] / (len(sorted_links) + 1)
                                 port_y = (
                                     node.pos_y
-                                    + (i + 1) * (styles["port_height"] + styles["port_padding_y"])
+                                    + (i + 1) * total_spacing
                                     - styles["port_height"] / 2
                                 )
                                 link.port_pos = (port_x, port_y)
@@ -150,9 +170,14 @@ class DiagramBuilder:
                             )
                             for i, link in enumerate(sorted_links):
                                 port_x = node.pos_x - styles["port_width"] / 2
+                                # Calculate spacing based on whether padding is specified
+                                if "port_padding_y" in styles:
+                                    total_spacing = styles["port_height"] + styles["port_padding_y"]
+                                else:
+                                    total_spacing = styles["node_height"] / (len(sorted_links) + 1)
                                 port_y = (
                                     node.pos_y
-                                    + (i + 1) * (styles["port_height"] + styles["port_padding_y"])
+                                    + (i + 1) * total_spacing
                                     - styles["port_height"] / 2
                                 )
                                 link.port_pos = (port_x, port_y)
@@ -170,9 +195,14 @@ class DiagramBuilder:
                                     )
                                 else:
                                     port_y = node.pos_y - styles["port_height"] / 2
+                                # Calculate spacing based on whether padding is specified
+                                if "port_padding_x" in styles:
+                                    total_spacing = styles["port_width"] + styles["port_padding_x"]
+                                else:
+                                    total_spacing = styles["node_width"] / (len(sorted_links) + 1)
                                 port_x = (
                                     node.pos_x
-                                    + (i + 1) * (styles["port_width"] + styles["port_padding_x"])
+                                    + (i + 1) * total_spacing
                                     - styles["port_width"] / 2
                                 )
                                 link.port_pos = (port_x, port_y)
@@ -388,10 +418,6 @@ class DiagramBuilder:
         node_width = node.width
         node_height = node.height
 
-        port_padding_x = styles.get("port_padding_x", node_width / (len(links) + 1))
-        port_padding_y = styles.get("port_padding_y", node_height / (len(links) + 1))
-
-
         # Number of ports to distribute
         num_ports = len(links)
 
@@ -399,7 +425,12 @@ class DiagramBuilder:
             return
 
         if edge in ("left", "right"):
-            total_spacing = port_height + port_padding_y
+            # If port_padding_y is specified, use it as padding
+            # Otherwise, calculate spacing to distribute ports evenly
+            if "port_padding_y" in styles:
+                total_spacing = port_height + styles["port_padding_y"]
+            else:
+                total_spacing = node_height / (num_ports + 1)
             group_height = total_spacing * (num_ports - 1)
             center_y = node.pos_y + node_height / 2.0
             start_y = center_y - group_height / 2.0
@@ -412,7 +443,12 @@ class DiagramBuilder:
                 link.port_pos = (port_x, port_y)
 
         elif edge in ("top", "bottom"):
-            total_spacing = port_width + port_padding_x
+            # If port_padding_x is specified, use it as padding
+            # Otherwise, calculate spacing to distribute ports evenly
+            if "port_padding_x" in styles:
+                total_spacing = port_width + styles["port_padding_x"]
+            else:
+                total_spacing = node_width / (num_ports + 1)
             group_width = total_spacing * (num_ports - 1)
             center_x = node.pos_x + node_width / 2.0
             start_x = center_x - group_width / 2.0
