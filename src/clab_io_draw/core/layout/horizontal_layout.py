@@ -8,6 +8,7 @@ logger = logging.getLogger(__name__)
 
 class HorizontalLayout(LayoutManager):
     def apply(self, diagram, verbose=False) -> None:
+        # pylint: disable=attribute-defined-outside-init
         logger.debug("Applying iterative barycenter layout (horizontal)...")
         self.diagram = diagram
         self.verbose = verbose
@@ -156,6 +157,7 @@ class HorizontalLayout(LayoutManager):
         logger.debug("Iterative barycenter layout complete (horizontal).")
 
     def _center_align_nodes(self, nodes_by_level):
+        # pylint: disable=invalid-name
         sorted_levels = sorted(nodes_by_level.keys())
         global_center = 300.0
 
@@ -187,6 +189,7 @@ class HorizontalLayout(LayoutManager):
                 prev_center = col_center
 
     def _adjust_intermediary_nodes(self, diagram, offset=100.0):
+        # pylint: disable=invalid-name
         all_links = diagram.get_links_from_nodes()
         nodes = list(diagram.nodes.values())
 

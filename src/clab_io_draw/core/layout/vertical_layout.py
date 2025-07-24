@@ -8,6 +8,7 @@ logger = logging.getLogger(__name__)
 
 class VerticalLayout(LayoutManager):
     def apply(self, diagram, verbose=False) -> None:
+        # pylint: disable=attribute-defined-outside-init
         logger.debug("Applying iterative barycenter layout (vertical)...")
         self.diagram = diagram
         self.verbose = verbose
