@@ -14,7 +14,7 @@ node_width: 320
 node_height: 75
 # works for default width/height as above
 # custom label.graph_height|width are "centered" inside the default box
-padding_x: 150
+padding_x: 10 # 150
 padding_y: 100
 
 # Base style for nodes; defines the general appearance for all nodes.
@@ -82,3 +82,10 @@ icon_to_group_mapping:
 # 1. Right-click on an element in the Draw.io canvas.
 # 2. Select "Edit Style" from the context menu.
 # 3. Copy the style string that appears and use it in your custom_styles definition or directly modify it in Draw.io.
+
+# Vertical layout is a bit off. I was trying this:
+# Please fix an issue in horizontal positioning/spacing in vertical mode: sometimes the positioning is a bit broken e.g. for the vertical mode I now have 3 nodes defined in coxgs.yml for graph_level = 1, they have width 75, 250 and 75, and for some reason they are not equally spaced horiontally, and the middle node (fw-coxgs-0) is not vertically aligned with the center line (rest of the levels are absolutely symmetrical). Make the nodes exqually spaced as above (centered inside their boxes if the size is not default, as it is in this cace). Also align their collective mid-point with the mid-point of the next level (so for symmetrical widths configuration it all will be symmetrical too).
+# What we are trying to achieve is
+# - Consider all nodes bounded by equally-sized boxes "node_width" by "node_height" for the global alignment
+# - Construct levels out of these boxes. Relative positions of mid-points of these layers should be aligned, so (first_box.left_x + last_box.right_x)/2 shold be the same for all the levels for vertical layout
+# - Position every node in the middle of the bounding box.
