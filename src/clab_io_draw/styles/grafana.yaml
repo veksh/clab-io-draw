@@ -10,10 +10,10 @@ pageh: "auto"
 #node_height: 75
 
 # ok for vertical: 8 horiz ports + 4 vert ports
-node_width: 300
+node_width: 320
 node_height: 75
 # not taking node_width into account: adjust for wider node
-padding_x: 400
+padding_x: 450
 padding_y: 200
 
 # Base style for nodes; defines the general appearance for all nodes.
