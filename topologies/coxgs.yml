@@ -57,13 +57,14 @@ topology:
       labels:
         graph-level: 2
         graph-icon: router
-        metric-host: clab-coxgs-agsr-coxgs-0
+        # to change dataRef for VSS name
+        metric-host: agsr-coxgs-0
     agsr-coxgs-0.2:
       kind: cisco4500
       labels:
         graph-level: 2
         graph-icon: router
-        metric-host: clab-coxgs-agsr-coxgs-0
+        metric-host: agsr-coxgs-0
 
     spine-coxgs-1:
       kind: arista

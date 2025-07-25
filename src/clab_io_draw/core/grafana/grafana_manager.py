@@ -196,11 +196,24 @@ class GrafanaDashboard:
             target_name = link.target.name
             target_intf = link.target_intf
 
-            # Use metric-host label for dataRef if present
+            # Use metric-host label for dataRef if present, with prefix
             metric_host = None
             if hasattr(link.source, 'labels') and link.source.labels:
                 metric_host = link.source.labels.get('metric-host')
-            dataref_source = metric_host if metric_host else source_name
+            # Extract lab_name from source_name (assumes format: prefix-labname-nodename)
+            lab_prefix = ''
+            if '-' in source_name:
+                parts = source_name.split('-')
+                if len(parts) >= 3:
+                    lab_prefix = '-'.join(parts[:2])  # e.g. clab-coxgs
+            if metric_host:
+                # Remove any existing prefix from metric_host, then prepend lab_prefix
+                metric_host_base = metric_host
+                if metric_host.startswith(lab_prefix + '-'):
+                    metric_host_base = metric_host[len(lab_prefix)+1:]
+                dataref_source = f"{lab_prefix}-{metric_host_base}" if lab_prefix else metric_host
+            else:
+                dataref_source = source_name
 
             # oper-state cell
             cell_id_operstate = (
