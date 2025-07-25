@@ -12,6 +12,7 @@ topologies/*
 !topologies/*.yaml
 topologies/*flow_panel.yaml
 topologies/*.drawio
+topologies/*.svg
 
 # Created by https://www.toptal.com/developers/gitignore/api/python
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
