@@ -9,13 +9,20 @@ pageh: "auto"
 #node_width: 200
 #node_height: 75
 
-# ok for vertical: 8 horiz ports + 4 vert ports
-node_width: 320
-node_height: 75
-# works for default width/height as above
-# custom label.graph_height|width are "centered" inside the default box
-padding_x: 10 # 150
-padding_y: 100
+# ok for vertical: upto 8 horiz ports + 4 vert ports
+# treated as the "bounding box" for smaller link
+node_width:   300
+node_height:   75
+# distance between the node edges
+# custom-sized nodes (with "label.graph_height|width") should be "centered" inside the default box
+padding_x:    100
+padding_y:     75
+
+# ok for horizontal: upto 8 horiz + 4 horiz ports
+#node_width:   160
+#node_height:  130
+#padding_x:    120
+#padding_y:     60
 
 # Base style for nodes; defines the general appearance for all nodes.
 #base_style: "shape=image;imageAlign=center;imageVerticalAlign=middle;labelPosition=left;align=right;verticalLabelPosition=top;spacingLeft=0;verticalAlign=bottom;spacingTop=0;spacing=0;"
@@ -24,26 +31,27 @@ base_style: "rounded=1;labelPosition=center;align=center;verticalLabelPosition=m
             
 #Nodes with ports if ports:true (-g option for grafana will set always to true)
 ports: true
-#port_style: "ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=8;strokeColor=#98A2AE;fillColor=#BEC8D2;"
 port_style: "rounded=1;whiteSpace=wrap;html=1;fontColor=#FFFFFF;fontSize=8;strokeColor=#98A2AE;fillColor=#BEC8D2;textShadow=1;connectable=1;resizable=1;"
-connector_style: "ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;"
+# style for mid-point; does not matter all that much for now
+connector_style: "ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=8;fillColor=#BEC8D2;strokeColor=none;noLabel=1;"
 
 # just fine for Te2/1/16; way too wide for e7/3 :)
 port_width:  32
 port_height: 12
 
 # constant spacing between port labels (by default, they are evenly distributed)
-port_padding_x: 6
+port_padding_x: 3
 port_padding_y: 3
 
 connector_width:  4
 connector_height: 4
 
 # Style for links between nodes
-#link_style: "rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=classicThin;endFill=1;endSize=2;fontSize=10;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=gap;strokeWidth=3;"
-link_style: "rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=9;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;"
+# labels for rates have this style
+link_style: "rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=6;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;"
 
 # Styles for labels on the source and target ends of a link
+# really does not matter for grafana
 src_label_style: "edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=6;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;"
 trgt_label_style: "edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=6;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;"
 

@@ -32,69 +32,97 @@ topology:
       labels:
         graph-level: 1
         graph-icon: router
-        # graph-icon: empty        
-        # lets rely on auto layout
-        #graph-posX: 100
-        #graph-posY: 200
-        # ok for both horiz and vert: 1 horiz port + 1 vert port
-        #graph-height: 75
-        #graph-width:  75
+        # ok for both: 1 horiz port + 1 vert port
+        graph-height:  75
+        graph-width:   75
 
     fw-coxgs-0:
       kind: paloalto
       labels:
         graph-level: 1
         graph-icon: router
+        # ok for vertical: 6 horiz ports + 1 vert port (upto 4)
+        graph-height:  75
+        graph-width:  250
 
     esr-cloin-2:
       kind: arista-esr
       labels:
         graph-level: 1
         graph-icon: router
+        # ok for both: 1 horiz port + 1 vert port
+        graph-height:  75
+        graph-width:   75
 
     agsr-coxgs-0.1:
       kind: cisco4500
       labels:
         graph-level: 2
         graph-icon: router
+        # ok for vertical: 4 horiz ports + 4 vert port
+        graph-height:  75
+        graph-width:  180
     agsr-coxgs-0.2:
       kind: cisco4500
       labels:
         graph-level: 2
         graph-icon: router
+        # ok for vertical: 6 horiz ports + 1 vert port
+        graph-height:  75
+        graph-width:  180
 
     spine-coxgs-1:
       kind: arista
       labels:
         graph-level: 3
-        graph-icon: switch
+        # graph-icon: switch
+        graph-icon: empty        
+        # ok vor vertical: 8 horiz ports + 4 vert ports
+        graph-height:  75
+        graph-width:  320        
     spine-coxgs-2:
       kind: arista
       labels:
         graph-level: 3
-        graph-icon: switch
+        # graph-icon: switch
+        graph-icon: empty
+        # ok vor vertical: 8 horiz ports + 4 vert ports
+        graph-height:  75
+        graph-width:  320        
 
     csr-coxgs-0a:
       kind: cisco-nexus
       labels:
         graph-level: 4
         graph-icon: switch
+        # ok vor vertical: 8 horiz ports + 4 vert ports
+        graph-height:  75
+        graph-width:  320        
     csr-coxgs-0b:
       kind: cisco-nexus
       labels:
         graph-level: 4
         graph-icon: switch
+        # ok vor vertical: 8 horiz ports + 4 vert ports
+        graph-height:  75
+        graph-width:  320        
 
     csr-coxgs-1a:
       kind: cisco-nexus
       labels:
         graph-level: 5
         graph-icon: switch
+        # ok for vertical: 4 horiz ports + 2 vert port
+        graph-height:  75
+        graph-width:  180
     csr-coxgs-1b:
       kind: cisco-nexus
       labels:
         graph-level: 5
         graph-icon: switch
+        # ok for vertical: 4 horiz ports + 2 vert port
+        graph-height:  75
+        graph-width:  180
 
   links:
     # spines to agsrs: it is smart enough to place them in proper order to minimise intersections
