@@ -10,7 +10,8 @@ lab-examples/*flow_panel.yaml
 topologies/*
 !topologies/*.yml
 !topologies/*.yaml
-topologies/*flow_panel.yaml
+topologies/*.flow_panel.yaml
+topologies/*.grafana.json
 topologies/*.drawio
 topologies/*.svg
 
