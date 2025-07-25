@@ -12,11 +12,11 @@ pageh: "auto"
 # ok for vertical: upto 8 horiz ports + 4 vert ports
 # treated as the "bounding box" for smaller link
 #node_width:   300
-#node_height:   75
+#node_height:   70
 # distance between the node edges
 # custom-sized nodes (with "label.graph_height|width") should be "centered" inside the default box
-#padding_x:    100
-#padding_y:     75
+#padding_x:    120
+#padding_y:     60
 
 # ok for horizontal: upto 8 horiz + 4 horiz ports
 node_width:   165
