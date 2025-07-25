@@ -321,22 +321,26 @@ class DiagramBuilder:
                     midpoint_center_x = (source_center[0] + target_center[0]) / 2
                     midpoint_center_y = (source_center[1] + target_center[1]) / 2
 
-                    _sysrand = SystemRandom()
-                    random_offset = _sysrand.choice(
-                        [_sysrand.uniform(-20, -10), _sysrand.uniform(10, 20)]
-                    )
-                    dx = target_center[0] - source_center[0]
-                    dy = target_center[1] - source_center[1]
-                    magnitude = (dx**2 + dy**2) ** 0.5
-                    if magnitude != 0:
-                        direction_dx = dx / magnitude
-                        direction_dy = dy / magnitude
+                    if styles.get("connector_mid", False):
+                        # Place midpoint exactly in the center
+                        pass  # midpoint_center_x, midpoint_center_y already set
                     else:
-                        direction_dx = 0
-                        direction_dy = 0
+                        _sysrand = SystemRandom()
+                        random_offset = _sysrand.choice(
+                            [_sysrand.uniform(-20, -10), _sysrand.uniform(10, 20)]
+                        )
+                        dx = target_center[0] - source_center[0]
+                        dy = target_center[1] - source_center[1]
+                        magnitude = (dx**2 + dy**2) ** 0.5
+                        if magnitude != 0:
+                            direction_dx = dx / magnitude
+                            direction_dy = dy / magnitude
+                        else:
+                            direction_dx = 0
+                            direction_dy = 0
 
-                    midpoint_center_x += direction_dx * random_offset
-                    midpoint_center_y += direction_dy * random_offset
+                        midpoint_center_x += direction_dx * random_offset
+                        midpoint_center_y += direction_dy * random_offset
 
                     midpoint_top_left_x = midpoint_center_x - 2
                     midpoint_top_left_y = midpoint_center_y - 2
