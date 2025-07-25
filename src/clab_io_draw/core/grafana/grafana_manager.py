@@ -196,11 +196,17 @@ class GrafanaDashboard:
             target_name = link.target.name
             target_intf = link.target_intf
 
+            # Use metric-host label for dataRef if present
+            metric_host = None
+            if hasattr(link.source, 'labels') and link.source.labels:
+                metric_host = link.source.labels.get('metric-host')
+            dataref_source = metric_host if metric_host else source_name
+
             # oper-state cell
             cell_id_operstate = (
                 f"{source_name}:{source_intf}:{target_name}:{target_intf}"
             )
-            dataRef_operstate = f"oper-state:{source_name}:{source_intf}"
+            dataRef_operstate = f"oper-state:{dataref_source}:{source_intf}"
             fillColor_operstate = CommentedMap()
             fillColor_operstate["thresholds"] = thresholds_operstate
 
@@ -213,7 +219,7 @@ class GrafanaDashboard:
             cell_id_traffic = (
                 f"link_id:{source_name}:{source_intf}:{target_name}:{target_intf}"
             )
-            dataRef_traffic = f"{source_name}:{source_intf}:out"
+            dataRef_traffic = f"{dataref_source}:{source_intf}:out"
 
             strokeColor_traffic = CommentedMap()
             strokeColor_traffic["thresholds"] = thresholds_traffic

@@ -21,7 +21,7 @@ pageh: "auto"
 # ok for horizontal: upto 8 horiz + 4 horiz ports
 node_width:   165
 node_height:  130
-padding_x:    120
+padding_x:    200
 padding_y:     60
 
 # Base style for nodes; defines the general appearance for all nodes.

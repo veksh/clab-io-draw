@@ -98,6 +98,7 @@ class NodeLinkBuilder:
                 mgmt_ipv4=node_data.get("mgmt_ipv4", ""),
                 graph_level=labels.get("graph-level", None),
                 graph_icon=labels.get("graph-icon", None),
+                labels=labels,  # Pass all labels
                 base_style=base_style,
                 custom_style=self.styles.get(node_data.get("kind", ""), ""),
                 pos_x=pos_x,

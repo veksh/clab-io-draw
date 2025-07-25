@@ -57,11 +57,13 @@ topology:
       labels:
         graph-level: 2
         graph-icon: router
+        metric-host: clab-coxgs-agsr-coxgs-0
     agsr-coxgs-0.2:
       kind: cisco4500
       labels:
         graph-level: 2
         graph-icon: router
+        metric-host: clab-coxgs-agsr-coxgs-0
 
     spine-coxgs-1:
       kind: arista

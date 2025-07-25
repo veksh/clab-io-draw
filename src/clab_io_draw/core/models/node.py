@@ -11,12 +11,14 @@ class Node:
         mgmt_ipv4=None,
         graph_level=None,
         graph_icon=None,
+        labels=None,
         **kwargs,
     ):
         self.name = name
         self.label = label
         self.kind = kind
         self.mgmt_ipv4 = mgmt_ipv4
+        self.labels = labels or {}
 
         # Fix for level detection - a default of None is better than -1
         if graph_level is not None:
