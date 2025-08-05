@@ -1,0 +1,66 @@
+# Default Grafana Flow Panel configuration is in src/clab_io_draw/core/grafana/default_grafana_panel_config.yml
+
+targets:
+  - datasource: prometheus
+    expr: "interface_oper_state"
+    legend_format: "oper-state:{{source}}:{{interface_name}}"
+    instant: false
+    range: true
+    hide: false
+
+  - datasource: prometheus
+    expr: "interface_traffic_rate_out_bps"
+    legend_format: "{{source}}:{{interface_name}}:out"
+    instant: false
+    range: true
+    hide: false
+
+  - datasource: prometheus
+    expr: "interface_traffic_rate_in_bps"
+    legend_format: "{{source}}:{{interface_name}}:in"
+    instant: false
+    range: true
+    hide: false
+
+thresholds:
+  operstate:
+    - { color: 'red',   level: 0 }
+    - { color: 'green', level: 1 }
+
+  # default
+  traffic:
+    - { color: 'gray',   level: 0 }
+    - { color: 'green',  level: 199999 }
+    - { color: 'yellow', level: 500000 }
+    - { color: 'orange', level: 1000000 }
+    - { color: 'red',    level: 5000000 }
+
+  # to make it a bit more dramatic: limit at 5MB/s, like 1/2 of real bw
+  traffic-1G:
+    # grey if inactive
+    - {color: "#303030",    level:         1}
+    # dark green to green if slow
+    - {color: "dark-green", level:        10}
+    # green to red if loaded
+    - {color: "green",      level:     10000}
+    # and red if overloaded (currently at 50% of the link == 5MB/s or 5000000 Bps)
+    - {color: "red",        level:   5000000}
+  # to make it a bit more dramatic: limit at 50MB/s, like 1/2 of real bw
+  traffic-10G:
+    # grey if inactive
+    - {color: "#303030",    level:         1}
+    - {color: "green",     level:         10}
+    - {color: "red",       level:   50000000}
+  # to make it a bit more dramatic: limit at 200MB/s, like 1/5 of real bw (1 250 000 000 Bps)
+  traffic-100G:
+    - {color: "#303030",    level:         1}
+    - {color: "green",     level:         10}
+    - {color: "red",       level:  200000000}
+
+label_config:
+  separator: "replace"
+  units: "bps"
+  decimalPoints: 1
+  valueMappings:
+    - { valueMax: 199999, text: "\u200B" }
+    - { valueMin: 200000 }
