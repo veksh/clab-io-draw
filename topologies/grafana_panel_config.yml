@@ -60,6 +60,7 @@ thresholds:
 label_config:
   separator: "replace"
   units: "bps"
+  gradientMode: "hue"
   decimalPoints: 1
   valueMappings:
     - { valueMax: 199999, text: "\u200B" }

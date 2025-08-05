@@ -199,6 +199,7 @@ class GrafanaDashboard:
         anchors["label-config"] = label_config_map
 
         root["cellIdPreamble"] = "cell-"
+        root["gradientMode"] = label_cfg.get("gradientMode", "none")
         cells = CommentedMap()
         root["cells"] = cells
 
