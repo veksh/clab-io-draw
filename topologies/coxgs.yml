@@ -115,22 +115,22 @@ topology:
     - endpoints: ['spine-coxgs-1:Ethernet2/1',      'spine-coxgs-2:Ethernet2/1']
 
     # agsrs to agsrs
-    - endpoints: ['agsr-coxgs-0.1:Te1/1/1',   'agsr-coxgs-0.2:Te2/1/2']
-    - endpoints: ['agsr-coxgs-0.1:Te1/1/2',   'agsr-coxgs-0.2:Te2/1/1']
-    - endpoints: ['agsr-coxgs-0.1:Te1/1/14',  'agsr-coxgs-0.2:Te2/1/14']
-    - endpoints: ['agsr-coxgs-0.1:Te1/1/16',  'agsr-coxgs-0.2:Te2/1/16']
+    - endpoints: ['agsr-coxgs-0.1:Te1/1/1',         'agsr-coxgs-0.2:Te2/1/2']
+    - endpoints: ['agsr-coxgs-0.1:Te1/1/2',         'agsr-coxgs-0.2:Te2/1/1']
+    - endpoints: ['agsr-coxgs-0.1:Te1/1/14',        'agsr-coxgs-0.2:Te2/1/14']
+    - endpoints: ['agsr-coxgs-0.1:Te1/1/16',        'agsr-coxgs-0.2:Te2/1/16']
 
     # agsrs to palo
-    - endpoints: ['agsr-coxgs-0.1:Te1/1/3',   'fw-coxgs-0:ethernet1/1']
-    - endpoints: ['agsr-coxgs-0.1:Te1/1/9',   'fw-coxgs-0:ha1']
-    - endpoints: ['agsr-coxgs-0.1:Te1/1/10',  'fw-coxgs-0:ha2']
-    - endpoints: ['agsr-coxgs-0.2:Te2/1/3',   'fw-coxgs-0:ethernet1/2']
-    - endpoints: ['agsr-coxgs-0.2:Te2/1/10',  'fw-coxgs-0:ethernet1/3']
-    - endpoints: ['agsr-coxgs-0.2:Te2/1/11',  'fw-coxgs-0:ethernet1/4']
+    - endpoints: ['agsr-coxgs-0.1:Te1/1/3',         'fw-coxgs-0:ethernet1/1']
+    - endpoints: ['agsr-coxgs-0.1:Te1/1/9',         'fw-coxgs-0:ha1']
+    - endpoints: ['agsr-coxgs-0.1:Te1/1/10',        'fw-coxgs-0:ha2']
+    - endpoints: ['agsr-coxgs-0.2:Te2/1/3',         'fw-coxgs-0:ethernet1/2']
+    - endpoints: ['agsr-coxgs-0.2:Te2/1/10',        'fw-coxgs-0:ethernet1/3']
+    - endpoints: ['agsr-coxgs-0.2:Te2/1/11',        'fw-coxgs-0:ethernet1/4']
 
     # agsrs to ext routers
-    - endpoints: ['agsr-coxgs-0.1:Te1/1/7',   'vpnr-coxgs-1:internal2']
-    - endpoints: ['agsr-coxgs-0.2:Te2/1/9',   'esr-cloin-2:Ethernet50']
+    - endpoints: ['agsr-coxgs-0.1:Te1/1/7',         'vpnr-coxgs-1:internal2']
+    - endpoints: ['agsr-coxgs-0.2:Te2/1/9',         'esr-cloin-2:Ethernet50']
 
     # spines to csrs
     - endpoints: ['spine-coxgs-1:Ethernet5/1',      'csr-coxgs-0a:Ethernet1/5']
