@@ -18,6 +18,8 @@ class Link:
         self.exitY = kwargs.get("exitY", 0)
         self.entryX = kwargs.get("entryX", 0)
         self.exitX = kwargs.get("exitX", 0)
+        # Store labels from the YAML link definition
+        self.labels = kwargs.get("labels", {})
 
     def set_styles(self, **kwargs):
         self.base_style = kwargs.get("base_style", self.base_style)

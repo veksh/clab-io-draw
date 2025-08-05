@@ -135,6 +135,7 @@ class NodeLinkBuilder:
                             "target": target_node,
                             "source_intf": source_intf,
                             "target_intf": target_intf,
+                            "labels": link.get("labels", {}),  # Extract labels from YAML
                         }
                     )
 
@@ -154,6 +155,7 @@ class NodeLinkBuilder:
                     src_label_style=self.styles.get("src_label_style", ""),
                     trgt_label_style=self.styles.get("trgt_label_style", ""),
                     direction="downstream",
+                    labels=link_data.get("labels", {}),  # Pass labels to Link
                 )
                 upstream_link = Link(
                     source=target_node,
@@ -165,6 +167,7 @@ class NodeLinkBuilder:
                     src_label_style=self.styles.get("src_label_style", ""),
                     trgt_label_style=self.styles.get("trgt_label_style", ""),
                     direction="upstream",
+                    labels=link_data.get("labels", {}),  # Pass labels to Link
                 )
                 links.append(downstream_link)
                 links.append(upstream_link)

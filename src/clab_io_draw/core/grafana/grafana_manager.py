@@ -159,6 +159,12 @@ class GrafanaDashboard:
         thresholds_traffic_config = self.grafana_config["thresholds"].get("traffic", [])
         label_cfg = self.grafana_config["label_config"]
 
+        # Collect all traffic-* thresholds
+        traffic_thresholds = {"traffic": thresholds_traffic_config}
+        for k, v in self.grafana_config["thresholds"].items():
+            if k.startswith("traffic-"):
+                traffic_thresholds[k] = v
+
         # Build the oper-state thresholds
         thresholds_operstate = CommentedSeq()
         for item in thresholds_operstate_config:
@@ -167,11 +173,17 @@ class GrafanaDashboard:
             )
         thresholds_operstate.yaml_set_anchor("thresholds-operstate", always_dump=True)
 
-        # Build the traffic thresholds
-        thresholds_traffic = CommentedSeq()
-        for item in thresholds_traffic_config:
-            thresholds_traffic.append({"color": item["color"], "level": item["level"]})
-        thresholds_traffic.yaml_set_anchor("thresholds-traffic", always_dump=True)
+        # Build all traffic thresholds and anchors
+        thresholds_traffic_anchors = {}
+        for k, v in traffic_thresholds.items():
+            seq = CommentedSeq()
+            for item in v:
+                seq.append({"color": item["color"], "level": item["level"]})
+            anchor_name = "thresholds-" + k.replace("_", "-")
+            seq.yaml_set_anchor(anchor_name, always_dump=True)
+            thresholds_traffic_anchors[k] = seq
+        # Default traffic anchor
+        thresholds_traffic = thresholds_traffic_anchors["traffic"]
 
         label_config_map = CommentedMap()
         label_config_map["separator"] = label_cfg.get("separator", "replace")
@@ -182,7 +194,8 @@ class GrafanaDashboard:
 
         root["anchors"] = anchors = CommentedMap()
         anchors["thresholds-operstate"] = thresholds_operstate
-        anchors["thresholds-traffic"] = thresholds_traffic
+        for k, v in thresholds_traffic_anchors.items():
+            anchors["thresholds-" + k.replace("_", "-")] = v
         anchors["label-config"] = label_config_map
 
         root["cellIdPreamble"] = "cell-"
@@ -234,8 +247,48 @@ class GrafanaDashboard:
             )
             dataRef_traffic = f"{dataref_source}:{source_intf}:out"
 
+            # Determine link-speed for threshold selection
+            link_speed = None
+            # Debug the link object structure
+            logger.debug(f"Processing link: {link}")
+            logger.debug(f"Link labels: {getattr(link, 'labels', None)}")
+            logger.debug(f"Link source: {link.source}, labels: {getattr(link.source, 'labels', None)}")
+            logger.debug(f"Link target: {link.target}, labels: {getattr(link.target, 'labels', None)}")
+
+            # 1. Check link labels first - they have priority
+            if hasattr(link, 'labels') and isinstance(link.labels, dict):
+                # Direct label access, no .get() to see if key exists at all
+                link_speed = link.labels.get('link-speed')
+                logger.debug(f"Found link-level speed: {link_speed}")
+
+            # 2. Only if no link-level speed defined, check nodes
+            if link_speed is None:
+                # Source node
+                if hasattr(link.source, 'labels') and isinstance(link.source.labels, dict):
+                    link_speed = link.source.labels.get('link-speed')
+                    logger.debug(f"Found source node speed: {link_speed}")
+
+                # Target node - only check if still no speed found
+                if link_speed is None and hasattr(link.target, 'labels') and isinstance(link.target.labels, dict):
+                    link_speed = link.target.labels.get('link-speed')
+                    logger.debug(f"Found target node speed: {link_speed}")
+
+            # 4. Normalize and build anchor name
+            anchor_key = "traffic"
+            if link_speed is not None:
+                # Accept values like '1G', '10G', '100G', case-insensitive
+                speed_key = str(link_speed).strip().upper()
+                anchor_candidate = f"traffic-{speed_key}"
+                # Case-insensitive lookup in available anchors
+                anchor_map = {k.upper(): k for k in thresholds_traffic_anchors.keys()}
+                if anchor_candidate.upper() in anchor_map:
+                    anchor_key = anchor_map[anchor_candidate.upper()]
+                    logger.debug(f"Using {anchor_key} threshold for link with speed {link_speed}")
+                else:
+                    logger.warning(f"No threshold found for link speed {link_speed}, using default traffic threshold")
+            
             strokeColor_traffic = CommentedMap()
-            strokeColor_traffic["thresholds"] = thresholds_traffic
+            strokeColor_traffic["thresholds"] = thresholds_traffic_anchors[anchor_key]
 
             cell_traffic = CommentedMap()
             cell_traffic["dataRef"] = dataRef_traffic
