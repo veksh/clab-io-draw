@@ -7,9 +7,12 @@
 name: coxgs
 topology:
   kinds:
-    arista:
+    arista-core:
       image: some_eos
       type: eos
+    arista-leaf:
+      image: some_eos
+      type: eos      
     cisco4500:
       image: ios_xr_4500
       type: ios
@@ -74,17 +77,17 @@ topology:
         link-speed: 10G
 
     spine-coxgs-1:
-      kind: arista
+      kind: arista-core
       labels:
         graph-level: 3
         graph-icon: switch
-        # link-speed: 10G
+        link-speed: 10G
     spine-coxgs-2:
-      kind: arista
+      kind: arista-core
       labels:
         graph-level: 3
         graph-icon: switch
-        # link-speed: 10G
+        link-speed: 10G
 
     csr-coxgs-0a:
       kind: cisco-nexus
@@ -94,6 +97,19 @@ topology:
         link-speed: 10G
     csr-coxgs-0b:
       kind: cisco-nexus
+      labels:
+        graph-level: 4
+        graph-icon: switch
+        link-speed: 10G
+
+    leaf-coxgs-1:
+      kind: arista-leaf
+      labels:
+        graph-level: 4
+        graph-icon: switch
+        link-speed: 10G
+    leaf-coxgs-2:
+      kind: arista-leaf
       labels:
         graph-level: 4
         graph-icon: switch
@@ -155,6 +171,22 @@ topology:
     # this one is full speed at 10G
     - endpoints: ['agsr-coxgs-0.2:Te2/1/9',         'esr-cloin-2:Ethernet50']
 
+    # spines to leafs: 100G routed
+    - endpoints: ['spine-coxgs-1:Ethernet63/1',     'leaf-coxgs-1:Ethernet50/1']
+      labels: {link-speed: 100G}
+    - endpoints: ['spine-coxgs-1:Ethernet64/1',     'leaf-coxgs-2:Ethernet50/1']
+      labels: {link-speed: 100G}    
+    - endpoints: ['spine-coxgs-2:Ethernet63/1',     'leaf-coxgs-1:Ethernet49/1']
+      labels: {link-speed: 100G}    
+    - endpoints: ['spine-coxgs-2:Ethernet64/1',     'leaf-coxgs-2:Ethernet49/1']
+      labels: {link-speed: 100G}    
+
+    # leafs peer links: also 100G
+    - endpoints: ['leaf-coxgs-1:Ethernet51/1',     'leaf-coxgs-2:Ethernet51/1']
+      labels: {link-speed: 100G}    
+    - endpoints: ['leaf-coxgs-1:Ethernet52/1',     'leaf-coxgs-2:Ethernet52/1']
+      labels: {link-speed: 100G}
+
     # spines to csrs
     - endpoints: ['spine-coxgs-1:Ethernet5/1',      'csr-coxgs-0a:Ethernet1/5']
     - endpoints: ['spine-coxgs-1:Ethernet5/2',      'csr-coxgs-0a:Ethernet1/6']
@@ -175,8 +207,6 @@ topology:
     - endpoints: ['spine-coxgs-2:Ethernet6/2',      'csr-coxgs-0b:Ethernet1/9']
     - endpoints: ['spine-coxgs-2:Ethernet6/3',      'csr-coxgs-0b:Ethernet2/7']
     - endpoints: ['spine-coxgs-2:Ethernet6/4',      'csr-coxgs-0b:Ethernet2/8']
-
-    # not on manual diagram from this point
 
     # csr-0 peer links
     - endpoints: ['csr-coxgs-0a:Ethernet1/1',       'csr-coxgs-0b:Ethernet1/2']
