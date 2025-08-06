@@ -1,7 +1,6 @@
 import logging
 import math
 # import re
-from random import SystemRandom
 
 logger = logging.getLogger(__name__)
 
@@ -10,6 +9,14 @@ class DiagramBuilder:
     """
     Builds diagram elements such as nodes, ports, and links into the Draw.io diagram.
     """
+
+    @staticmethod
+    def _round_port_position(x, y):
+        """
+        Round port positions to avoid floating point precision issues.
+        Returns a tuple (x, y) with coordinates rounded to nearest integer.
+        """
+        return (round(x), round(y))
 
     def add_ports(self, diagram, styles, _verbose=True):
         """
@@ -46,10 +53,12 @@ class DiagramBuilder:
                     node_ports_by_edge[node.name][edge].append(link)
 
             # Second pass: assign positions to ports based on their edge and count
-            for node_name, edges in node_ports_by_edge.items():
+            for node_name in sorted(node_ports_by_edge.keys()):
+                edges = node_ports_by_edge[node_name]
                 node = nodes[node_name]
 
-                for edge, links in edges.items():
+                for edge in sorted(edges.keys()):
+                    links = edges[edge]
                     if not links:
                         continue
 
@@ -96,7 +105,10 @@ class DiagramBuilder:
                                     + styles["node_height"]
                                     - styles["port_height"] / 2
                                 )
-                                link.port_pos = (port_x, port_y)
+                                # Round to avoid floating point precision issues
+                                port_x = round(port_x)
+                                port_y = round(port_y)
+                                link.port_pos = self._round_port_position(port_x, port_y)
                         elif direction == "upstream":
                             sorted_links = sorted(
                                 group,
@@ -114,7 +126,10 @@ class DiagramBuilder:
                                     - styles["port_width"] / 2
                                 )
                                 port_y = node.pos_y - styles["port_height"] / 2
-                                link.port_pos = (port_x, port_y)
+                                # Round to avoid floating point precision issues
+                                port_x = round(port_x)
+                                port_y = round(port_y)
+                                link.port_pos = self._round_port_position(port_x, port_y)
                         else:  # lateral
                             sorted_links = sorted(
                                 group,
@@ -139,7 +154,10 @@ class DiagramBuilder:
                                     + (i + 1) * total_spacing
                                     - styles["port_height"] / 2
                                 )
-                                link.port_pos = (port_x, port_y)
+                                # Round to avoid floating point precision issues
+                                port_x = round(port_x)
+                                port_y = round(port_y)
+                                link.port_pos = self._round_port_position(port_x, port_y)
                     else:
                         # horizontal layout
                         if direction == "downstream":
@@ -163,7 +181,10 @@ class DiagramBuilder:
                                     + (i + 1) * total_spacing
                                     - styles["port_height"] / 2
                                 )
-                                link.port_pos = (port_x, port_y)
+                                # Round to avoid floating point precision issues
+                                port_x = round(port_x)
+                                port_y = round(port_y)
+                                link.port_pos = self._round_port_position(port_x, port_y)
 
                         elif direction == "upstream":
                             sorted_links = sorted(
@@ -182,7 +203,10 @@ class DiagramBuilder:
                                     + (i + 1) * total_spacing
                                     - styles["port_height"] / 2
                                 )
-                                link.port_pos = (port_x, port_y)
+                                # Round to avoid floating point precision issues
+                                port_x = round(port_x)
+                                port_y = round(port_y)
+                                link.port_pos = self._round_port_position(port_x, port_y)
                         else:  # lateral
                             sorted_links = sorted(
                                 group,
@@ -207,7 +231,10 @@ class DiagramBuilder:
                                     + (i + 1) * total_spacing
                                     - styles["port_width"] / 2
                                 )
-                                link.port_pos = (port_x, port_y)
+                                # Round to avoid floating point precision issues
+                                port_x = round(port_x)
+                                port_y = round(port_y)
+                                link.port_pos = self._round_port_position(port_x, port_y)
 
         # stolen from below
         def format_interface_name_port(intf_name):
@@ -263,31 +290,34 @@ class DiagramBuilder:
                         connector_dict[link.target.name] = []
                     connector_dict[link.target.name].append(target_cID)
 
-                    # Adjust port positions if mismatch
-                    source_downstream_links = link.source.get_downstream_links()
-                    target_upstream_links = link.target.get_upstream_links()
-                    if (
-                        diagram.layout == "vertical"
-                        and link.source.pos_x == link.target.pos_x
-                        and len(source_downstream_links) != len(target_upstream_links)
-                    ):
-                        if len(source_downstream_links) < len(target_upstream_links):
-                            adjusted_x = target_connector_pos[0]
-                            source_connector_pos = (adjusted_x, source_connector_pos[1])
-                        else:
-                            adjusted_x = source_connector_pos[0]
-                            target_connector_pos = (adjusted_x, target_connector_pos[1])
-                    elif (
-                        diagram.layout == "horizontal"
-                        and link.source.pos_y == link.target.pos_y
-                        and len(source_downstream_links) != len(target_upstream_links)
-                    ):
-                        if len(source_downstream_links) < len(target_upstream_links):
-                            adjusted_y = target_connector_pos[1]
-                            source_connector_pos = (source_connector_pos[0], adjusted_y)
-                        else:
-                            adjusted_y = source_connector_pos[1]
-                            target_connector_pos = (target_connector_pos[0], adjusted_y)
+                    # Adjust port positions if mismatch - but only for non-fixed layouts
+                    # For fixed positions (has_predefined_positions), the edge-based algorithm 
+                    # already handles proper port placement, so skip this adjustment
+                    if not has_predefined_positions:
+                        source_downstream_links = link.source.get_downstream_links()
+                        target_upstream_links = link.target.get_upstream_links()
+                        if (
+                            diagram.layout == "vertical"
+                            and link.source.pos_x == link.target.pos_x
+                            and len(source_downstream_links) != len(target_upstream_links)
+                        ):
+                            if len(source_downstream_links) < len(target_upstream_links):
+                                adjusted_x = target_connector_pos[0]
+                                source_connector_pos = (adjusted_x, source_connector_pos[1])
+                            else:
+                                adjusted_x = source_connector_pos[0]
+                                target_connector_pos = (adjusted_x, target_connector_pos[1])
+                        elif (
+                            diagram.layout == "horizontal"
+                            and link.source.pos_y == link.target.pos_y
+                            and len(source_downstream_links) != len(target_upstream_links)
+                        ):
+                            if len(source_downstream_links) < len(target_upstream_links):
+                                adjusted_y = target_connector_pos[1]
+                                source_connector_pos = (source_connector_pos[0], adjusted_y)
+                            else:
+                                adjusted_y = source_connector_pos[1]
+                                target_connector_pos = (target_connector_pos[0], adjusted_y)
 
                     # Add source and target connector nodes
                     diagram.add_node(
@@ -327,10 +357,16 @@ class DiagramBuilder:
                         # Place midpoint exactly in the center
                         pass  # midpoint_center_x, midpoint_center_y already set
                     else:
-                        _sysrand = SystemRandom()
-                        random_offset = _sysrand.choice(
-                            [_sysrand.uniform(-20, -10), _sysrand.uniform(10, 20)]
-                        )
+                        # Use deterministic offset based on link endpoints to avoid randomness
+                        # Create a consistent offset based on the link characteristics
+                        # Use deterministic checksum instead of hash() for consistent results
+                        link_names = sorted([link.source.name, link.source_intf, link.target.name, link.target_intf])
+                        combined_string = "|".join(link_names)
+                        link_hash = sum(ord(c) for c in combined_string)
+                        # Use modulo to get consistent offset direction
+                        offset_direction = 1 if (link_hash % 2) == 0 else -1
+                        offset_magnitude = 15  # Fixed offset magnitude instead of random
+                        
                         dx = target_center[0] - source_center[0]
                         dy = target_center[1] - source_center[1]
                         magnitude = (dx**2 + dy**2) ** 0.5
@@ -341,11 +377,18 @@ class DiagramBuilder:
                             direction_dx = 0
                             direction_dy = 0
 
-                        midpoint_center_x += direction_dx * random_offset
-                        midpoint_center_y += direction_dy * random_offset
+                        # Apply deterministic offset perpendicular to the link direction
+                        perp_dx = -direction_dy
+                        perp_dy = direction_dx
+                        midpoint_center_x += perp_dx * offset_magnitude * offset_direction
+                        midpoint_center_y += perp_dy * offset_magnitude * offset_direction
 
                     midpoint_top_left_x = midpoint_center_x - 2
                     midpoint_top_left_y = midpoint_center_y - 2
+                    
+                    # Round to avoid floating point precision issues
+                    midpoint_top_left_x = round(midpoint_top_left_x, 1)
+                    midpoint_top_left_y = round(midpoint_top_left_y, 1)
 
                     midpoint_id = f"mid:{link.source.name}:{link.source_intf}:{link.target.name}:{link.target_intf}"
                     diagram.add_node(
@@ -374,7 +417,8 @@ class DiagramBuilder:
                     )
 
         # Create groups for each node + connectors
-        for node_name, connector_ids in connector_dict.items():
+        for node_name in sorted(connector_dict.keys()):
+            connector_ids = connector_dict[node_name]
             group_id = f"group-{node_name}"
             member_objects = connector_ids + [node_name]
             diagram.group_nodes(
@@ -430,7 +474,12 @@ class DiagramBuilder:
                 else:
                     # Very similar positions - use deterministic distribution
                     # This helps avoid all ports going to the same edge
-                    combined_hash = hash((node.name, target.name)) % 4
+                    # Use a stable hash based on sorted node names for consistency
+                    # Use a more deterministic approach than Python's hash() which can vary
+                    names_sorted = sorted([node.name, target.name])
+                    combined_string = "|".join(names_sorted)
+                    # Use a simple checksum instead of hash() for deterministic results
+                    combined_hash = sum(ord(c) for c in combined_string) % 4
                     if combined_hash < 2:
                         return "top"
                     else:
@@ -451,6 +500,13 @@ class DiagramBuilder:
 
         if num_ports == 0:
             return
+
+        # Debug for the problematic connection
+        debug_node = False
+        if debug_node:
+            print(f"DISTRIBUTE DEBUG: Node {node.name}, Edge {edge}, Num ports: {num_ports}")
+            print(f"  Node dimensions: {node_width}x{node_height}")
+            print(f"  Port dimensions: {port_width}x{port_height}")
 
         if edge in ("left", "right"):
             # Vertical distribution on left/right edges
@@ -480,17 +536,33 @@ class DiagramBuilder:
             center_y = node.pos_y + node_height / 2.0
             start_y = center_y - group_height / 2.0
             
+            if debug_node:
+                print(f"  Available height: {round(node_height * 0.8)}, Total spacing: {round(total_spacing, 2)}")
+                print(f"  Group height: {round(group_height)}, Center Y: {round(center_y)}, Start Y: {round(start_y)}")
+            
             for i, link in enumerate(links):
                 if num_ports == 1:
                     port_y = center_y - port_height / 2
                 else:
                     port_y = start_y + i * total_spacing - port_height / 2
                 
+                if debug_node and link.source_intf == "Ethernet1/15":
+                    print(f"  Link {i} ({link.source_intf}): port_y = {round(port_y, 1)} (before rounding)")
+                
+                # Round to avoid floating point precision issues
+                port_y = round(port_y)
+                
+                if debug_node and link.source_intf == "Ethernet1/15":
+                    print(f"  Link {i} ({link.source_intf}): port_y = {port_y} (after rounding)")
+                
                 if edge == "left":
                     port_x = node.pos_x - port_width / 2
                 else:
                     port_x = node.pos_x + node_width - port_width / 2
-                link.port_pos = (port_x, port_y)
+                
+                # Round to avoid floating point precision issues
+                port_x = round(port_x)
+                link.port_pos = self._round_port_position(port_x, port_y)
 
         elif edge in ("top", "bottom"):
             # Horizontal distribution on top/bottom edges
@@ -526,11 +598,17 @@ class DiagramBuilder:
                 else:
                     port_x = start_x + i * total_spacing - port_width / 2
                 
+                # Round to avoid floating point precision issues
+                port_x = round(port_x)
+                
                 if edge == "top":
                     port_y = node.pos_y - port_height / 2
                 else:
                     port_y = node.pos_y + node_height - port_height / 2
-                link.port_pos = (port_x, port_y)
+                
+                # Round to avoid floating point precision issues
+                port_y = round(port_y)
+                link.port_pos = self._round_port_position(port_x, port_y)
 
     # not really used for grafana diagram generation -- "add_port" creates all the links, see above
     def add_links(self, diagram, styles):
@@ -550,7 +628,8 @@ class DiagramBuilder:
 
         # IMPORTANT ADDITION: Calculate port positions even if we don't render them
         # This ensures consistent link placement between port and non-port themes
-        if not styles.get("ports", False):
+        # BUT only if we haven't already calculated them with the edge-based algorithm
+        if not styles.get("ports", False) and not has_predefined_positions:
             # Calculate virtual port positions that we'll use for entry/exit points
             temp_port_styles = styles.copy()
             temp_port_styles["port_width"] = styles.get("port_width", 10)
@@ -573,7 +652,8 @@ class DiagramBuilder:
                         node_ports_by_edge[edge].append(link)
 
                     # Distribute ports along each edge
-                    for edge, edge_links in node_ports_by_edge.items():
+                    for edge in sorted(node_ports_by_edge.keys()):
+                        edge_links = node_ports_by_edge[edge]
                         if edge_links:
                             # Sort links the same way we would with ports
                             if edge in ("top", "bottom"):
@@ -618,7 +698,7 @@ class DiagramBuilder:
                                         + temp_port_styles["node_height"]
                                         - temp_port_styles["port_height"] / 2
                                     )
-                                    link.port_pos = (port_x, port_y)
+                                    link.port_pos = self._round_port_position(port_x, port_y)
                             elif direction == "upstream":
                                 sorted_links = sorted(
                                     group,
@@ -640,7 +720,7 @@ class DiagramBuilder:
                                     port_y = (
                                         node.pos_y - temp_port_styles["port_height"] / 2
                                     )
-                                    link.port_pos = (port_x, port_y)
+                                    link.port_pos = self._round_port_position(port_x, port_y)
                             else:  # lateral
                                 sorted_links = sorted(
                                     group,
@@ -670,7 +750,7 @@ class DiagramBuilder:
                                         + (i + 1) * spacing
                                         - temp_port_styles["port_height"] / 2
                                     )
-                                    link.port_pos = (port_x, port_y)
+                                    link.port_pos = self._round_port_position(port_x, port_y)
                         else:
                             # horizontal layout
                             if direction == "downstream":
@@ -696,7 +776,7 @@ class DiagramBuilder:
                                         + (i + 1) * spacing
                                         - temp_port_styles["port_height"] / 2
                                     )
-                                    link.port_pos = (port_x, port_y)
+                                    link.port_pos = self._round_port_position(port_x, port_y)
                             elif direction == "upstream":
                                 sorted_links = sorted(
                                     group,
@@ -718,7 +798,7 @@ class DiagramBuilder:
                                         + (i + 1) * spacing
                                         - temp_port_styles["port_height"] / 2
                                     )
-                                    link.port_pos = (port_x, port_y)
+                                    link.port_pos = self._round_port_position(port_x, port_y)
                             else:  # lateral
                                 sorted_links = sorted(
                                     group,
@@ -748,7 +828,7 @@ class DiagramBuilder:
                                         + (i + 1) * spacing
                                         - temp_port_styles["port_width"] / 2
                                     )
-                                    link.port_pos = (port_x, port_y)
+                                    link.port_pos = self._round_port_position(port_x, port_y)
 
         # Function to format interface names to be more compact if enabled
         def format_interface_name(intf_name):

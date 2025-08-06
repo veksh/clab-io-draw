@@ -193,8 +193,9 @@ def main(
                     and str(node.pos_x).strip() != ""
                     and str(node.pos_y).strip() != ""
                 ):
-                    node.pos_x = int(node.pos_x) * x_scale
-                    node.pos_y = int(node.pos_y) * y_scale
+                    # Round more aggressively to eliminate floating point precision issues
+                    node.pos_x = round(int(node.pos_x) * x_scale)
+                    node.pos_y = round(int(node.pos_y) * y_scale)
             except (ValueError, TypeError):
                 logger.debug(
                     f"Could not convert position for node {node.name}, will use layout position"
