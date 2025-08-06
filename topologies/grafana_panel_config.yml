@@ -35,33 +35,41 @@ thresholds:
     - { color: 'orange', level: 1000000 }
     - { color: 'red',    level: 5000000 }
 
-  # to make it a bit more dramatic: limit at 5MB/s, like 1/2 of real bw
+  # units are bps (octets*8) to match iface rate
   traffic-1G:
-    # grey to (dark-)green if inactive
-    - {color: "#303030",    level:           0}
-    # dark green to green if slow
-    #- {color: "dark-green", level:          10}
-    # green to red if loaded
-    - {color: "green",      level:       10000}
-    # and red if overloaded (currently at 50% of the link == 50MB/s or 50000000 Bps)
-    - {color: "red",        level:    50000000}
-  # to make it a bit more dramatic: limit at 200MB/s, like 1/2 of real bw of 1000MB/s or 10,000,000,000
+    # grey if inactive
+    - {color: "#303030",    level:            0}
+    # from 0 to 100Mb/s: shades of green
+    - {color: "green",      level:    100000000}
+    # from 100 to 500Mb/s: shades from green to yellow
+    - {color: "yellow",     level:    500000000}
+    # from 500Mb/s to 1Gb/s: shades from yellow to red
+    - {color: "dark-red",   level:   1000000000}
   traffic-10G:
     # grey if inactive
-    - {color: "#303030",    level:           0}
-    - {color: "green",      level:       10000}
-    - {color: "red",        level:   500000000}
-  # to make it a bit more dramatic: limit at 2000MB/s, like 1/5 of real bw
+    - {color: "#303030",    level:            0}
+    # from 0 to 1Gb/s: shades of green
+    - {color: "green",      level:   1000000000}
+    # from 1 to 5Gb/s: shades from green to yellow
+    - {color: "yellow",     level:   5000000000}
+    # from 5 to 10Gb/s: shades from yellow to red
+    - {color: "dark-red",   level:  10000000000}
   traffic-100G:
-    - {color: "#303030",    level:           0}
-    - {color: "green",      level:       10000}
-    - {color: "red",        level:  2000000000}
+    # grey if inactive
+    - {color: "#303030",    level:            0}
+    # from 0 to 10Gb/s: shades of green
+    - {color: "green",      level:  10000000000}
+    # from 10 to 50Gb/s: shades from green to yellow
+    - {color: "yellow",     level:  50000000000}
+    # from 50 to 100Gb/s: shades from yellow to red
+    - {color: "dark-red",   level: 100000000000}
 
 label_config:
   separator: "replace"
   units: "bps"
   gradientMode: "hue"
   decimalPoints: 1
+  # hide until 1Mb/s
   valueMappings:
-    - { valueMax: 199999, text: "\u200B" }
-    - { valueMin: 200000 }
+    - { valueMax:  999999, text: "\u200B" }
+    - { valueMin: 1000000 }
