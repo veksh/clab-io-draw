@@ -267,12 +267,17 @@ def main(
     if grafana:
         styles["ports"] = True
 
+    if not output_file:
+        output_file = os.path.splitext(input_file)[0] + ".drawio"
+
+    output_folder = os.path.dirname(output_file) or "."
+    output_filename = os.path.basename(output_file)
+    os.makedirs(output_folder, exist_ok=True)
+
     if styles["ports"]:
         logger.debug("Adding ports and generating Grafana dashboard...")
         diagram_builder.add_ports(diagram, styles)
-        if not output_file:
-            grafana_output_file = os.path.splitext(input_file)[0] + ".grafana.json"
-        output_folder = os.path.dirname(grafana_output_file) or "."
+        grafana_output_file = os.path.splitext(output_file)[0] + ".grafana.json"
         diagram.grafana_dashboard_file = grafana_output_file
         os.makedirs(output_folder, exist_ok=True)
 

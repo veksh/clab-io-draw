@@ -2,7 +2,7 @@
 # source venv/bin/activate
 # export PYTHONPATH=./src
 # python ./src/clab_io_draw/clab2drawio.py -i lab-examples/coxgs.yml -g --theme grafana [--layout horizontal]
-# python ./src/clab_io_draw/clab2drawio.py -i topologies/coxgs.yml -g --theme grafana --grafana-config topologies/grafana_panel_config.yml --layout horizontal
+# python ./src/clab_io_draw/clab2drawio.py -i topologies/coxgs.yml -g --theme grafana --grafana-config topologies/grafana_panel_config.yml --layout horizontal [-o topologies/coxgs.drawio]
 
 name: coxgs
 topology:
