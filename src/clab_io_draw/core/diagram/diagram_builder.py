@@ -53,11 +53,13 @@ class DiagramBuilder:
                     if not links:
                         continue
 
-                    # Sort links to ensure consistent order
+                    # Sort links to ensure consistent and intuitive order
                     if edge in ("top", "bottom"):
-                        links.sort(key=lambda link: link.target.pos_x)
+                        # For horizontal edges, sort by target X position first, then by target name for consistency
+                        links.sort(key=lambda link: (link.target.pos_x, link.target.name))
                     else:  # left or right
-                        links.sort(key=lambda link: link.target.pos_y)
+                        # For vertical edges, sort by target Y position first, then by target name for consistency
+                        links.sort(key=lambda link: (link.target.pos_y, link.target.name))
 
                     # Distribute ports on the edge
                     self._distribute_ports_on_edge(node, links, edge, styles)
@@ -395,27 +397,49 @@ class DiagramBuilder:
         dx = target_center_x - node_center_x
         dy = target_center_y - node_center_y
 
-        # Define Y-position threshold for considering nodes at similar height
-        y_threshold = node.height * 1.2  # 120% of node height
-
         if layout == "vertical":
             # In vertical layout, prioritize top/bottom connections
+            # Define Y-position threshold for considering nodes at similar height
+            y_threshold = node.height * 1.2  # 120% of node height
             if abs(dy) > y_threshold:
                 # Target is significantly above or below
                 return "top" if dy < 0 else "bottom"
             # Target is roughly at same height, use left/right
             return "left" if dx < 0 else "right"
-        # In horizontal layout, prioritize left/right connections
-        if abs(dx) > node.width:
-            # Target is significantly left or right
-            return "left" if dx < 0 else "right"
-        # Target is roughly at same vertical position, use top/bottom
-        return "top" if dy < 0 else "bottom"
+        else:
+            # In horizontal layout, prioritize left/right connections for significant distance
+            # Use larger threshold to prefer left/right when possible
+            x_threshold = node.width * 1.5  # Increased threshold
+            if abs(dx) > x_threshold:
+                # Target is significantly left or right
+                return "left" if dx < 0 else "right"
+            
+            # For nodes at similar horizontal positions, use intelligent top/bottom assignment
+            # Consider the angle to the target to make a better decision
+            angle = math.atan2(dy, abs(dx)) if abs(dx) > 1e-6 else math.pi/2 if dy > 0 else -math.pi/2
+            angle_degrees = abs(math.degrees(angle))
+            
+            # If the angle is steep (close to vertical), prefer top/bottom
+            if angle_degrees > 45:  # More vertical than horizontal
+                return "top" if dy < 0 else "bottom"
+            else:
+                # For shallow angles, still prefer top/bottom but distribute better
+                # Use a combination of relative position and node name hash for consistency
+                if abs(dy) > node.height * 0.2:  # Small threshold for clear direction
+                    return "top" if dy < 0 else "bottom"
+                else:
+                    # Very similar positions - use deterministic distribution
+                    # This helps avoid all ports going to the same edge
+                    combined_hash = hash((node.name, target.name)) % 4
+                    if combined_hash < 2:
+                        return "top"
+                    else:
+                        return "bottom"
 
     def _distribute_ports_on_edge(self, node, links, edge, styles):
         """
         Distribute ports with constant spacing (port_padding_x/y), centered as a group on the edge.
-        U
+        Ensures ports are always evenly distributed along the edge to prevent overlapping.
         """
         port_width = styles["port_width"]
         port_height = styles["port_height"]
@@ -429,17 +453,39 @@ class DiagramBuilder:
             return
 
         if edge in ("left", "right"):
-            # If port_padding_y is specified, use it as padding
-            # Otherwise, calculate spacing to distribute ports evenly
-            if "port_padding_y" in styles:
-                total_spacing = port_height + styles["port_padding_y"]
+            # Vertical distribution on left/right edges
+            # Always ensure even distribution regardless of padding settings
+            if "port_padding_y" in styles and num_ports > 1:
+                # Use specified padding, but ensure we don't exceed node height
+                requested_spacing = port_height + styles["port_padding_y"]
+                total_height_needed = (num_ports - 1) * requested_spacing
+                
+                # If the requested spacing would exceed the node height, adjust it
+                if total_height_needed > node_height * 0.8:  # Use 80% of node height max
+                    total_spacing = (node_height * 0.8) / (num_ports - 1) if num_ports > 1 else 0
+                else:
+                    total_spacing = requested_spacing
             else:
-                total_spacing = node_height / (num_ports + 1)
-            group_height = total_spacing * (num_ports - 1)
+                # Calculate even distribution across the available space
+                # Use 80% of node height to avoid ports being too close to edges
+                available_height = node_height * 0.8
+                total_spacing = available_height / (num_ports + 1)
+            
+            # Calculate group positioning
+            if num_ports == 1:
+                group_height = 0
+            else:
+                group_height = (num_ports - 1) * total_spacing
+            
             center_y = node.pos_y + node_height / 2.0
             start_y = center_y - group_height / 2.0
+            
             for i, link in enumerate(links):
-                port_y = start_y + i * total_spacing - port_height / 2
+                if num_ports == 1:
+                    port_y = center_y - port_height / 2
+                else:
+                    port_y = start_y + i * total_spacing - port_height / 2
+                
                 if edge == "left":
                     port_x = node.pos_x - port_width / 2
                 else:
@@ -447,17 +493,39 @@ class DiagramBuilder:
                 link.port_pos = (port_x, port_y)
 
         elif edge in ("top", "bottom"):
-            # If port_padding_x is specified, use it as padding
-            # Otherwise, calculate spacing to distribute ports evenly
-            if "port_padding_x" in styles:
-                total_spacing = port_width + styles["port_padding_x"]
+            # Horizontal distribution on top/bottom edges
+            # Always ensure even distribution regardless of padding settings
+            if "port_padding_x" in styles and num_ports > 1:
+                # Use specified padding, but ensure we don't exceed node width
+                requested_spacing = port_width + styles["port_padding_x"]
+                total_width_needed = (num_ports - 1) * requested_spacing
+                
+                # If the requested spacing would exceed the node width, adjust it
+                if total_width_needed > node_width * 0.8:  # Use 80% of node width max
+                    total_spacing = (node_width * 0.8) / (num_ports - 1) if num_ports > 1 else 0
+                else:
+                    total_spacing = requested_spacing
             else:
-                total_spacing = node_width / (num_ports + 1)
-            group_width = total_spacing * (num_ports - 1)
+                # Calculate even distribution across the available space
+                # Use 80% of node width to avoid ports being too close to edges
+                available_width = node_width * 0.8
+                total_spacing = available_width / (num_ports + 1)
+            
+            # Calculate group positioning
+            if num_ports == 1:
+                group_width = 0
+            else:
+                group_width = (num_ports - 1) * total_spacing
+            
             center_x = node.pos_x + node_width / 2.0
             start_x = center_x - group_width / 2.0
+            
             for i, link in enumerate(links):
-                port_x = start_x + i * total_spacing - port_width / 2
+                if num_ports == 1:
+                    port_x = center_x - port_width / 2
+                else:
+                    port_x = start_x + i * total_spacing - port_width / 2
+                
                 if edge == "top":
                     port_y = node.pos_y - port_height / 2
                 else:
