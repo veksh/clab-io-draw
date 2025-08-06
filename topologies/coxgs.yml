@@ -31,6 +31,20 @@ topology:
 
   nodes:
 
+    spine-coxbc-1:
+      kind: arista-core
+      labels:
+        graph-level: 1
+        graph-icon: switch
+        link-speed: 10G
+
+    spine-coxbc-2:
+      kind: arista-core
+      labels:
+        graph-level: 1
+        graph-icon: switch
+        link-speed: 10G
+
     vpnr-coxgs-1:
       kind: fortigate
       labels:
@@ -170,6 +184,16 @@ topology:
       labels: {link-speed: 1G}
     # this one is full speed at 10G
     - endpoints: ['agsr-coxgs-0.2:Te2/1/9',         'esr-cloin-2:Ethernet50']
+
+    # spines-gs to spines-bc
+    - endpoints: ['spine-coxgs-1:Ethernet3/1',      'spine-coxbc-1:Ethernet3/1']
+      labels: {link-speed: 100G}
+    - endpoints: ['spine-coxgs-1:Ethernet4/1',      'spine-coxbc-2:Ethernet4/1']
+      labels: {link-speed: 100G}
+    - endpoints: ['spine-coxgs-2:Ethernet3/1',      'spine-coxbc-2:Ethernet3/1']
+      labels: {link-speed: 100G}
+    - endpoints: ['spine-coxgs-2:Ethernet4/1',      'spine-coxbc-1:Ethernet4/1']
+      labels: {link-speed: 100G}
 
     # spines to leafs: 100G routed
     - endpoints: ['spine-coxgs-1:Ethernet63/1',     'leaf-coxgs-1:Ethernet50/1']
