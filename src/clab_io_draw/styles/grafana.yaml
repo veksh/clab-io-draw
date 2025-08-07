@@ -18,9 +18,11 @@ pageh: "auto"
 #padding_x:    120
 #padding_y:     60
 
-# ok for horizontal: upto 8 horiz + 4 horiz ports
+# ok for coxgs horizontal: upto 4 horiz + 8 vert (10 if cramped) ports
 node_width:   165
 node_height:  130
+# better for csr-coxgs-0 monster node with 23 ports on one side
+# node_height:  350
 padding_x:    200
 padding_y:     60
 
