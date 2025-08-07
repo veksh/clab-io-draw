@@ -1,5 +1,18 @@
 # Default Grafana Flow Panel configuration is in src/clab_io_draw/core/grafana/default_grafana_panel_config.yml
 
+# expecting 2 queries for now
+# - oper + admin state; legend is "oper-state:clab-coxgs-{{host}}:{{ifName}}"
+#
+# label_replace(
+#    ifAdminStatus{instance=~"(spine-coxgs|etc).*"} - 2 == 0
+#    or on (instance, ifName)
+#    ifOperStatus{ instance=~"(spine-coxgs|etc).*"}, 
+#  "host", "$1", "instance", "([^.]+)\\..*")
+#
+# - traffic in bps: legend is "clab-coxgs-{{host}}:{{ifName}}:out"
+#
+# label_replace(8*rate(ifHCOutOctets{instance=~"(spine-coxgs|etc).*"}[$__rate_interval]), "host", "$1", "instance", "([^.]+)\\..*")
+
 targets:
   - datasource: prometheus
     expr: "interface_oper_state"
@@ -24,8 +37,14 @@ targets:
 
 thresholds:
   operstate:
-    - { color: 'red',   level: 0 }
-    - { color: 'green', level: 1 }
+    # query is designed to return 0 if adminstate is down
+    - {color: "blue",  level:  0}
+    # ok
+    - {color: "green",   level:  1}
+    # oper down but not admin down
+    - {color: "red",     level:  2}
+    # should not happen
+    - {color: "yellow",    level: 10}    
 
   # default
   traffic:

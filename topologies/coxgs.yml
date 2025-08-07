@@ -255,3 +255,7 @@ topology:
     - endpoints: ['csr-coxgs-0b:Ethernet2/13',      'csr-coxgs-1a:Ethernet1/32']
     - endpoints: ['csr-coxgs-0b:Ethernet2/14',      'csr-coxgs-1b:Ethernet1/16']
     - endpoints: ['csr-coxgs-0b:Ethernet2/15',      'csr-coxgs-1b:Ethernet1/32']
+
+    # just an example of an (admin) down interface
+    # btw produces better layout for column 1: esr + fw + vpnr instead of vpnr + fw + esr 
+    # - endpoints: ['spine-coxbc-1:Ethernet16/1',     'vpnr-coxgs-1:internal2']
