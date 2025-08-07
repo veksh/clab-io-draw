@@ -28,6 +28,9 @@ topology:
     cisco-nexus:
       image: old-ios
       type: old-nexus
+    cisco-nexus-fex:
+      image: old-ios
+      type: linecard
 
   nodes:
 

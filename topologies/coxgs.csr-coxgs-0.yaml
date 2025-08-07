@@ -1,0 +1,176 @@
+# git clone https://github.com/srl-labs/clab-io-draw.git
+# source venv/bin/activate
+# export PYTHONPATH=./src
+# python ./src/clab_io_draw/clab2drawio.py -i lab-examples/coxgs.yml -g --theme grafana [--layout horizontal]
+# python ./src/clab_io_draw/clab2drawio.py -i topologies/coxgs.yml -g --theme grafana --grafana-config topologies/grafana_panel_config.yml --layout horizontal [-o topologies/coxgs.drawio]
+
+name: coxgs
+topology:
+  kinds:
+    arista-core:
+      image: some_eos
+      type: eos
+    arista-leaf:
+      image: some_eos
+      type: eos      
+    cisco4500:
+      image: ios_xr_4500
+      type: ios
+    fortigate:
+      image: fortios
+      type: fortios
+    paloalto:
+      image: panos
+      type: paloalto
+    arista-esr:
+      image: old-eos
+      type: old-eos
+    cisco-nexus:
+      image: old-ios
+      type: old-nexus
+    cisco-nexus-fex:
+      image: old-ios
+      type: linecard
+
+  nodes:
+
+    spine-coxgs-1:
+      kind: arista-core
+      labels:
+        graph-level: 1
+        graph-icon: switch
+        link-speed: 10G
+    spine-coxgs-2:
+      kind: arista-core
+      labels:
+        graph-level: 1
+        graph-icon: switch
+        link-speed: 10G
+
+    csr-coxgs-0a:
+      kind: cisco-nexus
+      labels:
+        graph-level: 2
+        graph-icon: switch
+        link-speed: 10G
+    csr-coxgs-0b:
+      kind: cisco-nexus
+      labels:
+        graph-level: 2
+        graph-icon: switch
+        link-speed: 10G
+
+    csr-coxgs-1a:
+      kind: cisco-nexus
+      labels:
+        graph-level: 3
+        graph-icon: switch
+        link-speed: 10G
+    csr-coxgs-1b:
+      kind: cisco-nexus
+      labels:
+        graph-level: 3
+        graph-icon: switch
+        link-speed: 10G
+
+    csr-coxgs-0a-FEX100:
+      kind: cisco-nexus-fex
+      labels:
+        graph-level: 3
+        graph-icon: switch
+        link-speed: 10G
+
+    csr-coxgs-0b-FEX100:
+      kind: cisco-nexus-fex
+      labels:
+        graph-level: 3
+        graph-icon: switch
+        link-speed: 10G
+
+    csr-coxgs-0a-FEX101:
+      kind: cisco-nexus-fex
+      labels:
+        graph-level: 3
+        graph-icon: switch
+        link-speed: 10G
+
+    csr-coxgs-0b-FEX101:
+      kind: cisco-nexus-fex
+      labels:
+        graph-level: 3
+        graph-icon: switch
+        link-speed: 10G
+
+  links:
+
+    # spines to csrs
+    - endpoints: ['spine-coxgs-1:Ethernet5/1',      'csr-coxgs-0a:Ethernet1/5']
+    - endpoints: ['spine-coxgs-1:Ethernet5/2',      'csr-coxgs-0a:Ethernet1/6']
+    - endpoints: ['spine-coxgs-1:Ethernet5/3',      'csr-coxgs-0a:Ethernet2/7']
+    - endpoints: ['spine-coxgs-1:Ethernet5/4',      'csr-coxgs-0a:Ethernet2/8']
+
+    - endpoints: ['spine-coxgs-1:Ethernet6/1',      'csr-coxgs-0b:Ethernet1/5']
+    - endpoints: ['spine-coxgs-1:Ethernet6/2',      'csr-coxgs-0b:Ethernet1/6']
+    - endpoints: ['spine-coxgs-1:Ethernet6/3',      'csr-coxgs-0b:Ethernet1/14']
+    - endpoints: ['spine-coxgs-1:Ethernet6/4',      'csr-coxgs-0b:Ethernet1/16']
+
+    - endpoints: ['spine-coxgs-2:Ethernet5/1',      'csr-coxgs-0a:Ethernet1/15']
+    - endpoints: ['spine-coxgs-2:Ethernet5/2',      'csr-coxgs-0a:Ethernet2/16']
+    - endpoints: ['spine-coxgs-2:Ethernet5/3',      'csr-coxgs-0a:Ethernet1/14']
+    - endpoints: ['spine-coxgs-2:Ethernet5/4',      'csr-coxgs-0a:Ethernet1/16']
+
+    - endpoints: ['spine-coxgs-2:Ethernet6/1',      'csr-coxgs-0b:Ethernet1/15']
+    - endpoints: ['spine-coxgs-2:Ethernet6/2',      'csr-coxgs-0b:Ethernet1/9']
+    - endpoints: ['spine-coxgs-2:Ethernet6/3',      'csr-coxgs-0b:Ethernet2/7']
+    - endpoints: ['spine-coxgs-2:Ethernet6/4',      'csr-coxgs-0b:Ethernet2/8']
+
+    # csr-0 peer links
+    - endpoints: ['csr-coxgs-0a:Ethernet1/1',       'csr-coxgs-0b:Ethernet1/2']
+    - endpoints: ['csr-coxgs-0a:Ethernet1/2',       'csr-coxgs-0b:Ethernet1/1']
+    - endpoints: ['csr-coxgs-0a:Ethernet1/3',       'csr-coxgs-0b:Ethernet1/3']
+    - endpoints: ['csr-coxgs-0a:Ethernet1/4',       'csr-coxgs-0b:Ethernet1/4']
+
+    # csr-1 peer links
+    - endpoints: ['csr-coxgs-1a:Ethernet1/1',       'csr-coxgs-1b:Ethernet1/1']
+    - endpoints: ['csr-coxgs-1a:Ethernet1/2',       'csr-coxgs-1b:Ethernet1/2']
+    - endpoints: ['csr-coxgs-1a:Ethernet1/17',      'csr-coxgs-1b:Ethernet1/17']
+    - endpoints: ['csr-coxgs-1a:Ethernet1/18',      'csr-coxgs-1b:Ethernet1/18']
+
+    # csr-0 to csr-1
+    - endpoints: ['csr-coxgs-0a:Ethernet2/12',      'csr-coxgs-1a:Ethernet1/15']
+    - endpoints: ['csr-coxgs-0a:Ethernet2/13',      'csr-coxgs-1a:Ethernet1/31']
+    - endpoints: ['csr-coxgs-0a:Ethernet2/14',      'csr-coxgs-1b:Ethernet1/15']
+    - endpoints: ['csr-coxgs-0a:Ethernet2/15',      'csr-coxgs-1b:Ethernet1/31']
+
+    - endpoints: ['csr-coxgs-0b:Ethernet2/12',      'csr-coxgs-1a:Ethernet1/16']
+    - endpoints: ['csr-coxgs-0b:Ethernet2/13',      'csr-coxgs-1a:Ethernet1/32']
+    - endpoints: ['csr-coxgs-0b:Ethernet2/14',      'csr-coxgs-1b:Ethernet1/16']
+    - endpoints: ['csr-coxgs-0b:Ethernet2/15',      'csr-coxgs-1b:Ethernet1/32']
+
+    # csr-0 to FEXes
+    - endpoints: ['csr-coxgs-0a:Ethernet1/9',       'csr-coxgs-0a-FEX100:PU1']
+    - endpoints: ['csr-coxgs-0a:Ethernet1/10',      'csr-coxgs-0a-FEX100:PU2']
+    - endpoints: ['csr-coxgs-0a:Ethernet1/11',      'csr-coxgs-0a-FEX100:PU4']
+    - endpoints: ['csr-coxgs-0a:Ethernet1/12',      'csr-coxgs-0a-FEX100:PU3']
+
+    - endpoints: ['csr-coxgs-0b:Ethernet1/10',      'csr-coxgs-0b-FEX100:PU4']
+    - endpoints: ['csr-coxgs-0b:Ethernet1/11',      'csr-coxgs-0b-FEX100:PU1']
+    - endpoints: ['csr-coxgs-0b:Ethernet1/12',      'csr-coxgs-0b-FEX100:PU3']
+  
+    - endpoints: ['csr-coxgs-0a:Ethernet1/17',      'csr-coxgs-0a-FEX101:PU3']
+    - endpoints: ['csr-coxgs-0a:Ethernet1/18',      'csr-coxgs-0a-FEX101:PU2']
+    - endpoints: ['csr-coxgs-0a:Ethernet1/19',      'csr-coxgs-0a-FEX101:PU6']
+    - endpoints: ['csr-coxgs-0a:Ethernet1/20',      'csr-coxgs-0a-FEX101:PU7']
+    - endpoints: ['csr-coxgs-0a:Ethernet1/21',      'csr-coxgs-0a-FEX101:PU8']
+    - endpoints: ['csr-coxgs-0a:Ethernet1/22',      'csr-coxgs-0a-FEX101:PU1']
+    - endpoints: ['csr-coxgs-0a:Ethernet1/23',      'csr-coxgs-0a-FEX101:PU4']
+    - endpoints: ['csr-coxgs-0a:Ethernet1/24',      'csr-coxgs-0a-FEX101:PU5']
+
+    - endpoints: ['csr-coxgs-0b:Ethernet1/17',      'csr-coxgs-0b-FEX101:PU6']
+    - endpoints: ['csr-coxgs-0b:Ethernet1/18',      'csr-coxgs-0b-FEX101:PU1']
+    - endpoints: ['csr-coxgs-0b:Ethernet1/19',      'csr-coxgs-0b-FEX101:PU3']
+    - endpoints: ['csr-coxgs-0b:Ethernet1/20',      'csr-coxgs-0b-FEX101:PU8']
+    - endpoints: ['csr-coxgs-0b:Ethernet1/21',      'csr-coxgs-0b-FEX101:PU5']
+    - endpoints: ['csr-coxgs-0b:Ethernet1/22',      'csr-coxgs-0b-FEX101:PU4']
+    - endpoints: ['csr-coxgs-0b:Ethernet1/23',      'csr-coxgs-0b-FEX101:PU7']
+    - endpoints: ['csr-coxgs-0b:Ethernet1/24',      'csr-coxgs-0b-FEX101:PU2']
