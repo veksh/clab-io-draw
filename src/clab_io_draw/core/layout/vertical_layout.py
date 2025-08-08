@@ -168,6 +168,8 @@ class VerticalLayout(LayoutManager):
 
         self._center_align_nodes(nodes_by_level)
         self._adjust_intermediary_nodes(diagram)
+        # NEW: repack nodes per level using actual widths so padding_x is respected
+        self._pack_variable_widths(nodes_by_level)
 
         logger.debug("Iterative barycenter layout complete.")
 
@@ -215,9 +217,9 @@ class VerticalLayout(LayoutManager):
             B = link.target
 
             if abs(A.pos_x - B.pos_x) < 1e-5:
+                # Vertical link: push overlapping nodes sideways (unchanged)
                 top_y = min(A.pos_y, B.pos_y)
                 bot_y = max(A.pos_y, B.pos_y)
-
                 for N in nodes:
                     if N not in (A, B):
                         Nx_left = N.pos_x - N.half_w
@@ -229,6 +231,8 @@ class VerticalLayout(LayoutManager):
                                 N.pos_x -= offset
 
             elif abs(A.pos_y - B.pos_y) < 1e-5:
+                # Horizontal link at a fixed level. Previously this moved blocking nodes UP (changing levels).
+                # For vertical layout we must preserve discrete Y levels, so instead nudge overlapping nodes sideways.
                 left_x = min(A.pos_x, B.pos_x)
                 right_x = max(A.pos_x, B.pos_x)
                 for N in nodes:
@@ -239,4 +243,81 @@ class VerticalLayout(LayoutManager):
                             Nx_left = N.pos_x - N.half_w
                             Nx_right = N.pos_x + N.half_w
                             if Nx_left < right_x and Nx_right > left_x:
-                                N.pos_y -= offset
+                                # Decide push direction: move left if N is to the right half of the link, else right.
+                                mid_link = (left_x + right_x) / 2.0
+                                if N.pos_x >= mid_link:
+                                    N.pos_x += offset  # push right
+                                else:
+                                    N.pos_x -= offset  # push left
+
+    # NEW helper
+    def _pack_variable_widths(self, nodes_by_level):
+        """Repack nodes in each level so horizontal gaps equal padding_x even with per-node custom widths.
+        Groups same-level linked nodes contiguously. Inter-group spacing now equals padding_x (was 2x, which was too wide).
+        """
+        padding = self.diagram.styles.get("padding_x", 0)
+        default_w = self.diagram.styles.get("node_width", 80)
+
+        for _level, level_nodes in nodes_by_level.items():  # _level kept for clarity
+            if len(level_nodes) < 2:
+                continue
+
+            # Build adjacency restricted to same-level links
+            adjacency = {n: set() for n in level_nodes}
+            for n in level_nodes:
+                for nb in n.get_neighbors():
+                    if nb in adjacency:  # same level
+                        adjacency[n].add(nb)
+                        adjacency[nb].add(n)
+
+            # DFS to get connected components (intra-level link groups)
+            seen = set()
+            components = []
+            for n in level_nodes:
+                if n in seen:
+                    continue
+                stack = [n]
+                comp = []
+                while stack:
+                    cur = stack.pop()
+                    if cur in seen:
+                        continue
+                    seen.add(cur)
+                    comp.append(cur)
+                    for nb in adjacency[cur]:
+                        if nb not in seen:
+                            stack.append(nb)
+                components.append(comp)
+
+            # Sort nodes inside each component by current pos_x (preserve relative ordering heuristic)
+            for comp in components:
+                comp.sort(key=lambda n: n.pos_x)
+
+            # Order components left->right by their current minimum pos_x
+            components.sort(key=lambda comp: min(n.pos_x for n in comp))
+
+            # Capture original span/center for later recentring
+            orig_min = min(n.pos_x for n in level_nodes)
+            orig_max = max(n.pos_x + (float(n.width) if n.width else default_w) for n in level_nodes)
+            orig_center = (orig_min + orig_max) / 2.0
+
+            # Repack: within component use single padding between nodes; between components use 2*padding (visual separation)
+            cursor = 0.0
+            for ci, comp in enumerate(components):
+                for i, n in enumerate(comp):
+                    w = float(n.width) if n.width else default_w
+                    n.pos_x = cursor
+                    cursor += w
+                    if i < len(comp) - 1:
+                        cursor += padding  # intra-component gap
+                if ci < len(components) - 1:
+                    cursor += padding  # inter-component gap (reduced)
+
+            # Recompute new span precisely
+            new_min = min(n.pos_x for n in level_nodes)
+            new_max = max(n.pos_x + (float(n.width) if n.width else default_w) for n in level_nodes)
+            new_center = (new_min + new_max) / 2.0
+            shift = orig_center - new_center
+            for n in level_nodes:
+                n.pos_x += shift
+        logger.debug("Applied variable-width + grouping packing for vertical layout levels (reduced inter-group spacing).")

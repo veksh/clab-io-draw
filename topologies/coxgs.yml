@@ -58,7 +58,9 @@ topology:
         # ok for both horiz and vert: 1 horiz port + 1 vert port
         #graph-height: 75
         #graph-width:  75
-        # default link bandwidth
+        # graph-height: 20
+        # graph-width: 100
+        # default link bandwidth        
         link-speed: 1G
 
     fw-coxgs-0:
@@ -72,6 +74,8 @@ topology:
       kind: arista-esr
       labels:
         graph-level: 1
+        # graph-height: 20
+        # graph-width: 100
         graph-icon: router
 
     agsr-coxgs-0.1:

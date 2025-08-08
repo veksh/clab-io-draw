@@ -19,7 +19,7 @@ class HorizontalLayout(LayoutManager):
 
         sorted_levels = sorted(nodes_by_level.keys())
 
-        # Initial positioning
+        # Initial positioning (uses default style height as before)
         for level in sorted_levels:
             nodes_by_level[level].sort(key=lambda nd: nd.name)
             for i, nd in enumerate(nodes_by_level[level]):
@@ -114,7 +114,6 @@ class HorizontalLayout(LayoutManager):
 
         def reposition_level(level_nodes):
             """Position nodes in a level while avoiding problematic placements."""
-            # Sort nodes by number of connections (more connected nodes first)
             nodes_to_position = sorted(
                 level_nodes, key=lambda n: len(list(n.get_neighbors())), reverse=True
             )
@@ -149,12 +148,14 @@ class HorizontalLayout(LayoutManager):
         # Assign X positions with proper horizontal spacing
         for level in sorted_levels:
             for node in nodes_by_level[level]:
-                # Calculate total spacing between levels (node_width + padding)
                 total_spacing = self.diagram.styles["node_width"] + self.diagram.styles["padding_x"]
                 node.pos_x = float(100 + level * total_spacing)
 
         self._center_align_nodes(nodes_by_level)
         self._adjust_intermediary_nodes(diagram)
+
+        # NEW: repack nodes per level using actual heights so padding_y is respected
+        self._pack_variable_heights(nodes_by_level)
 
         logger.debug("Iterative barycenter layout complete (horizontal).")
 
@@ -228,3 +229,27 @@ class HorizontalLayout(LayoutManager):
                             Ny_bot = N.pos_y + N.half_h
                             if Ny_top < bot_y and Ny_bot > top_y:
                                 N.pos_x -= offset
+
+    # NEW helper
+    def _pack_variable_heights(self, nodes_by_level):
+        """Repack nodes in each level so vertical gaps equal padding_y even with per-node custom heights."""
+        padding = self.diagram.styles.get("padding_y", 0)
+        for _level, level_nodes in nodes_by_level.items():  # _level is unused but kept for clarity
+            if len(level_nodes) < 2:
+                continue
+            level_nodes.sort(key=lambda n: n.pos_y)
+            orig_min = min(n.pos_y for n in level_nodes)
+            orig_max = max(n.pos_y + n.height for n in level_nodes)
+            orig_center = (orig_min + orig_max) / 2.0
+            cursor = 0.0
+            for idx, n in enumerate(level_nodes):
+                n.pos_y = cursor
+                cursor += n.height
+                if idx < len(level_nodes) - 1:
+                    cursor += padding
+            new_max = cursor - padding
+            new_center = (0.0 + new_max) / 2.0
+            shift = orig_center - new_center
+            for n in level_nodes:
+                n.pos_y += shift
+        logger.debug("Applied variable-height packing for horizontal layout levels.")
