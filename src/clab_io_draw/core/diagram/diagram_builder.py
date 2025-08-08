@@ -510,105 +510,66 @@ class DiagramBuilder:
 
         if edge in ("left", "right"):
             # Vertical distribution on left/right edges
-            # Always ensure even distribution regardless of padding settings
-            if "port_padding_y" in styles and num_ports > 1:
-                # Use specified padding, but ensure we don't exceed node height
-                requested_spacing = port_height + styles["port_padding_y"]
-                total_height_needed = (num_ports - 1) * requested_spacing
-                
-                # If the requested spacing would exceed the node height, adjust it
-                if total_height_needed > node_height * 0.8:  # Use 80% of node height max
-                    total_spacing = (node_height * 0.8) / (num_ports - 1) if num_ports > 1 else 0
-                else:
-                    total_spacing = requested_spacing
-            else:
-                # Calculate even distribution across the available space
-                # Use 80% of node height to avoid ports being too close to edges
-                available_height = node_height * 0.8
-                total_spacing = available_height / (num_ports + 1)
-            
-            # Calculate group positioning
             if num_ports == 1:
-                group_height = 0
-            else:
-                group_height = (num_ports - 1) * total_spacing
-            
+                center_y = node.pos_y + node_height / 2.0
+                port_y = round(center_y - port_height / 2)
+                port_x = node.pos_x - port_width / 2 if edge == "left" else node.pos_x + node_width - port_width / 2
+                links[0].port_pos = self._round_port_position(round(port_x), port_y)
+                return
+
+            if "port_padding_y" in styles:
+                # Exact constant spacing: distance between adjacent port top-lefts = port_height + padding
+                step = port_height + styles["port_padding_y"]  # integer (expected)
+                group_height = step * (num_ports - 1)  # distance between first and last centers
+                center_y = node.pos_y + node_height / 2.0
+                first_center_y = center_y - group_height / 2.0
+                first_top_left_y = round(first_center_y - port_height / 2.0)
+                for i, link in enumerate(links):
+                    port_y = first_top_left_y + i * step
+                    port_x = node.pos_x - port_width / 2 if edge == "left" else node.pos_x + node_width - port_width / 2
+                    link.port_pos = self._round_port_position(round(port_x), port_y)
+                return
+            # Fallback: even distribution using available space (original behaviour)
+            available_height = node_height * 0.8
+            total_spacing = available_height / (num_ports + 1)
             center_y = node.pos_y + node_height / 2.0
+            group_height = (num_ports - 1) * total_spacing
             start_y = center_y - group_height / 2.0
-            
-            if debug_node:
-                print(f"  Available height: {round(node_height * 0.8)}, Total spacing: {round(total_spacing, 2)}")
-                print(f"  Group height: {round(group_height)}, Center Y: {round(center_y)}, Start Y: {round(start_y)}")
-            
             for i, link in enumerate(links):
-                if num_ports == 1:
-                    port_y = center_y - port_height / 2
-                else:
-                    port_y = start_y + i * total_spacing - port_height / 2
-                
-                if debug_node and link.source_intf == "Ethernet1/15":
-                    print(f"  Link {i} ({link.source_intf}): port_y = {round(port_y, 1)} (before rounding)")
-                
-                # Round to avoid floating point precision issues
-                port_y = round(port_y)
-                
-                if debug_node and link.source_intf == "Ethernet1/15":
-                    print(f"  Link {i} ({link.source_intf}): port_y = {port_y} (after rounding)")
-                
-                if edge == "left":
-                    port_x = node.pos_x - port_width / 2
-                else:
-                    port_x = node.pos_x + node_width - port_width / 2
-                
-                # Round to avoid floating point precision issues
-                port_x = round(port_x)
-                link.port_pos = self._round_port_position(port_x, port_y)
+                port_y = round(start_y + i * total_spacing - port_height / 2)
+                port_x = node.pos_x - port_width / 2 if edge == "left" else node.pos_x + node_width - port_width / 2
+                link.port_pos = self._round_port_position(round(port_x), port_y)
 
         elif edge in ("top", "bottom"):
             # Horizontal distribution on top/bottom edges
-            # Always ensure even distribution regardless of padding settings
-            if "port_padding_x" in styles and num_ports > 1:
-                # Use specified padding, but ensure we don't exceed node width
-                requested_spacing = port_width + styles["port_padding_x"]
-                total_width_needed = (num_ports - 1) * requested_spacing
-                
-                # If the requested spacing would exceed the node width, adjust it
-                if total_width_needed > node_width * 0.8:  # Use 80% of node width max
-                    total_spacing = (node_width * 0.8) / (num_ports - 1) if num_ports > 1 else 0
-                else:
-                    total_spacing = requested_spacing
-            else:
-                # Calculate even distribution across the available space
-                # Use 80% of node width to avoid ports being too close to edges
-                available_width = node_width * 0.8
-                total_spacing = available_width / (num_ports + 1)
-            
-            # Calculate group positioning
             if num_ports == 1:
-                group_width = 0
-            else:
-                group_width = (num_ports - 1) * total_spacing
-            
+                center_x = node.pos_x + node_width / 2.0
+                port_x = round(center_x - port_width / 2)
+                port_y = node.pos_y - port_height / 2 if edge == "top" else node.pos_y + node_height - port_height / 2
+                links[0].port_pos = self._round_port_position(port_x, round(port_y))
+                return
+
+            if "port_padding_x" in styles:
+                step = port_width + styles["port_padding_x"]
+                group_width = step * (num_ports - 1)
+                center_x = node.pos_x + node_width / 2.0
+                first_center_x = center_x - group_width / 2.0
+                first_top_left_x = round(first_center_x - port_width / 2.0)
+                for i, link in enumerate(links):
+                    port_x = first_top_left_x + i * step
+                    port_y = node.pos_y - port_height / 2 if edge == "top" else node.pos_y + node_height - port_height / 2
+                    link.port_pos = self._round_port_position(port_x, round(port_y))
+                return
+            # Fallback: even distribution using available space
+            available_width = node_width * 0.8
+            total_spacing = available_width / (num_ports + 1)
             center_x = node.pos_x + node_width / 2.0
+            group_width = (num_ports - 1) * total_spacing
             start_x = center_x - group_width / 2.0
-            
             for i, link in enumerate(links):
-                if num_ports == 1:
-                    port_x = center_x - port_width / 2
-                else:
-                    port_x = start_x + i * total_spacing - port_width / 2
-                
-                # Round to avoid floating point precision issues
-                port_x = round(port_x)
-                
-                if edge == "top":
-                    port_y = node.pos_y - port_height / 2
-                else:
-                    port_y = node.pos_y + node_height - port_height / 2
-                
-                # Round to avoid floating point precision issues
-                port_y = round(port_y)
-                link.port_pos = self._round_port_position(port_x, port_y)
+                port_x = round(start_x + i * total_spacing - port_width / 2)
+                port_y = node.pos_y - port_height / 2 if edge == "top" else node.pos_y + node_height - port_height / 2
+                link.port_pos = self._round_port_position(port_x, round(port_y))
 
     # not really used for grafana diagram generation -- "add_port" creates all the links, see above
     def add_links(self, diagram, styles):
