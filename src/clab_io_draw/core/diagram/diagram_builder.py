@@ -401,17 +401,51 @@ class DiagramBuilder:
                         style=styles["connector_style"],
                     )
 
+                    # Helper logic to determine stroke width based on link-speed (link > source node > target node)
+                    def _calc_stroke_width(l):
+                        lspeed = None
+                        if isinstance(getattr(l, 'labels', None), dict):
+                            lspeed = l.labels.get('link-speed')
+                        if lspeed is None and isinstance(getattr(l.source, 'labels', None), dict):
+                            lspeed = l.source.labels.get('link-speed')
+                        if lspeed is None and isinstance(getattr(l.target, 'labels', None), dict):
+                            lspeed = l.target.labels.get('link-speed')
+                        width_map = styles.get('link_line_width', {}) or {}
+                        default_w = width_map.get('default', 2)
+                        try:
+                            default_w = int(default_w)
+                        except (ValueError, TypeError):
+                            default_w = 2
+                        if lspeed is None:
+                            return default_w
+                        key = str(lspeed).strip()
+                        key_upper = key.upper()
+                        # direct / upper / case-insensitive match
+                        if key in width_map:
+                            sw = width_map[key]
+                        elif key_upper in width_map:
+                            sw = width_map[key_upper]
+                        else:
+                            sw = next((width_map[k] for k in width_map if k.upper() == key_upper), default_w)
+                        try:
+                            return int(sw)
+                        except (ValueError, TypeError):
+                            return default_w
+
+                    stroke_width = _calc_stroke_width(link)
+                    mid_style = f"{styles['link_style']}strokeWidth={stroke_width};"
+
                     diagram.add_link(
                         source=source_cID,
                         target=midpoint_id,
-                        style=styles["link_style"],
+                        style=mid_style,
                         label="rate_s",
                         link_id=f"{source_cID}",
                     )
                     diagram.add_link(
                         source=target_cID,
                         target=midpoint_id,
-                        style=styles["link_style"],
+                        style=mid_style,
                         label="rate_t",
                         link_id=f"{target_cID}",
                     )
@@ -916,6 +950,39 @@ class DiagramBuilder:
                                 entryY = exitY = step
 
                     style = f"{styles['link_style']}entryY={entryY};exitY={exitY};entryX={entryX};exitX={exitX};"
+                    # Override strokeWidth based on link-speed label (link > source node > target node)
+                    link_speed = None
+                    if isinstance(getattr(link, 'labels', None), dict):
+                        link_speed = link.labels.get('link-speed')
+                    if link_speed is None and isinstance(getattr(link.source, 'labels', None), dict):
+                        link_speed = link.source.labels.get('link-speed')
+                    if link_speed is None and isinstance(getattr(link.target, 'labels', None), dict):
+                        link_speed = link.target.labels.get('link-speed')
+                    width_map = styles.get('link_line_width', {}) or {}
+                    default_width = width_map.get('default', 2)
+                    try:
+                        default_width = int(default_width)
+                    except (ValueError, TypeError):
+                        default_width = 2
+                    stroke_width = default_width
+                    if link_speed is not None:
+                        key = str(link_speed).strip()
+                        key_upper = key.upper()
+                        # Try direct, upper, then case-insensitive match
+                        if key in width_map:
+                            stroke_width = width_map[key]
+                        elif key_upper in width_map:
+                            stroke_width = width_map[key_upper]
+                        else:
+                            for k in width_map:
+                                if k.upper() == key_upper:
+                                    stroke_width = width_map[k]
+                                    break
+                    try:
+                        stroke_width = int(stroke_width)
+                    except (ValueError, TypeError):
+                        stroke_width = default_width
+                    style += f"strokeWidth={stroke_width};"
 
                     source_label_id = f"label:{link.source.name}:{link.source_intf}"
                     target_label_id = f"label:{link.target.name}:{link.target_intf}"

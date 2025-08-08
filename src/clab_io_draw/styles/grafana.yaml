@@ -55,6 +55,13 @@ connector_mid: true
 # labels for rates have this style
 link_style: "rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=8;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;"
 
+# link line width overrides for different bandwidths
+link_line_width:
+  default: 2
+  1G: 1
+  10G: 2
+  100G: 4
+
 # Styles for labels on the source and target ends of a link
 # really does not matter for grafana
 src_label_style: "edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=6;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;"
