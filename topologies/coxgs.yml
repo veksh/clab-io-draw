@@ -39,15 +39,12 @@ topology:
       labels:
         graph-level: 1
         # graph-icon: router
-        # graph-icon: empty        
         # lets rely on auto layout
         #graph-posX: 100
         #graph-posY: 200
         # ok for both horiz and vert: 1 horiz port + 1 vert port
         #graph-height: 75
         #graph-width:  75
-        # graph-height: 20
-        # graph-width: 100
         # default link bandwidth        
         link-speed: 1G
         graph-height: 40
@@ -68,37 +65,35 @@ topology:
       kind: cisco4500
       labels:
         graph-level: 2
-        graph-icon: router
         # to change dataRef for VSS name
         metric-host: agsr-coxgs-0
         # some of the links (e.g. to fw-coxgs) are slower
         link-speed: 10G
+        # 4 ports on the side
+        graph-height: 80
     agsr-coxgs-0.2:
       kind: cisco4500
       labels:
         graph-level: 2
-        graph-icon: router
         metric-host: agsr-coxgs-0
         link-speed: 10G
+        graph-height: 80
 
     spine-coxbc-1:
       kind: arista-core
       labels:
         graph-level: 2
-        graph-icon: switch
         graph-height: 40
     spine-coxbc-2:
       kind: arista-core
       labels:
         graph-level: 2
-        graph-icon: switch
         graph-height: 40
 
     spine-coxgs-1:
       kind: arista-core
       labels:
         graph-level: 3
-        graph-icon: switch
         link-speed: 10G
         # slightly higher for horizontal mode
         graph-height: 170
@@ -106,7 +101,6 @@ topology:
       kind: arista-core
       labels:
         graph-level: 3
-        graph-icon: switch
         link-speed: 10G
         # slightly higher for horizontal mode
         graph-height: 170
@@ -115,20 +109,17 @@ topology:
       kind: cisco-nexus
       labels:
         graph-level: 4
-        graph-icon: switch
         link-speed: 10G
     csr-coxgs-0b:
       kind: cisco-nexus
       labels:
         graph-level: 4
-        graph-icon: switch
         link-speed: 10G
 
     leaf-coxgs-1:
       kind: arista-leaf
       labels:
         graph-level: 4
-        graph-icon: switch
         link-speed: 10G
         graph-height: 40
 
@@ -136,7 +127,6 @@ topology:
       kind: arista-leaf
       labels:
         graph-level: 4
-        graph-icon: switch
         link-speed: 10G
         graph-height: 40
 
@@ -144,14 +134,15 @@ topology:
       kind: cisco-nexus
       labels:
         graph-level: 5
-        graph-icon: switch
         link-speed: 10G
+        # 4 ports on the side
+        graph-height: 80
     csr-coxgs-1b:
       kind: cisco-nexus
       labels:
         graph-level: 5
-        graph-icon: switch
         link-speed: 10G
+        graph-height: 80
 
   links:
     # spines to agsrs: it is smart enough to place them in proper order to minimise intersections
