@@ -55,7 +55,7 @@ topology:
         graph-level: 1
         link-speed: 1G
 
-    esr-cloin-2.console.coxgs.i0:
+    esr-cloin-2.console.cloin.i0:
       kind: arista-esr
       labels:
         graph-level: 1

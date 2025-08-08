@@ -33,6 +33,17 @@ targets:
     range: true
     hide: false
 
+  # num of alerts: legend is "num_alerts:{{instance}}"
+  #
+  # count by (instance) (ALERTS{alertstate="firing", severity!="info"})
+  #
+  - datasource: prometheus
+    expr: "device_alerts"
+    legend_format: "num_alerts:{{source}}"
+    instant: false
+    range: true
+    hide: false
+
 thresholds:
   operstate:
     # query is designed to return 0 if adminstate is down (see above)

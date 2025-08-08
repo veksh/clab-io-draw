@@ -159,6 +159,7 @@ class GrafanaDashboard:
             "operstate", []
         )
         thresholds_traffic_config = self.grafana_config["thresholds"].get("traffic", [])
+        devstate_config = self.grafana_config["thresholds"].get("devstate", [])
         label_cfg = self.grafana_config["label_config"]
 
         # Collect all traffic-* thresholds
@@ -174,6 +175,12 @@ class GrafanaDashboard:
                 {"color": item["color"], "level": item["level"]}
             )
         thresholds_operstate.yaml_set_anchor("thresholds-operstate", always_dump=True)
+
+        # Build devstate thresholds
+        thresholds_devstate = CommentedSeq()
+        for item in devstate_config:
+            thresholds_devstate.append({"color": item["color"], "level": item["level"]})
+        thresholds_devstate.yaml_set_anchor("thresholds-devstate", always_dump=True)
 
         # Build all traffic thresholds and anchors
         thresholds_traffic_anchors = {}
@@ -195,6 +202,7 @@ class GrafanaDashboard:
 
         root["anchors"] = anchors = CommentedMap()
         anchors["thresholds-operstate"] = thresholds_operstate
+        anchors["thresholds-devstate"] = thresholds_devstate
         for k, v in thresholds_traffic_anchors.items():
             anchors["thresholds-" + k.replace("_", "-")] = v
         anchors["label-config"] = label_config_map
@@ -203,6 +211,22 @@ class GrafanaDashboard:
         root["gradientMode"] = label_cfg.get("gradientMode", "none")
         cells = CommentedMap()
         root["cells"] = cells
+
+        # Add node state (alerts) cells first
+        if self.diagram and hasattr(self.diagram, 'nodes') and isinstance(self.diagram.nodes, dict):
+            for node in self.diagram.nodes.values():
+                metric_host = None
+                if hasattr(node, 'labels') and node.labels:
+                    metric_host = node.labels.get('metric-host')
+                dataref_source = metric_host if metric_host else node.name
+                # Use node.name directly so it matches Draw.io object id
+                cell_id_node = node.name
+                cell_node = CommentedMap()
+                cell_node["dataRef"] = f"num_alerts:{dataref_source}"
+                labelColor = CommentedMap()
+                labelColor["thresholds"] = thresholds_devstate
+                cell_node["strokeColor"] = labelColor
+                cells[cell_id_node] = cell_node
 
         # Add link data
         for link in self.links:
