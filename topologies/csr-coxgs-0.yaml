@@ -34,99 +34,85 @@ topology:
 
   nodes:
 
-    spine-coxgs-1:
+    spine-coxgs-1.console.coxgs.i0:
       kind: arista-core
       labels:
         graph-level: 1
-        graph-icon: switch
         link-speed: 10G
-    spine-coxgs-2:
+    spine-coxgs-2.console.coxgs.i0:
       kind: arista-core
       labels:
         graph-level: 1
-        graph-icon: switch
         link-speed: 10G
 
-    csr-coxgs-0a:
+    csr-coxgs-0a.console.coxgs.i0:
       kind: cisco-nexus
       labels:
         graph-level: 2
-        graph-icon: switch
         link-speed: 10G
-    csr-coxgs-0b:
+    csr-coxgs-0b.console.coxgs.i0:
       kind: cisco-nexus
       labels:
         graph-level: 2
-        graph-icon: switch
         link-speed: 10G
 
-    csr-coxgs-1a:
+    csr-coxgs-1a.console.coxgs.i0:
       kind: cisco-nexus
       labels:
         graph-level: 1
-        graph-icon: switch
         link-speed: 10G
-    csr-coxgs-1b:
+    csr-coxgs-1b.console.coxgs.i0:
       kind: cisco-nexus
       labels:
         graph-level: 1
-        graph-icon: switch
         link-speed: 10G
 
     csr-coxgs-0a-FEX100:
       kind: cisco-nexus-fex
       labels:
         graph-level: 3
-        graph-icon: switch
-        link-speed: 10G
+        link-speed: 10G       
 
     csr-coxgs-0b-FEX100:
       kind: cisco-nexus-fex
       labels:
         graph-level: 3
-        graph-icon: switch
         link-speed: 10G
 
     csr-coxgs-0a-FEX101:
       kind: cisco-nexus-fex
       labels:
         graph-level: 3
-        graph-icon: switch
         link-speed: 10G
 
     csr-coxgs-0b-FEX101:
       kind: cisco-nexus-fex
       labels:
         graph-level: 3
-        graph-icon: switch
         link-speed: 10G
 
     csr-coxgs-0a-FEX102:
       kind: cisco-nexus-fex
       labels:
         graph-level: 3
-        graph-icon: switch
         link-speed: 10G
 
     csr-coxgs-0b-FEX102:
       kind: cisco-nexus-fex
       labels:
         graph-level: 3
-        graph-icon: switch
         link-speed: 10G
 
     csr-coxgs-0a-FEX103:
       kind: cisco-nexus-fex
       labels:
         graph-level: 3
-        graph-icon: switch
         link-speed: 10G
 
     csr-coxgs-0b-FEX103:
       kind: cisco-nexus-fex
       labels:
         graph-level: 3
-        graph-icon: switch
         link-speed: 10G
 
   links:

@@ -34,7 +34,7 @@ topology:
 
   nodes:
 
-    vpnr-coxgs-1:
+    vpnr-coxgs-1.console.coxgs.i0:
       kind: fortigate
       labels:
         graph-level: 1
@@ -49,24 +49,25 @@ topology:
         link-speed: 1G
         graph-height: 40
 
-    fw-coxgs-0:
+    fw-coxgs-0.console.coxgs.i0:
       kind: paloalto
       labels:
         graph-level: 1
         link-speed: 1G
 
-    esr-cloin-2:
+    esr-cloin-2.console.coxgs.i0:
       kind: arista-esr
       labels:
         graph-level: 1
         graph-height: 40
 
+    # actually 1 device for SNMP, split here (so no fqdn)
     agsr-coxgs-0.1:
       kind: cisco4500
       labels:
         graph-level: 2
         # to change dataRef for VSS name
-        metric-host: agsr-coxgs-0
+        metric-host: agsr-coxgs-0.console.coxgs.i0
         # some of the links (e.g. to fw-coxgs) are slower
         link-speed: 10G
         # 4 ports on the side
@@ -75,29 +76,29 @@ topology:
       kind: cisco4500
       labels:
         graph-level: 2
-        metric-host: agsr-coxgs-0
+        metric-host: agsr-coxgs-0.console.coxgs.i0
         link-speed: 10G
         graph-height: 80
 
-    spine-coxbc-1:
+    spine-coxbc-1.console.coxbc.i0:
       kind: arista-core
       labels:
         graph-level: 2
         graph-height: 40
-    spine-coxbc-2:
+    spine-coxbc-2.console.coxbc.i0:
       kind: arista-core
       labels:
         graph-level: 2
         graph-height: 40
 
-    spine-coxgs-1:
+    spine-coxgs-1.console.coxgs.i0:
       kind: arista-core
       labels:
         graph-level: 3
         link-speed: 10G
         # slightly higher for horizontal mode
         graph-height: 170
-    spine-coxgs-2:
+    spine-coxgs-2.console.coxgs.i0:
       kind: arista-core
       labels:
         graph-level: 3
@@ -105,39 +106,39 @@ topology:
         # slightly higher for horizontal mode
         graph-height: 170
 
-    csr-coxgs-0a:
+    csr-coxgs-0a.console.coxgs.i0:
       kind: cisco-nexus
       labels:
         graph-level: 4
         link-speed: 10G
-    csr-coxgs-0b:
+    csr-coxgs-0b.console.coxgs.i0:
       kind: cisco-nexus
       labels:
         graph-level: 4
         link-speed: 10G
 
-    leaf-coxgs-1:
+    leaf-coxgs-1.console.coxgs.i0:
       kind: arista-leaf
       labels:
         graph-level: 4
         link-speed: 10G
         graph-height: 40
 
-    leaf-coxgs-2:
+    leaf-coxgs-2.console.coxgs.i0:
       kind: arista-leaf
       labels:
         graph-level: 4
         link-speed: 10G
         graph-height: 40
 
-    csr-coxgs-1a:
+    csr-coxgs-1a.console.coxgs.i0:
       kind: cisco-nexus
       labels:
         graph-level: 5
         link-speed: 10G
         # 4 ports on the side
         graph-height: 80
-    csr-coxgs-1b:
+    csr-coxgs-1b.console.coxgs.i0:
       kind: cisco-nexus
       labels:
         graph-level: 5

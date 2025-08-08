@@ -2,7 +2,7 @@ import json
 import logging
 import os
 
-import yaml
+import yaml as pyyaml
 
 logger = logging.getLogger(__name__)
 
@@ -50,19 +50,21 @@ class GrafanaDashboard:
         :param path: Path to the YAML config.
         :return: A dict with 'targets', 'thresholds', 'label_config'.
         """
-        logger.debug(f"Loading Grafana config from: {path}")
+        logger.debug("Loading Grafana config from: %s", path)
         if not os.path.exists(path):
-            logger.error(f"Grafana config file not found: {path}")
+            logger.error("Grafana config file not found: %s", path)
             raise FileNotFoundError(f"Grafana config file not found: {path}")
 
-        with open(path) as f:
-            config = yaml.safe_load(f)
+        with open(path, encoding="utf-8") as f:
+            config = pyyaml.safe_load(f)
 
         required_keys = ["targets", "thresholds", "label_config"]
         for key in required_keys:
             if key not in config:
                 logger.warning(
-                    f"Missing key '{key}' in Grafana config '{path}'. Please verify the YAML structure."
+                    "Missing key '%s' in Grafana config '%s'. Please verify the YAML structure.",
+                    key,
+                    path,
                 )
                 if key == "targets":
                     config["targets"] = []
@@ -93,12 +95,12 @@ class GrafanaDashboard:
                 os.path.dirname(__file__), "templates", "flow_panel_template.json"
             )
         if not os.path.exists(template_path):
-            logger.error(f"Template not found at {template_path}")
+            logger.error("Template not found at %s", template_path)
             raise FileNotFoundError(
                 f"Grafana template file not found at {template_path}"
             )
 
-        with open(template_path) as file:
+        with open(template_path, encoding="utf-8") as file:
             dashboard_json = json.load(file)
 
         # Update the first panel’s 'targets' from the config
@@ -146,9 +148,9 @@ class GrafanaDashboard:
 
         from ruamel.yaml import YAML, CommentedMap, CommentedSeq
 
-        yaml = YAML()
-        yaml.explicit_start = True
-        yaml.width = 4096
+        ryaml = YAML()
+        ryaml.explicit_start = True
+        ryaml.width = 4096
 
         root = CommentedMap()
 
@@ -182,8 +184,7 @@ class GrafanaDashboard:
             anchor_name = "thresholds-" + k.replace("_", "-")
             seq.yaml_set_anchor(anchor_name, always_dump=True)
             thresholds_traffic_anchors[k] = seq
-        # Default traffic anchor
-        thresholds_traffic = thresholds_traffic_anchors["traffic"]
+        # Default anchor reference kept via thresholds_traffic_anchors['traffic'] when needed
 
         label_config_map = CommentedMap()
         label_config_map["separator"] = label_cfg.get("separator", "replace")
@@ -210,29 +211,12 @@ class GrafanaDashboard:
             target_name = link.target.name
             target_intf = link.target_intf
 
-            # Use metric-host label for dataRef if present, with prefix
             metric_host = None
             if hasattr(link.source, 'labels') and link.source.labels:
                 metric_host = link.source.labels.get('metric-host')
-            # Extract lab_name from source_name (assumes format: prefix-labname-nodename)
-            lab_prefix = ''
-            if '-' in source_name:
-                parts = source_name.split('-')
-                if len(parts) >= 3:
-                    lab_prefix = '-'.join(parts[:2])  # e.g. clab-coxgs
-            if metric_host:
-                # Remove any existing prefix from metric_host, then prepend lab_prefix
-                metric_host_base = metric_host
-                if metric_host.startswith(lab_prefix + '-'):
-                    metric_host_base = metric_host[len(lab_prefix)+1:]
-                dataref_source = f"{lab_prefix}-{metric_host_base}" if lab_prefix else metric_host
-            else:
-                dataref_source = source_name
+            dataref_source = metric_host if metric_host else source_name
 
-            # oper-state cell
-            cell_id_operstate = (
-                f"{source_name}:{source_intf}:{target_name}:{target_intf}"
-            )
+            cell_id_operstate = f"{source_name}:{source_intf}:{target_name}:{target_intf}"
             dataRef_operstate = f"oper-state:{dataref_source}:{source_intf}"
             fillColor_operstate = CommentedMap()
             fillColor_operstate["thresholds"] = thresholds_operstate
@@ -242,52 +226,36 @@ class GrafanaDashboard:
             cell_operstate["fillColor"] = fillColor_operstate
             cells[cell_id_operstate] = cell_operstate
 
-            # traffic cell
-            cell_id_traffic = (
-                f"link_id:{source_name}:{source_intf}:{target_name}:{target_intf}"
-            )
+            cell_id_traffic = f"link_id:{source_name}:{source_intf}:{target_name}:{target_intf}"
             dataRef_traffic = f"{dataref_source}:{source_intf}:out"
 
-            # Determine link-speed for threshold selection
             link_speed = None
-            # Debug the link object structure
-            logger.debug(f"Processing link: {link}")
-            logger.debug(f"Link labels: {getattr(link, 'labels', None)}")
-            logger.debug(f"Link source: {link.source}, labels: {getattr(link.source, 'labels', None)}")
-            logger.debug(f"Link target: {link.target}, labels: {getattr(link.target, 'labels', None)}")
+            logger.debug("Processing link: %s", link)
+            logger.debug("Link labels: %s", getattr(link, 'labels', None))
+            logger.debug("Link source: %s, labels: %s", link.source, getattr(link.source, 'labels', None))
+            logger.debug("Link target: %s, labels: %s", link.target, getattr(link.target, 'labels', None))
 
-            # 1. Check link labels first - they have priority
             if hasattr(link, 'labels') and isinstance(link.labels, dict):
-                # Direct label access, no .get() to see if key exists at all
                 link_speed = link.labels.get('link-speed')
-                logger.debug(f"Found link-level speed: {link_speed}")
+                logger.debug("Found link-level speed: %s", link_speed)
+            if link_speed is None and hasattr(link.source, 'labels') and isinstance(link.source.labels, dict):
+                link_speed = link.source.labels.get('link-speed')
+                logger.debug("Found source node speed: %s", link_speed)
+            if link_speed is None and hasattr(link.target, 'labels') and isinstance(link.target.labels, dict):
+                link_speed = link.target.labels.get('link-speed')
+                logger.debug("Found target node speed: %s", link_speed)
 
-            # 2. Only if no link-level speed defined, check nodes
-            if link_speed is None:
-                # Source node
-                if hasattr(link.source, 'labels') and isinstance(link.source.labels, dict):
-                    link_speed = link.source.labels.get('link-speed')
-                    logger.debug(f"Found source node speed: {link_speed}")
-
-                # Target node - only check if still no speed found
-                if link_speed is None and hasattr(link.target, 'labels') and isinstance(link.target.labels, dict):
-                    link_speed = link.target.labels.get('link-speed')
-                    logger.debug(f"Found target node speed: {link_speed}")
-
-            # 4. Normalize and build anchor name
             anchor_key = "traffic"
             if link_speed is not None:
-                # Accept values like '1G', '10G', '100G', case-insensitive
                 speed_key = str(link_speed).strip().upper()
                 anchor_candidate = f"traffic-{speed_key}"
-                # Case-insensitive lookup in available anchors
                 anchor_map = {k.upper(): k for k in thresholds_traffic_anchors.keys()}
                 if anchor_candidate.upper() in anchor_map:
                     anchor_key = anchor_map[anchor_candidate.upper()]
-                    logger.debug(f"Using {anchor_key} threshold for link with speed {link_speed}")
+                    logger.debug("Using %s threshold for link with speed %s", anchor_key, link_speed)
                 else:
-                    logger.warning(f"No threshold found for link speed {link_speed}, using default traffic threshold")
-            
+                    logger.warning("No threshold found for link speed %s, using default traffic threshold", link_speed)
+
             strokeColor_traffic = CommentedMap()
             strokeColor_traffic["thresholds"] = thresholds_traffic_anchors[anchor_key]
 
@@ -298,9 +266,8 @@ class GrafanaDashboard:
             cells[cell_id_traffic] = cell_traffic
 
         import io
-
         stream = io.StringIO()
-        yaml.dump(root, stream)
+        ryaml.dump(root, stream)
         panel_yaml = stream.getvalue()
         logger.debug("Panel YAML created successfully.")
         return panel_yaml

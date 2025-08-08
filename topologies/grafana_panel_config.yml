@@ -3,11 +3,9 @@
 targets:
   # oper + admin state; legend is "oper-state:clab-coxgs-{{host}}:{{ifName}}"
   #
-  # label_replace(
-  #    ifAdminStatus{instance=~"(spine-coxgs|etc).*"} - 2 == 0
-  #    or on (instance, ifName)
-  #    ifOperStatus{ instance=~"(spine-coxgs|etc).*"}, 
-  #  "host", "$1", "instance", "([^.]+)\\..*")
+  # ifAdminStatus{instance=~"(spine-coxgs|etc).*"} - 2 == 0
+  # or on (instance, ifName)
+  # ifOperStatus{ instance=~"(spine-coxgs|etc).*"}
   #
   - datasource: prometheus
     expr: "interface_oper_state"
@@ -18,7 +16,7 @@ targets:
 
   # traffic in bps: legend is "clab-coxgs-{{host}}:{{ifName}}:out"
   #
-  # label_replace(8*rate(ifHCOutOctets{instance=~"(spine-coxgs|etc).*"}[$__rate_interval]), "host", "$1", "instance", "([^.]+)\\..*")
+  # 8*rate(ifHCOutOctets{instance=~"(spine-coxgs|etc).*"}[$__rate_interval])
   #
   - datasource: prometheus
     expr: "interface_traffic_rate_in_bps"
