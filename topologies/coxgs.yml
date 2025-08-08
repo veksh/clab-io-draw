@@ -34,23 +34,11 @@ topology:
 
   nodes:
 
-    spine-coxbc-1:
-      kind: arista-core
-      labels:
-        graph-level: 2
-        graph-icon: switch
-
-    spine-coxbc-2:
-      kind: arista-core
-      labels:
-        graph-level: 2
-        graph-icon: switch
-
     vpnr-coxgs-1:
       kind: fortigate
       labels:
         graph-level: 1
-        graph-icon: router
+        # graph-icon: router
         # graph-icon: empty        
         # lets rely on auto layout
         #graph-posX: 100
@@ -62,21 +50,19 @@ topology:
         # graph-width: 100
         # default link bandwidth        
         link-speed: 1G
+        graph-height: 40
 
     fw-coxgs-0:
       kind: paloalto
       labels:
         graph-level: 1
-        graph-icon: router
         link-speed: 1G
 
     esr-cloin-2:
       kind: arista-esr
       labels:
         graph-level: 1
-        # graph-height: 20
-        # graph-width: 100
-        graph-icon: router
+        graph-height: 40
 
     agsr-coxgs-0.1:
       kind: cisco4500
@@ -95,18 +81,35 @@ topology:
         metric-host: agsr-coxgs-0
         link-speed: 10G
 
+    spine-coxbc-1:
+      kind: arista-core
+      labels:
+        graph-level: 2
+        graph-icon: switch
+        graph-height: 40
+    spine-coxbc-2:
+      kind: arista-core
+      labels:
+        graph-level: 2
+        graph-icon: switch
+        graph-height: 40
+
     spine-coxgs-1:
       kind: arista-core
       labels:
         graph-level: 3
         graph-icon: switch
         link-speed: 10G
+        # slightly higher for horizontal mode
+        graph-height: 170
     spine-coxgs-2:
       kind: arista-core
       labels:
         graph-level: 3
         graph-icon: switch
         link-speed: 10G
+        # slightly higher for horizontal mode
+        graph-height: 170
 
     csr-coxgs-0a:
       kind: cisco-nexus
@@ -127,12 +130,15 @@ topology:
         graph-level: 4
         graph-icon: switch
         link-speed: 10G
+        graph-height: 40
+
     leaf-coxgs-2:
       kind: arista-leaf
       labels:
         graph-level: 4
         graph-icon: switch
         link-speed: 10G
+        graph-height: 40
 
     csr-coxgs-1a:
       kind: cisco-nexus
