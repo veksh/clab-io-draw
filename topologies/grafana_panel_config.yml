@@ -1,19 +1,14 @@
 # Default Grafana Flow Panel configuration is in src/clab_io_draw/core/grafana/default_grafana_panel_config.yml
 
-# expecting 2 queries for now
-# - oper + admin state; legend is "oper-state:clab-coxgs-{{host}}:{{ifName}}"
-#
-# label_replace(
-#    ifAdminStatus{instance=~"(spine-coxgs|etc).*"} - 2 == 0
-#    or on (instance, ifName)
-#    ifOperStatus{ instance=~"(spine-coxgs|etc).*"}, 
-#  "host", "$1", "instance", "([^.]+)\\..*")
-#
-# - traffic in bps: legend is "clab-coxgs-{{host}}:{{ifName}}:out"
-#
-# label_replace(8*rate(ifHCOutOctets{instance=~"(spine-coxgs|etc).*"}[$__rate_interval]), "host", "$1", "instance", "([^.]+)\\..*")
-
 targets:
+  # oper + admin state; legend is "oper-state:clab-coxgs-{{host}}:{{ifName}}"
+  #
+  # label_replace(
+  #    ifAdminStatus{instance=~"(spine-coxgs|etc).*"} - 2 == 0
+  #    or on (instance, ifName)
+  #    ifOperStatus{ instance=~"(spine-coxgs|etc).*"}, 
+  #  "host", "$1", "instance", "([^.]+)\\..*")
+  #
   - datasource: prometheus
     expr: "interface_oper_state"
     legend_format: "oper-state:{{source}}:{{interface_name}}"
@@ -21,13 +16,10 @@ targets:
     range: true
     hide: false
 
-  - datasource: prometheus
-    expr: "interface_traffic_rate_out_bps"
-    legend_format: "{{source}}:{{interface_name}}:out"
-    instant: false
-    range: true
-    hide: false
-
+  # traffic in bps: legend is "clab-coxgs-{{host}}:{{ifName}}:out"
+  #
+  # label_replace(8*rate(ifHCOutOctets{instance=~"(spine-coxgs|etc).*"}[$__rate_interval]), "host", "$1", "instance", "([^.]+)\\..*")
+  #
   - datasource: prometheus
     expr: "interface_traffic_rate_in_bps"
     legend_format: "{{source}}:{{interface_name}}:in"
@@ -35,22 +27,34 @@ targets:
     range: true
     hide: false
 
+  # not actively used (yet)
+  - datasource: prometheus
+    expr: "interface_traffic_rate_out_bps"
+    legend_format: "{{source}}:{{interface_name}}:out"
+    instant: false
+    range: true
+    hide: false
+
 thresholds:
   operstate:
-    # query is designed to return 0 if adminstate is down
+    # query is designed to return 0 if adminstate is down (see above)
     - {color: "blue",  level:  0}
     # ok
     - {color: "green",   level:  1}
     # oper down but not admin down
     - {color: "red",     level:  2}
     # should not happen
-    - {color: "yellow",    level: 10}    
+    - {color: "yellow",    level: 10}
 
-  # default
+  # num of alerts: even 1 is enough; mb warning=yellow, critical=red (there are no critical alerts here)
+  devstate:
+    - {color: "yellow",    level:  1}
+
+  # default, should not be used
   traffic:
-    - { color: 'gray',   level: 0 }
-    - { color: 'green',  level: 199999 }
-    - { color: 'yellow', level: 500000 }
+    - { color: 'gray',   level:       0 }
+    - { color: 'green',  level:  199999 }
+    - { color: 'yellow', level:  500000 }
     - { color: 'orange', level: 1000000 }
     - { color: 'red',    level: 5000000 }
 
@@ -83,6 +87,7 @@ thresholds:
     # from 50 to 100Gb/s: shades from yellow to red
     - {color: "dark-red",   level: 100000000000}
 
+# for the links
 label_config:
   separator: "replace"
   units: "bps"
@@ -92,3 +97,13 @@ label_config:
   valueMappings:
     - { valueMax:  999999, text: "\u200B" }
     - { valueMin: 1000000 }
+
+# hyperlinks: need `linkRef: switchDashboard` in node def
+hyperlink_config:
+  linkVariables:
+    # http://localhost:3000/d/adz264h/router-state-12?var-instance=asr-coxgs-1.console.coxgs.i0
+    urlSwitchDashboard: "http://localhost:3000/d/adz264h/router-state-12"
+  links:
+    switchDashboard:
+      url: "${urlSwitchDashboard}?var-instance=${cell.name}"
+      sameTab: false
