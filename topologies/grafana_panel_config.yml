@@ -7,6 +7,37 @@ targets:
   # or on (instance, ifName)
   # ifOperStatus{ instance=~"(spine-coxgs|etc).*"}
   #
+  # now kinda monstrous
+  # # if admin down, return 0
+  # ifAdminStatus{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"} - 2 == 0
+  # # else, ifOperStatus == 1 is ok and 2 is bad (operDown), rest (upto 7) are unlikely
+  # or on (instance, ifName)
+  # (ifOperStatus{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"}
+  #   # if sum of errored in/out traffic (where defined) > threshold (currently 5 pps), use it as a status
+  #   +
+  #   (
+  #     (
+  #       (rate(ifInErrors{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"}[$__rate_interval])
+  #        or
+  #        0 * ifHighSpeed{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"})
+  #       +
+  #       (rate(ifInDiscards{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"}[$__rate_interval])
+  #        or
+  #        0 * ifHighSpeed{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"})
+  #       +
+  #       (rate(ifOutErrors{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"}[$__rate_interval])
+  #        or
+  #        0 * ifHighSpeed{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"})
+  #       +
+  #       (rate(ifOutDiscards{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"}[$__rate_interval])
+  #        or
+  #        0 * ifHighSpeed{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"})
+  #     ) > 5
+  #     or
+  #     (0 * ifHighSpeed{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"})
+  #   )
+  # )
+
   - datasource: prometheus
     expr: "interface_oper_state"
     legend_format: "oper-state:{{source}}:{{interface_name}}"
@@ -60,13 +91,17 @@ targets:
 thresholds:
   operstate:
     # query is designed to return 0 if adminstate is down (see above)
-    - {color: "blue",  level:  0}
+    - {color: "blue",    level:  0}
     # ok
     - {color: "green",   level:  1}
     # oper down but not admin down
     - {color: "red",     level:  2}
-    # should not happen
-    - {color: "yellow",    level: 10}
+    # states from 3 to 7: should not happen: 
+    - {color: "purple",  level:  3}
+    # green again from last operState until lower "err" threshold
+    - {color: "green",   level:  5}
+    # bad (error rate too high)
+    - {color: "yellow",  level: 10}
 
   # num of alerts: 0 is fine, upto 999 is geniue alerts, 1000 snmp timeout, 2000 icmp unreach
   # currently drving strokeColor (border), could use e.g. stroke for alerts and label for status
