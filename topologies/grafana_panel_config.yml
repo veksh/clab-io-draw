@@ -34,8 +34,21 @@ targets:
     hide: false
 
   # num of alerts: legend is "num_alerts:{{instance}}"
+  # bacic: count by (instance) (ALERTS{alertstate="firing", severity!="info"})
+  # more advanced: include icmp unreach and snmp timeout
   #
-  # count by (instance) (ALERTS{alertstate="firing", severity!="info"})
+  # sum by (instance) (
+  #   # host is unreachable, at least 2 times during last 1 minute: 200x
+  #   (avg_over_time(probe_success{job="blackbox_icmp"}[1m]) < 0.75) + 2000
+  #   # snmp timeout: 100x
+  #   or on (instance)
+  #   (avg_over_time(up[1m]) < 0.75) + 1000
+  #   # there are some alerts: < 999
+  #   or on (instance)
+  #   count by (instance) (ALERTS{alertstate="firing", severity!="info"})
+  #   # otherwise, all is fine (has to include it or the pannel will pick last not-null error)
+  #   or on (instance)
+  #   up{instance=~"(spine-coxgs|etc"}*0)
   #
   - datasource: prometheus
     expr: "device_alerts"
@@ -55,9 +68,17 @@ thresholds:
     # should not happen
     - {color: "yellow",    level: 10}
 
-  # num of alerts: even 1 is enough; mb warning=yellow, critical=red (there are no critical alerts here)
+  # num of alerts: 0 is fine, upto 999 is geniue alerts, 1000 snmp timeout, 2000 icmp unreach
+  # currently drving strokeColor (border), could use e.g. stroke for alerts and label for status
   devstate:
-    - {color: "yellow",    level:  1}
+    # 0: ok
+    - {color: "white",     level:    0}
+    # 0 to 999: num of alerts
+    - {color: "yellow",    level:    1}
+    # 100x: snmp timeouts (not up)
+    - {color: "blue",      level: 1000}
+    # 200x: icmp timeouts (unreach)
+    - {color: "red",       level: 2000}
 
   # default, should not be used
   traffic:
@@ -109,6 +130,4 @@ label_config:
 
 # hyperlinks: need `linkRef: detailsLink` in node def
 hyperlink_config:
-  url: "http://localhost:3000/d/adz264h/router-state-12?var-instance=${cell.name}"
-  sameTab: false
-  params: time
+  url: "http://localhost:3000/d/adz264h/router-state-12?var-instance="

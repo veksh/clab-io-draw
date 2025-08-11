@@ -162,8 +162,9 @@ class GrafanaDashboard:
         thresholds_traffic_config = self.grafana_config["thresholds"].get("traffic", [])
         devstate_config = self.grafana_config["thresholds"].get("devstate", [])
         label_cfg = self.grafana_config["label_config"]
-        # New: Hyperlink configuration (simple: url, sameTab)
+        # Hyperlink configuration (simple: url)
         hyperlink_cfg = self.grafana_config.get("hyperlink_config", {}) or {}
+        dashboard_base_url = hyperlink_cfg.get("url") if isinstance(hyperlink_cfg, dict) else None
 
         # Collect all traffic-* thresholds
         traffic_thresholds = {"traffic": thresholds_traffic_config}
@@ -182,7 +183,16 @@ class GrafanaDashboard:
         # Build devstate thresholds
         thresholds_devstate = CommentedSeq()
         for item in devstate_config:
-            thresholds_devstate.append({"color": item["color"], "level": item["level"]})
+            color = item.get("color") if isinstance(item, dict) else None
+            level = None
+            if isinstance(item, dict):
+                level = item.get("level")
+                if level is None and "leevl" in item:
+                    level = item.get("leevl")
+            if color is None or level is None:
+                logger.warning("Skipping invalid devstate threshold item: %s", item)
+                continue
+            thresholds_devstate.append({"color": color, "level": level})
         thresholds_devstate.yaml_set_anchor("thresholds-devstate", always_dump=True)
 
         # Build all traffic thresholds and anchors
@@ -190,7 +200,16 @@ class GrafanaDashboard:
         for k, v in traffic_thresholds.items():
             seq = CommentedSeq()
             for item in v:
-                seq.append({"color": item["color"], "level": item["level"]})
+                color = item.get("color") if isinstance(item, dict) else None
+                level = None
+                if isinstance(item, dict):
+                    level = item.get("level")
+                    if level is None and "leevl" in item:
+                        level = item.get("leevl")
+                if color is None or level is None:
+                    logger.warning("Skipping invalid %s threshold item: %s", k, item)
+                    continue
+                seq.append({"color": color, "level": level})
             anchor_name = "thresholds-" + k.replace("_", "-")
             seq.yaml_set_anchor(anchor_name, always_dump=True)
             thresholds_traffic_anchors[k] = seq
@@ -210,19 +229,15 @@ class GrafanaDashboard:
             anchors["thresholds-" + k.replace("_", "-")] = v
         anchors["label-config"] = label_config_map
 
-        # Create and register hyperlink anchor if provided
-        link_anchor_map = None
-        if isinstance(hyperlink_cfg, dict) and hyperlink_cfg:
-            link_anchor_map = CommentedMap()
-            if "url" in hyperlink_cfg:
-                link_anchor_map["url"] = hyperlink_cfg.get("url")
-            if "sameTab" in hyperlink_cfg:
-                link_anchor_map["sameTab"] = hyperlink_cfg.get("sameTab")
-            if "params" in hyperlink_cfg:
-                link_anchor_map["params"] = hyperlink_cfg.get("params")
-            # Name the anchor 'dev-details'
-            link_anchor_map.yaml_set_anchor("dev-details", always_dump=True)
-            anchors["dev-details"] = link_anchor_map
+        # Add linkWindow and linkVariables if hyperlink config provided
+        if dashboard_base_url:
+            link_window = CommentedMap()
+            link_window["sameTab"] = False
+            root["linkWindow"] = link_window
+
+            link_vars = CommentedMap()
+            link_vars["dashboardBase"] = dashboard_base_url
+            root["linkVariables"] = link_vars
 
         root["cellIdPreamble"] = "cell-"
         root["gradientMode"] = label_cfg.get("gradientMode", "none")
@@ -244,9 +259,14 @@ class GrafanaDashboard:
                 labelColor = CommentedMap()
                 labelColor["thresholds"] = thresholds_devstate
                 cell_node["strokeColor"] = labelColor
-                # Attach hyperlink via anchor for node cells only
-                if link_anchor_map is not None:
-                    cell_node["link"] = link_anchor_map
+                # Per-node link using dashboardBase var
+                if dashboard_base_url:
+                    link_map = CommentedMap()
+                    if metric_host:
+                        link_map["url"] = f"${{dashboardBase}}{metric_host}"
+                    else:
+                        link_map["url"] = "${dashboardBase}${cell.name}"
+                    cell_node["link"] = link_map
                 cells[cell_id_node] = cell_node
 
         # Add link data
