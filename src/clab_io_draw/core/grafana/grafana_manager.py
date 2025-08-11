@@ -132,6 +132,7 @@ class GrafanaDashboard:
             # Also inject the newly built panel_yaml into `panelConfig`
             if "options" in panel:
                 panel["options"]["panelConfig"] = panel_config
+                # NOTE: siteConfig support (if needed) can be added similarly by setting panel["options"]["siteConfig"]
 
         dashboard_str = json.dumps(dashboard_json, indent=2)
         logger.debug("Grafana dashboard JSON created successfully.")
@@ -161,6 +162,8 @@ class GrafanaDashboard:
         thresholds_traffic_config = self.grafana_config["thresholds"].get("traffic", [])
         devstate_config = self.grafana_config["thresholds"].get("devstate", [])
         label_cfg = self.grafana_config["label_config"]
+        # New: Hyperlink configuration (simple: url, sameTab)
+        hyperlink_cfg = self.grafana_config.get("hyperlink_config", {}) or {}
 
         # Collect all traffic-* thresholds
         traffic_thresholds = {"traffic": thresholds_traffic_config}
@@ -207,8 +210,21 @@ class GrafanaDashboard:
             anchors["thresholds-" + k.replace("_", "-")] = v
         anchors["label-config"] = label_config_map
 
+        # Create and register hyperlink anchor if provided
+        link_anchor_map = None
+        if isinstance(hyperlink_cfg, dict) and hyperlink_cfg:
+            link_anchor_map = CommentedMap()
+            if "url" in hyperlink_cfg:
+                link_anchor_map["url"] = hyperlink_cfg.get("url")
+            if "sameTab" in hyperlink_cfg:
+                link_anchor_map["sameTab"] = hyperlink_cfg.get("sameTab")
+            # Name the anchor 'dev-details'
+            link_anchor_map.yaml_set_anchor("dev-details", always_dump=True)
+            anchors["dev-details"] = link_anchor_map
+
         root["cellIdPreamble"] = "cell-"
         root["gradientMode"] = label_cfg.get("gradientMode", "none")
+
         cells = CommentedMap()
         root["cells"] = cells
 
@@ -226,6 +242,9 @@ class GrafanaDashboard:
                 labelColor = CommentedMap()
                 labelColor["thresholds"] = thresholds_devstate
                 cell_node["strokeColor"] = labelColor
+                # Attach hyperlink via anchor for node cells only
+                if link_anchor_map is not None:
+                    cell_node["link"] = link_anchor_map
                 cells[cell_id_node] = cell_node
 
         # Add link data

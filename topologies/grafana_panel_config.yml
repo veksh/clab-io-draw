@@ -107,12 +107,7 @@ label_config:
     - { valueMax:  999999, text: "\u200B" }
     - { valueMin: 1000000 }
 
-# hyperlinks: need `linkRef: switchDashboard` in node def
+# hyperlinks: need `linkRef: detailsLink` in node def
 hyperlink_config:
-  linkVariables:
-    # http://localhost:3000/d/adz264h/router-state-12?var-instance=asr-coxgs-1.console.coxgs.i0
-    urlSwitchDashboard: "http://localhost:3000/d/adz264h/router-state-12"
-  links:
-    switchDashboard:
-      url: "${urlSwitchDashboard}?var-instance=${cell.name}"
-      sameTab: false
+  url: "http://localhost:3000/d/adz264h/router-state-12?var-instance=${cell.name}"
+  sameTab: false
