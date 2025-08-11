@@ -218,6 +218,8 @@ class GrafanaDashboard:
                 link_anchor_map["url"] = hyperlink_cfg.get("url")
             if "sameTab" in hyperlink_cfg:
                 link_anchor_map["sameTab"] = hyperlink_cfg.get("sameTab")
+            if "params" in hyperlink_cfg:
+                link_anchor_map["params"] = hyperlink_cfg.get("params")
             # Name the anchor 'dev-details'
             link_anchor_map.yaml_set_anchor("dev-details", always_dump=True)
             anchors["dev-details"] = link_anchor_map
