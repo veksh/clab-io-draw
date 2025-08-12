@@ -187,8 +187,6 @@ class GrafanaDashboard:
             level = None
             if isinstance(item, dict):
                 level = item.get("level")
-                if level is None and "leevl" in item:
-                    level = item.get("leevl")
             if color is None or level is None:
                 logger.warning("Skipping invalid devstate threshold item: %s", item)
                 continue
@@ -288,7 +286,9 @@ class GrafanaDashboard:
 
             cell_operstate = CommentedMap()
             cell_operstate["dataRef"] = dataRef_operstate
-            cell_operstate["fillColor"] = fillColor_operstate
+            # drive a stroke color not fill color from the metrcis; mb make some switch for that
+            # cell_operstate["fillColor"] = fillColor_operstate
+            cell_operstate["strokeColor"] = fillColor_operstate
             cells[cell_id_operstate] = cell_operstate
 
             cell_id_traffic = f"link_id:{source_name}:{source_intf}:{target_name}:{target_intf}"

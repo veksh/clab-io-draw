@@ -33,7 +33,8 @@ base_style: "rounded=1;labelPosition=center;align=center;verticalLabelPosition=m
             
 #Nodes with ports if ports:true (-g option for grafana will set always to true)
 ports: true
-port_style: "rounded=1;whiteSpace=wrap;html=1;fontColor=#FFFFFF;fontSize=8;strokeColor=#98A2AE;fillColor=#BEC8D2;textShadow=1;connectable=1;resizable=1;"
+#port_style: "rounded=1;whiteSpace=wrap;html=1;fontColor=#FFFFFF;fontSize=8;strokeColor=#98A2AE;fillColor=#BEC8D2;textShadow=1;connectable=1;resizable=1;"
+port_style: "rounded=1;whiteSpace=wrap;html=1;fontColor=light-dark(#000000,#FFFFFF);fontSize=8;strokeColor=default;fillColor=default;textShadow=0;connectable=1;resizable=1;"
 # style for mid-point; does not matter all that much for now
 connector_style: "ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=8;fillColor=#BEC8D2;strokeColor=none;noLabel=1;"
 
@@ -53,9 +54,9 @@ connector_mid: true
 
 # Style for links between nodes
 # labels for rates have this style
-link_style: "rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=8;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;"
-# transparent labels
-#link_style: "rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=8;strokeColor=#98A2AE;fontColor=#000000;textOpacity=90;labelBackgroundColor=none;jumpStyle=none;strokeWidth=2;"
+#link_style: "rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=8;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;"
+# transparent labels, day/night colors
+link_style: "rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=6;strokeColor=#98A2AE;fontColor=light-dark(#000000,#FFFFFF);textOpacity=90;labelBackgroundColor=none;jumpStyle=none;strokeWidth=2;strokeWidth=4;spacing=0;spacingLeft=0;textShadow=0;labelBorderColor=none;"
 
 # link line width overrides for different bandwidths
 link_line_width:
