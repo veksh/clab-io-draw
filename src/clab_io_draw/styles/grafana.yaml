@@ -45,15 +45,17 @@ port_height: 12
 port_padding_x: 3
 port_padding_y: 3
 
-connector_width:  4
-connector_height: 4
-
+# mid-way connector, not actively used now
+connector_width:  2
+connector_height: 2
 # if true, place connector mid-point exactly in the middle of the link
 connector_mid: true
 
 # Style for links between nodes
 # labels for rates have this style
 link_style: "rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=8;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=none;strokeWidth=2;"
+# transparent labels
+#link_style: "rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=openThin;endFill=0;endSize=2;fontSize=8;strokeColor=#98A2AE;fontColor=#000000;textOpacity=90;labelBackgroundColor=none;jumpStyle=none;strokeWidth=2;"
 
 # link line width overrides for different bandwidths
 link_line_width:
