@@ -248,6 +248,8 @@ class DiagramBuilder:
                 # Keep capitalization for capitalized interfaces
                 if intf_name.startswith("Ethernet"):
                     return "E" + intf_name[8:]
+                if intf_name.startswith("TenGigabitEthernet"):
+                    return "Te" + intf_name[18:]
                 # Add more format rules as needed
             return intf_name
 
