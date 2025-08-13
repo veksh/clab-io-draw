@@ -35,6 +35,8 @@ topology:
       image: ios-xr
       type: ios
 
+  # current devices list for the queries:
+  # instance=~"(spine-coxgs|spine-coxbc|agsr-coxgs-0|leaf-coxgs-|csr-coxgs-|asr-coxgs-|fw-coxgs-0|vpnr-coxgs-1|esr-cloin-2).*"
   nodes:
 
     vpnr-coxgs-1.console.coxgs.i0:
