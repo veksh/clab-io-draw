@@ -159,12 +159,12 @@ topology:
         link-speed: 10G
         graph-height: 40
 
-    asr-coxgs-2.console.coxgs.i0:
-      kind: cisco-access
-      labels:
-        graph-level: 4
-        link-speed: 10G
-        graph-height: 40
+    # asr-coxgs-2.console.coxgs.i0:
+    #   kind: cisco-access
+    #   labels:
+    #     graph-level: 4
+    #     link-speed: 10G
+    #     graph-height: 40
 
   links:
     # spines to agsrs: it is smart enough to place them in proper order to minimise intersections
@@ -242,12 +242,12 @@ topology:
     - endpoints: ['spine-coxgs-1:Ethernet8/1',      'asr-coxgs-0:TenGigabitEthernet1/1/3']
     - endpoints: ['spine-coxgs-1:Ethernet8/2',      'asr-coxgs-0:TenGigabitEthernet2/1/3']
     - endpoints: ['spine-coxgs-1:Ethernet9/1',      'asr-coxgs-1:TenGigabitEthernet2/1/3']
-    - endpoints: ['spine-coxgs-1:Ethernet9/2',      'asr-coxgs-2:TenGigabitEthernet1/1/3']
+    # - endpoints: ['spine-coxgs-1:Ethernet9/2',      'asr-coxgs-2:TenGigabitEthernet1/1/3']
 
     - endpoints: ['spine-coxgs-2:Ethernet8/1',      'asr-coxgs-0:TenGigabitEthernet1/1/4']
     - endpoints: ['spine-coxgs-2:Ethernet8/2',      'asr-coxgs-0:TenGigabitEthernet2/1/4']
     - endpoints: ['spine-coxgs-2:Ethernet9/1',      'asr-coxgs-1:TenGigabitEthernet1/1/3']
-    - endpoints: ['spine-coxgs-2:Ethernet9/2',      'asr-coxgs-2:TenGigabitEthernet2/1/3']
+    # - endpoints: ['spine-coxgs-2:Ethernet9/2',      'asr-coxgs-2:TenGigabitEthernet2/1/3']
 
     # spines to csrs
     - endpoints: ['spine-coxgs-1:Ethernet5/1',      'csr-coxgs-0a:Ethernet1/5']
