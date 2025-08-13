@@ -31,6 +31,9 @@ topology:
     cisco-nexus-fex:
       image: old-ios
       type: linecard
+    cisco-access:
+      image: ios-xr
+      type: ios
 
   nodes:
 
@@ -96,15 +99,13 @@ topology:
       labels:
         graph-level: 3
         link-speed: 10G
-        # slightly higher for horizontal mode
-        graph-height: 170
+        graph-height: 220
     spine-coxgs-2.console.coxgs.i0:
       kind: arista-core
       labels:
         graph-level: 3
         link-speed: 10G
-        # slightly higher for horizontal mode
-        graph-height: 170
+        graph-height: 220
 
     csr-coxgs-0a.console.coxgs.i0:
       kind: cisco-nexus
@@ -123,7 +124,6 @@ topology:
         graph-level: 4
         link-speed: 10G
         graph-height: 40
-
     leaf-coxgs-2.console.coxgs.i0:
       kind: arista-leaf
       labels:
@@ -144,6 +144,27 @@ topology:
         graph-level: 5
         link-speed: 10G
         graph-height: 80
+
+    asr-coxgs-0.console.coxgs.i0:
+      kind: cisco-access
+      labels:
+        graph-level: 4
+        link-speed: 10G
+        graph-height: 70
+
+    asr-coxgs-1.console.coxgs.i0:
+      kind: cisco-access
+      labels:
+        graph-level: 4
+        link-speed: 10G
+        graph-height: 40
+
+    asr-coxgs-2.console.coxgs.i0:
+      kind: cisco-access
+      labels:
+        graph-level: 4
+        link-speed: 10G
+        graph-height: 40
 
   links:
     # spines to agsrs: it is smart enough to place them in proper order to minimise intersections
@@ -216,6 +237,17 @@ topology:
       labels: {link-speed: 100G}    
     - endpoints: ['leaf-coxgs-1:Ethernet52/1',     'leaf-coxgs-2:Ethernet52/1']
       labels: {link-speed: 100G}
+
+    # spines to asrs
+    - endpoints: ['spine-coxgs-1:Ethernet8/1',      'asr-coxgs-0:TenGigabitEthernet1/1/3']
+    - endpoints: ['spine-coxgs-1:Ethernet8/2',      'asr-coxgs-0:TenGigabitEthernet2/1/3']
+    - endpoints: ['spine-coxgs-1:Ethernet9/1',      'asr-coxgs-1:TenGigabitEthernet2/1/3']
+    - endpoints: ['spine-coxgs-1:Ethernet9/2',      'asr-coxgs-2:TenGigabitEthernet1/1/3']
+
+    - endpoints: ['spine-coxgs-2:Ethernet8/1',      'asr-coxgs-0:TenGigabitEthernet1/1/4']
+    - endpoints: ['spine-coxgs-2:Ethernet8/2',      'asr-coxgs-0:TenGigabitEthernet2/1/4']
+    - endpoints: ['spine-coxgs-2:Ethernet9/1',      'asr-coxgs-1:TenGigabitEthernet1/1/3']
+    - endpoints: ['spine-coxgs-2:Ethernet9/2',      'asr-coxgs-2:TenGigabitEthernet2/1/3']
 
     # spines to csrs
     - endpoints: ['spine-coxgs-1:Ethernet5/1',      'csr-coxgs-0a:Ethernet1/5']
