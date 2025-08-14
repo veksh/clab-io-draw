@@ -241,15 +241,15 @@ topology:
       labels: {link-speed: 100G}
 
     # spines to asrs
-    - endpoints: ['spine-coxgs-1:Ethernet8/1',      'asr-coxgs-0:TenGigabitEthernet1/1/3']
-    - endpoints: ['spine-coxgs-1:Ethernet8/2',      'asr-coxgs-0:TenGigabitEthernet2/1/3']
-    - endpoints: ['spine-coxgs-1:Ethernet9/1',      'asr-coxgs-1:TenGigabitEthernet2/1/3']
-    # - endpoints: ['spine-coxgs-1:Ethernet9/2',      'asr-coxgs-2:TenGigabitEthernet1/1/3']
+    - endpoints: ['spine-coxgs-1:Ethernet8/1',      'asr-coxgs-0:Te1/1/3']
+    - endpoints: ['spine-coxgs-1:Ethernet8/2',      'asr-coxgs-0:Te2/1/3']
+    - endpoints: ['spine-coxgs-1:Ethernet9/1',      'asr-coxgs-1:Te2/1/3']
+    # - endpoints: ['spine-coxgs-1:Ethernet9/2',      'asr-coxgs-2:Te1/1/3']
 
-    - endpoints: ['spine-coxgs-2:Ethernet8/1',      'asr-coxgs-0:TenGigabitEthernet1/1/4']
-    - endpoints: ['spine-coxgs-2:Ethernet8/2',      'asr-coxgs-0:TenGigabitEthernet2/1/4']
-    - endpoints: ['spine-coxgs-2:Ethernet9/1',      'asr-coxgs-1:TenGigabitEthernet1/1/3']
-    # - endpoints: ['spine-coxgs-2:Ethernet9/2',      'asr-coxgs-2:TenGigabitEthernet2/1/3']
+    - endpoints: ['spine-coxgs-2:Ethernet8/1',      'asr-coxgs-0:Te1/1/4']
+    - endpoints: ['spine-coxgs-2:Ethernet8/2',      'asr-coxgs-0:Te2/1/4']
+    - endpoints: ['spine-coxgs-2:Ethernet9/1',      'asr-coxgs-1:Te1/1/3']
+    # - endpoints: ['spine-coxgs-2:Ethernet9/2',      'asr-coxgs-2:Te2/1/3']
 
     # spines to csrs
     - endpoints: ['spine-coxgs-1:Ethernet5/1',      'csr-coxgs-0a:Ethernet1/5']
