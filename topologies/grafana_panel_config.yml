@@ -1,4 +1,5 @@
 # Default Grafana Flow Panel configuration is in src/clab_io_draw/core/grafana/default_grafana_panel_config.yml
+# see also https://github.com/andymchugh/andrewbmchugh-flow-panel/blob/main/yaml_defs/panelConfig.yaml
 
 targets:
   # oper + admin state; legend is "oper-state:clab-coxgs-{{host}}:{{ifName}}"
@@ -19,24 +20,24 @@ targets:
   #   +
   #   (
   #     (
-  #       (rate(ifInErrors{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"}[$__rate_interval])
+  #       (rate(ifInErrors{instance=~"${instances}", ifName!~"([Pp]o|ae).*"}[$__rate_interval])
   #        or
-  #        0 * ifHighSpeed{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"})
+  #        0 * ifHighSpeed{instance=~"${instances}", ifName!~"([Pp]o|ae).*"})
   #       +
-  #       (rate(ifInDiscards{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"}[$__rate_interval])
+  #       (rate(ifInDiscards{instance=~"${instances}", ifName!~"([Pp]o|ae).*"}[$__rate_interval])
   #        or
-  #        0 * ifHighSpeed{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"})
+  #        0 * ifHighSpeed{instance=~"${instances}", ifName!~"([Pp]o|ae).*"})
   #       +
-  #       (rate(ifOutErrors{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"}[$__rate_interval])
+  #       (rate(ifOutErrors{instance=~"${instances}", ifName!~"([Pp]o|ae).*"}[$__rate_interval])
   #        or
-  #        0 * ifHighSpeed{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"})
+  #        0 * ifHighSpeed{instance=~"${instances}", ifName!~"([Pp]o|ae).*"})
   #       +
-  #       (rate(ifOutDiscards{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"}[$__rate_interval])
+  #       (rate(ifOutDiscards{instance=~"${instances}", ifName!~"([Pp]o|ae).*"}[$__rate_interval])
   #        or
-  #        0 * ifHighSpeed{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"})
+  #        0 * ifHighSpeed{instance=~"${instances}", ifName!~"([Pp]o|ae).*"})
   #     ) > 5
   #     or
-  #     (0 * ifHighSpeed{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"})
+  #     (0 * ifHighSpeed{instance=~"${instances}", ifName!~"([Pp]o|ae).*"})
   #   )
   # )
 
@@ -49,7 +50,7 @@ targets:
 
   # traffic in bps: legend is "clab-coxgs-{{host}}:{{ifName}}:out"
   #
-  # 8*rate(ifHCOutOctets{instance=~"(spine-coxgs|etc).*"}[$__rate_interval])
+  # 8*rate(ifHCOutOctets{instance=~"${instances}"}[$__rate_interval])
   #
   - datasource: prometheus
     expr: "interface_traffic_rate_in_bps"
@@ -81,7 +82,7 @@ targets:
   #   count by (instance) (ALERTS{alertstate="firing", severity!="info"})
   #   # otherwise, all is fine (has to include it or the pannel will pick last not-null error)
   #   or on (instance)
-  #   up{instance=~"(spine-coxgs|etc"}*0)
+  #   up{instance=~"${instances}"}*0)
   #
   - datasource: prometheus
     expr: "device_alerts"

@@ -1,7 +1,6 @@
 # git clone https://github.com/srl-labs/clab-io-draw.git
 # source venv/bin/activate
 # export PYTHONPATH=./src
-# python ./src/clab_io_draw/clab2drawio.py -i lab-examples/coxgs.yml -g --theme grafana [--layout horizontal]
 # python ./src/clab_io_draw/clab2drawio.py -i topologies/coxgs.yml -g --theme grafana --grafana-config topologies/grafana_panel_config.yml --layout horizontal [-o topologies/coxgs.drawio]
 
 name: coxgs
@@ -36,7 +35,7 @@ topology:
       type: ios
 
   # current devices list for the queries:
-  # instance=~"(spine-coxgs|spine-coxbc|agsr-coxgs-0|leaf-coxgs-|csr-coxgs-|asr-coxgs-|fw-coxgs-0|vpnr-coxgs-1|esr-cloin-2).*"
+  # instances: "(spine-coxgs|spine-coxbc|agsr-coxgs-0|leaf-coxgs-|csr-coxgs-|asr-coxgs-|fw-coxgs-0|vpnr-coxgs-1|esr-cloin-2).*"
   nodes:
 
     vpnr-coxgs-1.console.coxgs.i0:
