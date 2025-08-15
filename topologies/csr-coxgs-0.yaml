@@ -49,73 +49,91 @@ topology:
       kind: cisco-nexus
       labels:
         graph-level: 2
+        graph-height: 380
         link-speed: 10G
     csr-coxgs-0b.console.coxgs.i0:
       kind: cisco-nexus
       labels:
         graph-level: 2
+        graph-height: 380
         link-speed: 10G
 
     csr-coxgs-1a.console.coxgs.i0:
       kind: cisco-nexus
       labels:
         graph-level: 1
+        graph-height: 70
         link-speed: 10G
     csr-coxgs-1b.console.coxgs.i0:
       kind: cisco-nexus
       labels:
         graph-level: 1
+        graph-height: 70
         link-speed: 10G
 
     csr-coxgs-0a-FEX100:
       kind: cisco-nexus-fex
       labels:
         graph-level: 3
+        graph-height: 70
         link-speed: 10G       
 
     csr-coxgs-0b-FEX100:
       kind: cisco-nexus-fex
       labels:
         graph-level: 3
+        graph-height: 50
         link-speed: 10G
 
     csr-coxgs-0a-FEX101:
       kind: cisco-nexus-fex
       labels:
         graph-level: 3
+        graph-height: 130
         link-speed: 10G
 
     csr-coxgs-0b-FEX101:
       kind: cisco-nexus-fex
       labels:
         graph-level: 3
+        graph-height: 130
         link-speed: 10G
 
     csr-coxgs-0a-FEX102:
       kind: cisco-nexus-fex
       labels:
         graph-level: 3
+        graph-height: 130
         link-speed: 10G
 
     csr-coxgs-0b-FEX102:
       kind: cisco-nexus-fex
       labels:
         graph-level: 3
+        graph-height: 130
         link-speed: 10G
 
     csr-coxgs-0a-FEX103:
       kind: cisco-nexus-fex
       labels:
         graph-level: 3
+        graph-height: 70
         link-speed: 10G
 
     csr-coxgs-0b-FEX103:
       kind: cisco-nexus-fex
       labels:
         graph-level: 3
+        graph-height: 70
         link-speed: 10G
 
   links:
+
+    # spines to spines; btw spines to leafs are also 100G
+    - endpoints: ['spine-coxgs-1:Ethernet1/1',      'spine-coxgs-2:Ethernet1/1']
+      labels: {link-speed: 100G}
+    - endpoints: ['spine-coxgs-1:Ethernet2/1',      'spine-coxgs-2:Ethernet2/1']
+      labels: {link-speed: 100G}
 
     # spines to csrs
     - endpoints: ['spine-coxgs-1:Ethernet5/1',      'csr-coxgs-0a:Ethernet1/5']

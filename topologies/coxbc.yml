@@ -142,7 +142,7 @@ topology:
       labels:
         graph-level: 4
         link-speed: 10G
-        graph-height: 70
+        graph-height: 40
 
   # python ./netbox2clab.py --devices fw-coxbc-0,esr-cslex-2,agsr-coxbc-0a,agsr-coxbc-0b,spine-coxgs-1,spine-coxgs-2,spine-coxbc-1,spine-coxbc-2,csr-coxbc-1a,csr-coxbc-1b,leaf-coxbc-1,leaf-coxbc-2,csr-coxbc-2a,csr-coxbc-2b,asr-coxbc-1-1,asr-coxbc-1-2
   # - edit asr-coxbc-1-2, do not want to split it
