@@ -122,47 +122,32 @@ def get_connected_devices_and_interfaces(nb: pynetbox.api, devices: List[Record]
     processed_cables = set()
     device_names_set = set(device_names)
 
-    for device in devices:
+    for device_no, device in enumerate(devices):
+        # https://netbox.oxford/api/dcim/devices|interfaces|cables/1/
         interfaces = get_device_interfaces(nb, device)
 
         for interface in interfaces:
-            # Skip if interface has no cable
-            if not interface.cable:
+
+            if not (interface.connected_endpoints != None and len(interface.connected_endpoints) > 0):
                 continue
 
-            # Skip if we've already processed this cable
-            cable_id = interface.cable.id
-            if cable_id in processed_cables:
+            other_end = interface.connected_endpoints[0]
+
+            if not other_end.device.name in device_names_set:
                 continue
 
-            try:
-                # Get the full cable object
-                cable = nb.dcim.cables.get(cable_id)
-                if not cable:
-                    continue
-                if not (hasattr(cable, 'a_terminations') and hasattr(cable, 'b_terminations')):
-                    continue
-                if not (len(cable.a_terminations) == 1 and len(cable.b_terminations) == 1):
-                    continue
-
-                ta = cable.a_terminations[0]
-                tb = cable.b_terminations[0]
-
-                if ta.device.name in device_names_set and tb.device.name in device_names_set:
-                    if device_names.index(tb.device.name) < device_names.index(ta.device.name):
-                        ta, tb = tb, ta
-                    connections.append((
-                        ta.device.name,
-                        ta.name,
-                        tb.device.name,
-                        tb.name
-                    ))
-
-                processed_cables.add(cable_id)
-
-            except Exception as e:
-                print(f"Warning: Error processing cable {cable_id}: {e}")
+            # do not add twice, link from low to high
+            if device_names.index(other_end.device.name) < device_no:
                 continue
+            if device_names.index(other_end.device.name) == device_no and other_end.name < interface.name:
+                continue
+
+            connections.append((
+                device.name,
+                interface.name,
+                other_end.device.name,
+                other_end.name
+            ))
 
     return connections
 
