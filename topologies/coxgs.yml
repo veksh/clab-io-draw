@@ -206,6 +206,7 @@ topology:
       labels: {link-speed: 1G}    
     - endpoints: ['agsr-coxgs-0b:Te2/1/11',         'fw-coxgs-0:ethernet1/4']
       labels: {link-speed: 1G}
+    # fw-coxgs also has link to zen router: eth1/5 -> es-coxgs-1.Gi1/0/24
 
     # agsrs to ext routers
     - endpoints: ['agsr-coxgs-0a:Te1/1/7',          'vpnr-coxgs-1:internal2']

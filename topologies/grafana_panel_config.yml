@@ -8,6 +8,8 @@ targets:
   # ifOperStatus{ instance=~"(spine-coxgs|etc).*"}
   #
   # now kinda monstrous with discards baked into status (mb will split later)
+  # - it is better to put regexp into dashboard var "${instances}"
+  #
   # # if admin down, return 0
   # ifAdminStatus{instance=~"(spine-coxgs|etc).*", ifName!~"([Pp]o|ae).*"} - 2 == 0
   # # else, ifOperStatus == 1 is ok and 2 is bad (operDown), rest (upto 7) are unlikely

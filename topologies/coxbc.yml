@@ -144,14 +144,16 @@ topology:
   # - drop agsr-coxgs-0 Te1/1/15 - Te2/1/15 (fast helo)
   # - set 100G where required
   # also, vpnr-coxbc-0 is not in the netbox
+  # other links
+  # - fw-coxbc also has link to zen router on GS: eth1/5 -> es-coxgs-1.Te1/1/1
   links:
-  - endpoints: ['fw-coxbc-0:HA1'              , 'agsr-coxbc-0a:Te1/1/6']
-  - endpoints: ['fw-coxbc-0:HA2'              , 'agsr-coxbc-0a:Te1/1/7']
+  - endpoints: ['fw-coxbc-0:ha1'              , 'agsr-coxbc-0a:Te1/1/6']
+  - endpoints: ['fw-coxbc-0:ha2'              , 'agsr-coxbc-0a:Te1/1/7']
   - endpoints: ['fw-coxbc-0:ethernet1/1'      , 'agsr-coxbc-0a:Te1/1/8']
   - endpoints: ['fw-coxbc-0:ethernet1/2'      , 'agsr-coxbc-0b:Te2/1/8']
   - endpoints: ['fw-coxbc-0:ethernet1/3'      , 'agsr-coxbc-0b:Te2/1/10']
   - endpoints: ['fw-coxbc-0:ethernet1/4'      , 'agsr-coxbc-0b:Te2/1/11']
-  - endpoints: ['esr-cslex-2:Eth10'           , 'agsr-coxbc-0a:Te1/1/3']  
+  - endpoints: ['esr-cslex-2:Ethernet10'      , 'agsr-coxbc-0a:Te1/1/3']  
   - endpoints: ['agsr-coxbc-0a:Te1/1/1'       , 'agsr-coxbc-0b:Te2/1/1']
   - endpoints: ['agsr-coxbc-0a:Te1/1/14'      , 'agsr-coxbc-0b:Te2/1/14']
   # - endpoints: ['agsr-coxbc-0a:Te1/1/15'      , 'agsr-coxbc-0b:Te2/1/15']
