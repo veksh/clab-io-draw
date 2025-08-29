@@ -168,4 +168,4 @@ label_config:
 
 # hyperlinks: need `linkRef: detailsLink` in node def
 hyperlink_config:
-  url: "http://localhost:3000/d/adz264h/router-state-12?var-instance="
+  url: "http://localhost:3000/d/ads9s57/current?var-instance="
