@@ -15,10 +15,8 @@ then run as ./venv/bin/python netbox2clab.py ...
 """
 
 import argparse
-import os
 import sys
-import yaml
-from typing import List, Dict, Any, Set, Tuple
+
 import pynetbox
 from pynetbox.core.response import Record
 
@@ -38,23 +36,23 @@ or just
     )
 
     parser.add_argument(
-        '--url',
+        "--url",
         required=False,
         default="https://netbox.oxford",
-        help='Netbox URL (default: https://netbox.oxford)'
+        help="Netbox URL (default: https://netbox.oxford)"
     )
 
     parser.add_argument(
-        '--devices',
+        "--devices",
         required=True,
-        help='Comma-separated list of device names, required'
+        help="Comma-separated list of device names, required"
     )
 
     parser.add_argument(
-        '--verify-ssl',
-        action='store_true',
+        "--verify-ssl",
+        action="store_true",
         default=False,
-        help='Verify SSL certificates (default: False)'
+        help="Verify SSL certificates (default: False)"
     )
 
     return parser.parse_args()
@@ -79,7 +77,7 @@ def connect_to_netbox(url: str, verify_ssl: bool = False) -> pynetbox.api:
         sys.exit(1)
 
 
-def validate_devices(nb: pynetbox.api, device_names: List[str]) -> List[Record]:
+def validate_devices(nb: pynetbox.api, device_names: list[str]) -> list[Record]:
     """Validate that all specified devices exist in Netbox."""
     devices = []
     missing_devices = []
@@ -102,24 +100,22 @@ def validate_devices(nb: pynetbox.api, device_names: List[str]) -> List[Record]:
     return devices
 
 
-def get_device_interfaces(nb: pynetbox.api, device: Record) -> List[Record]:
+def get_device_interfaces(nb: pynetbox.api, device: Record) -> list[Record]:
     """Get all interfaces for a device."""
     try:
-        interfaces = list(nb.dcim.interfaces.filter(device=device.name))
-        return interfaces
+        return list(nb.dcim.interfaces.filter(device=device.name))
     except Exception as e:
         print(f"Error getting interfaces for device '{device.name}': {e}")
         return []
 
 
-def get_connected_devices_and_interfaces(nb: pynetbox.api, devices: List[Record], 
-                                       device_names: List[str]) -> List[Tuple[str, str, str, str]]:
+def get_connected_devices_and_interfaces(nb: pynetbox.api, devices: list[Record],
+                                       device_names: list[str]) -> list[tuple[str, str, str, str]]:
     """
     Get all connections between the specified devices.
     Returns list of tuples: (device_a_name, interface_a_name, device_b_name, interface_b_name)
     """
     connections = []
-    processed_cables = set()
     device_names_set = set(device_names)
 
     for device_no, device in enumerate(devices):
@@ -128,12 +124,12 @@ def get_connected_devices_and_interfaces(nb: pynetbox.api, devices: List[Record]
 
         for interface in interfaces:
 
-            if not (interface.connected_endpoints != None and len(interface.connected_endpoints) > 0):
+            if not (interface.connected_endpoints is not None and len(interface.connected_endpoints) > 0):
                 continue
 
             other_end = interface.connected_endpoints[0]
 
-            if not other_end.device.name in device_names_set:
+            if other_end.device.name not in device_names_set:
                 continue
 
             # do not add twice, link from low to high
@@ -168,7 +164,7 @@ def main():
     args = parse_arguments()
 
     # Parse device list
-    device_names = [name.strip() for name in args.devices.split(',')]
+    device_names = [name.strip() for name in args.devices.split(",")]
 
     print(f"Connecting to Netbox at {args.url}...")
     nb = connect_to_netbox(args.url, args.verify_ssl)
@@ -181,13 +177,13 @@ def main():
 
     print(f"Found {len(connections)} connections between specified devices\n\n")
 
-    print(f"topology:")
-    print(f"  links:")
+    print("topology:")
+    print("  links:")
     for a_device, a_interface, b_device, b_interface in sorted(connections,
             key=lambda c: (device_names.index(c[0]), device_names.index(c[2]), c[1])):
         src = f"'{a_device}:{format_interface_name(a_interface)}'"
         dst = f"'{b_device}:{format_interface_name(b_interface)}'"
         print(f"  - endpoints: [{src:<30}, {dst}]")
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
